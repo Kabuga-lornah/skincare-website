@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Ordinary</title>
+    <style>
+        body {
+            font-family: "Raleway", serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            box-sizing: border-box;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: inherit;
+        }
+
+        .slide {
+            display: flex;
+            grid-template-columns: 200px 1fr;
+            justify-content: space-between;
+            gap: 5%;
+            padding-right: 3%;
+            padding-bottom: 3%;
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            align-items: center;
+            justify-content: flex-start;
+            overflow: hidden;
+            padding-left: 20px;
+        }
+
+
+        .container {
+            padding: 2%;
+            font-size: small;
+            max-width: 100%;
+        }
+
+        .container img {
+            background-color: whitesmoke;
+            width: 200px;
+            height: 200px;
+            max-width: 100%;
+        }
+
+        .concerns {
+            display: flex;
+            grid-template-columns: 1fr;
+            justify-content: space-between;
+            gap: 2%;
+            text-align: center;
+            max-width: 100%;
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+
+        .concerns img {
+            width: 150px;
+            height: 150px;
+            padding: 2%;
+            max-width: 100%;
+        }
+
+        .relief {
+            display: flex;
+            grid-template-columns: repeat(3, 1fr);
+            justify-content: space-between;
+            gap: 2%;
+            padding: 5%;
+            max-width: 100%;
+        }
+
+        #para {
+            padding-top: 8%;
+        }
+
+        .common {
+            padding-left: 5%;
+            padding-right: 5%;
+            max-width: 100%;
+        }
+
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 95%;
+            z-index: 1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            text-align: left;
+            color: black;
+            max-width: 600px;
+        }
+
+        .content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .content p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .content button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background: whitesmoke;
+            color: black;
+            border-color: black;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .content button:hover {
+            background: #f0f0f0;
+        }
+
+        .bestsellers {
+            display: flex;
+            justify-content: space-between;
+            gap: 2%;
+            padding-left: 5%;
+            padding-right: 5%;
+            max-width: 100%;
+            flex-wrap: wrap;
+            background: whitesmoke;
+        }
+
+        .bestsellers .container {
+            flex: 1 1 22%;
+            padding: 1%;
+            font-size: small;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .bestsellers img {
+            width: 150px;
+            height: 150px;
+            max-width: 100%;
+        }
+
+        .bestsellers h3 {
+            font-size: 1rem;
+            margin: 10px 0;
+        }
+
+        .bestsellers p {
+            font-size: 0.9rem;
+            margin: 5px 0;
+        }
+
+        .bestsellers button {
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .skin {
+            display: flex;
+            grid-template-columns: repeat(2, 1fr);
+            justify-content: space-between;
+            gap: 5%;
+            padding: 5%;
+            max-width: 100%;
+            
+        }
+
+        #about {
+            border-style: solid;
+            border-color: lightgray;
+            background: white;
+        }
+    </style>
+    <link rel="stylesheet" href="navbar.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <img src="images/logo.jpeg" alt="The Ordinary" width="150px" height="auto" />
+            </div>
+            <ul class="navbar-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="routines&tips.html">Routines & Tips</a></li>
+                <li><a href="community&testimonials.html">Testimonials</a></li>
+                <li><a href="About.html">About Us</a></li>
+                <li><a href="ContactUs.html">Contact Us</a></li>
+            </ul>
+            <div class="button">
+                <a href="shop.html"><i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </div>
+    </nav>
+    <hr>
+    <!-- end of navbar -->
+    <div class="slide">
+        <div class="content">
+            <nav>
+                <h1>Advanced Age Support</h1>
+                <p>Multi-people + Copper Peptides 1% contains 6 peptide technologies to repair fine lines and wrinkles.</p>
+                <button>Shop Now</button>
+            </nav>
+        </div>
+        <img src="images/advanced age support.webp" alt="advanced" class="background-image">
+    </div>
+    <!-- Bestsellers Section -->
+    <div class="best">
+        <div class="bestsellersh1">
+            <h1><span style="text-align: center; font-family: raleway, serif;">Bestsellers</span></h1>
+        </div>
+        <div class="bestsellers">
+            <div class="container">
+                <img src="images/rdn-niacinamide-10pct-zinc-1pct-30ml.webp" alt="znc" />
+                <h3>Niacinamide 10% + Zinc 1%</h3>
+                <p>Oil Control, Brightens, Smooths</p>
+                <p>7.20 USD</p><br><br>
+                <a href="shop.html"><button>Add To Cart</button></a>
+            </div>
+            <div class="container">
+                <img src="images/ord-hyaluronic-acid-2pct-B5-30ml-Clr-Acu.webp" alt="hyaluronic" />
+                <h3>Hyaluronic Acid 2% + B5 (with Ceramides)</h3>
+                <p>Plumps, Smooths</p>
+                <p>11.90 USD</p><br>
+                <a href="shop.html"><button><span style="padding: 0%;">Add To Cart</span></button></a>
+            </div>
+            <div class="container">
+                <img src="images/rdn-natural-moisturizing-factors-ha-30ml.webp" alt="phyto" />
+                <h3>Natural Moisturizing Factors + PhytoCeramides</h3>
+                <p>Nourishes, Plumps</p>
+                <p>13.00 USD</p><br>
+                <a href="shop.html"><button> Add To Cart</button></a>
+            </div>
+            <div class="container">
+                <img src="images/ord-glyc-acid-7pct-100ml-Aug-UPC.webp" alt="toner" />
+                <h3>Glycolic Acid 7% Exfoliating Toner</h3>
+                <p>Evens Texture & Tone Radiance</p>
+                <p>10.40 USD</p><br>
+                <a href="shop.html"><button>Add To Cart</button></a>
+            </div>
+        </div>
+    </div>
+    <!-- common concerns  -->
+    <span style="font-family: raleway, serif;">
+        <div class="common">
+            <div>
+                <hr>
+                <h2>Common Concerns</h2>
+                <p>Not sure where to begin? Here are some common skin concerns</p>
+            </div>
+            <div class="concerns">
+                <div>
+                    <img src="images/signs-of-aging-concern_1.webp" alt="aging" />
+                    <p>Aging</p>
+                </div>
+                <div>
+                    <img src="images/congestion-concerns.webp" alt="congestion" />
+                    <p>Congestion</p>
+                </div>
+                <div>
+                    <img src="images/Texture.webp" alt="texture" />
+                    <p>Texture</p>
+                </div>
+                <div>
+                    <img src="images/Dark Circles.webp" alt="eyecare" />
+                    <p>Eye Care</p>
+                </div>
+                <div>
+                    <img src="images/Visible Shine.webp" alt="shine" />
+                    <p>Shine</p>
+                </div>
+                <div>
+                    <img src="images/Dullness.webp" alt="dullness" />
+                    <p>Dullness</p>
+    </span>
+    </div>
+    </div>
+    </div>
+    <!-- redness relief -->
+    <hr>
+    <span style="font-family: raleway, serif;">
+        <div class="relief">
+            <div>
+                <p>100% Fermented Rose Hip Seed Oil</p>
+                <h2>Redness Relief at the Ready</h2>
+                <img src="images/fermented-rose-hip-slot-c.webp" alt="ferm" width="180px" height="200px" />
+            </div>
+            <div id="para">
+                <p>
+                    100% Fermented Rose Hip Seed Oil soothes skin and prevents visible signs
+                    of sensitivity, which can contribute to signs of premature aging.
+                </p><br>
+                <a href="shop.html"><button>SHOP ROSE HIP</button></a>
+            </div>
+            <div>
+                <img src="images/fermented-rose-hip-slot-d.webp" alt="d" width="300px" height="300px" />
+            </div>
+        </div>
+
+        <!-- skincare -->
+        <hr>
+        <div class="skin">
+            <div><span style="font-size: small;">
+                    <h1>Skincare with Integrity</h1>
+                    <p>Skincare should be effective, honest, and accessible to everyone. At The Ordinary, we are
+                        committed to
+                        providing quality solutions grounded in science, transparency, and trust. Our goal is to help
+                        you build a
+                        skincare routine that works for you.</p>
+                </span>
+                <a href="About.html"><button id="about">ABOUT US</button></a>
+            </div>
+            <div>
+                <img src="images/about-us-slot-e.webp" alt="about" width="350px" height="250px">
+            </div>
+        </div>
+        <script src="script.js"></script>
+        <script>
+            const hamburger = document.querySelector(".hamburger");
+            const navbarLinks = document.querySelector(".navbar-links");
+            hamburger.addEventListener("click", () => {
+                navbarLinks.classList.toggle("active");
+            });
+        </script>
+</body>
+<!-- footer begins -->
+<footer>
+    <div class="footer-grid">
+        <div class="footer-section">
+            <h3>Company</h3>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">The Ordinary DNA</a></li>
+                <li><a href="#">Join Us</a></li>
+            </ul>
+            <p>Manufacture information: DECIEM Eastside</p>
+        </div>
+        <div class="footer-section">
+            <h3>Customer Care</h3>
+            <ul>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Disposal Instructions</a></li>
+                <li><a href="#">Return Policy</a></li>
+                <li><a href="#">Promotion Terms & Conditions</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <ul><b>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">Sign In</a></li>
+                    <li><a href="#">Store Locator</a></li>
+            </ul></b>
+        </div>
+        <div class="footer-section">
+            <h3>Our Commitments</h3>
+            <ul>
+                <li><a href="#">Accessibility</a></li>
+                <li><a href="#">Sustainability</a></li>
+                <li><a href="#">Change is the Journey</a></li>
+                <li><a href="#">Everything Is Chemicals</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Be in the know.</h3>
+            <p>Subscribe to receive science-backed tips, access to special offers, and new innovations.</p>
+            <div class="email-input">
+                <input type="email" placeholder="Email Address">
+                <button>&rarr;</button>
+            </div>
+            <p class="text-xs">By providing your email address you are agreeing to receive email communications from
+                DECIEM Inc., its affiliates, brands (The Ordinary, NIOD, and LooPHA) and/or marketing partners. This can
+                be changed at any time. Please refer to our <a href="#" class="underline">Privacy Policy</a> and <a
+                    href="#" class="underline">Terms of Use</a> for more details or <a href="#"
+                    class="underline">Contact Us</a>.</p>
+            <br>
+            <br>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/theordinary/"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/theordinary/"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.youtube.com/playlist?list=PLo6ELSZywkj0CEJb2e7OoMqavti4-MYPK"><i
+                        class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.tiktok.com/@theordinary?lang=en"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-section">
+        <h3>Location</h3>
+        <div class="location">
+            <span><i class="fa-solid fa-location-dot"></i> KENYA</span>
+            <a href="#">Change</a>
+        </div>
+        <p class="language">Language <span>EN</span></p>
+    </div>
+</footer>
+
+</html>

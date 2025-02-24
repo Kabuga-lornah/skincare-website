@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About</title>
+    <style>
+        .title {
+            display: block;
+            width: 50%;
+            padding: 20px;
+            margin-left: 0;
+        }
+
+        .title h1 {
+            font-size: 28px;
+            /* Adjust size */
+            font-weight: bold;
+            line-height: 1.3;
+        }
+
+
+
+        body {
+            font-family: "Raleway", serif;
+            font-optical-sizing: auto;
+            font-weight: weight;
+            font-style: normal;
+        }
+
+        .centered-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 5%;
+            padding-left: 20%;
+            padding-right: 20%;
+        }
+
+        p {
+            font-family: Raleway, serif;
+            font-size: small;
+        }
+
+        .core {
+            display: flex;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5%;
+            justify-content: space-between;
+        }
+
+        .science {
+            display: flex;
+            grid-template-columns: repeat(2, 1fr);
+            justify-content: space-between;
+            gap: 6%;
+        }
+
+        .core img {
+            padding-top: 5%;
+        }
+
+        .lab {
+            display: flex;
+            grid-template-columns: repeat(3, 1fr);
+            justify-content: space-between;
+            gap: 5%;
+            padding-top: 8%;
+        }
+
+        footer {
+            padding-left: 7%;
+            padding-right: 7%;
+        }
+
+        @media (max-width: 1024px) {
+            body {
+                grid-template-columns: 500px 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="navbar.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <img src="images/logo.jpeg" alt="The Ordinary" width="150px" height="auto" />
+            </div>
+            <ul class="navbar-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="routines&tips.html">Routines & Tips</a></li>
+                <li><a href="community&testimonials.html">Testimonials</a></li>
+                <li><a href="About.html">About Us</a></li>
+                <li><a href="ContactUs.html">Contact Us</a></li>
+            </ul>
+            <div class="button">
+                <a href="shop.html"><i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </div>
+    </nav>
+    <hr>
+    <!-- end of navbar -->
+    <div class="container">
+        <div class="title">
+            <div>
+                <h1>
+                    It's in our DNA: The Ordinary's Commitment to Transparency and
+                    Skincare Science
+                </h1>
+            </div>
+        </div>
+
+
+        <div>
+            <img src="images/ord-DNA-landing-page-img1.webp" alt="dna" />
+        </div>
+
+        <div class="core">
+            <div>
+                <img src="images/ord-DNA-landing-page-img2.webp" alt="dna" width="100px" />
+            </div>
+            <div>
+                <h1>At the Core of Our Philosophy</h1>
+                <p>
+                    <span style="font-family: raleway, serif; font-size: small">
+                        At The Ordinary, science is at the heart of everything we do. Our
+                        approach is built on a commitment to transparency, effectiveness,
+                        and high-quality formulations. We believe that skincare excellence
+                        comes from a thoughtful understanding of scientific principles, and
+                        a careful approach to every decision—whether it's selecting
+                        ingredients, developing formulas, or designing packaging. Our aim is
+                        to empower our community with clear, accessible information about
+                        the science behind our products, offering effective and accessible
+                        solutions that meet your skincare needs—without compromise on
+                        quality. We embrace the complexity of simplistic design and
+                        celebrate the abnormal.</span>
+                </p>
+            </div>
+
+            <div>
+                <img src="images/ord-DNA-landing-page-img4.webp" alt="4" width="300px" />
+            </div>
+        </div>
+        <br>
+        <br>
+
+
+        <div class="science">
+            <div><img src="images/ord-DNA-landing-page-img3.webp" alt="3" width="100px" height="100px" /></div>
+            <div>
+                <h1>The Power of Science</h1>
+                <p>
+                    <span style="font-family: raleway, serif; text-align: center; font-size: small;">
+                        We place a strong emphasis on scientific research. Each ingredient
+                        is carefully studied to ensure optimal efficacy, while also being
+                        considerate in our formulation design. At The Ordinary, we focus on
+                        what truly works—active ingredients that are researched and selected
+                        to deliver targeted benefits. We aim to make skincare more
+                        authentic, by putting ingredients at the forefront of our naming and
+                        product education. We aim to demystify skincare by being clear about
+                        what ingredients are in our products and what skincare concern(s)
+                        they address.</span>
+                </p>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div>
+            <img src="images/ord-DNA-landing-page-img5.webp" alt="5" height="250px" width="1250px" />
+        </div>
+
+
+
+        <div class="lab">
+            <div><span><img src="images/ord-DNA-landing-page-img6.webp" alt="6" width="80px" height="80px"></span></div>
+            <div>
+                <h1>A Thoughtful Process from Lab to Product</h1>
+                <p>
+                    <span style="font-family: raleway, serif; font-size: small;">
+                        Our journey starts in the lab, where we explore new ideas,
+                        ingredients, and technologies that inspire our product formulations.
+                        Each formula is uniquely curated by our in-house team, with clinical
+                        testing to prove the efficacy and safety of our formulations. We rely
+                        on a combination of peer-reviewed published literature and
+                        substantiated data from our suppliers, to ensure each product meets
+                        our rigorous standards. Our formulations go through multiple
+                        assessments—including quality, microbiology, and regulatory
+                        reviews—before reaching the manufacturing stage. While sustainability
+                        is a key element in our development considerations, it is a journey of
+                        compromises. We continually look for opportunities to prioritize
+                        circularity and eco-friendly processes to be mindful of our product
+                        footprint.</span>
+                </p>
+            </div>
+            <div>
+                <img src="images/ord-DNA-landing-page-img7.webp" alt="7" width="250px" height="200px" />
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="centered-div">
+            <p>
+                We're committed to delivering products that reflect our values—thoughtful, effective, and innovative. As
+                we
+                continue to evolve, we remain focused on shaping the future of skincare, grounded in science and driven
+                by
+                purpose.
+                Welcome to The Ordinary—where science is in our DNA.
+            </p>
+        </div>
+        <script>
+            const hamburger = document.querySelector(".hamburger");
+            const navbarLinks = document.querySelector(".navbar-links");
+            hamburger.addEventListener("click", () => {
+                navbarLinks.classList.toggle("active");
+            });
+        </script>
+
+    </div>
+</body>
+<br>
+<br>
+
+<!-- Footer Begins -->
+<footer>
+    <div class="footer-grid">
+        <div class="footer-section">
+            <h3>Company</h3>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">The Ordinary DNA</a></li>
+                <li><a href="#">Join Us</a></li>
+            </ul>
+            <p>Manufacture information: DECIEM Eastside</p>
+        </div>
+        <div class="footer-section">
+            <h3>Customer Care</h3>
+            <ul>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Disposal Instructions</a></li>
+                <li><a href="#">Return Policy</a></li>
+                <li><a href="#">Promotion Terms & Conditions</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <ul><b>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">Sign In</a></li>
+                    <li><a href="#">Store Locator</a></li>
+            </ul></b>
+        </div>
+        <div class="footer-section">
+            <h3>Our Commitments</h3>
+            <ul>
+                <li><a href="#">Accessibility</a></li>
+                <li><a href="#">Sustainability</a></li>
+                <li><a href="#">Change is the Journey</a></li>
+                <li><a href="#">Everything Is Chemicals</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Be in the know.</h3>
+            <p>Subscribe to receive science-backed tips, access to special offers, and new innovations.</p>
+            <div class="email-input">
+                <input type="email" placeholder="Email Address">
+                <button>&rarr;</button>
+            </div>
+            <p class="text-xs">By providing your email address you are agreeing to receive email communications from
+                DECIEM Inc., its affiliates, brands (The Ordinary, NIOD, and LooPHA) and/or marketing partners. This can
+                be changed at any time. Please refer to our <a href="#" class="underline">Privacy Policy</a> and <a
+                    href="#" class="underline">Terms of Use</a> for more details or <a href="#"
+                    class="underline">Contact Us</a>.</p>
+            <br>
+            <br>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/theordinary/"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/theordinary/"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.youtube.com/playlist?list=PLo6ELSZywkj0CEJb2e7OoMqavti4-MYPK"><i
+                        class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.tiktok.com/@theordinary?lang=en"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-section">
+        <h3>Location</h3>
+        <div class="location">
+            <span><i class="fa-solid fa-location-dot"></i> KENYA</span>
+            <a href="#">Change</a>
+        </div>
+        <p class="language">Language <span>EN</span></p>
+    </div>
+</footer>
+
+</html>

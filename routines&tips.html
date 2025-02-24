@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Routines & Tips</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: "Raleway", sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .am {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 5%;
+            padding-left: 3%;
+            padding-right: 3%;
+        }
+
+        .regimens {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .regimens img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .navbar-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger .line {
+            width: 25px;
+            height: 3px;
+            background-color: black;
+            margin: 4px 0;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 1024px) {
+            /* Tablet Styles */
+            .am {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .navbar-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Phone Styles */
+            .am {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .regimens {
+                padding: 10px;
+            }
+
+            .navbar-links {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+
+            .navbar-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <img src="images/logo.jpeg" alt="The Ordinary" width="150px" height="auto" />
+            </div>
+            <ul class="navbar-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="routines&tips.html">Routines & Tips</a></li>
+                <li><a href="community&testimonials.html">Testimonials</a></li>
+                <li><a href="About.html">About Us</a></li>
+                <li><a href="ContactUs.html">Contact Us</a></li>
+            </ul>
+            <div class="button">
+                <a href="shop.html"><i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </div>
+    </nav>
+    <hr>
+    <!-- End of Navbar -->
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="regimens">
+            <span style="font-family: Raleway, serif; font-size: small;">
+                <div>
+                    <h1>Example Regimens</h1>
+                    <p>
+                        We have developed this guide to offer suggestions on how to combine multiple formulations from The Ordinary in a single regimen.
+                        In general terms, water formulations should be applied before oil formulations, and we recommend using a maximum of three serum
+                        formulations in a single regimen.
+                    </p>
+                </div>
+                <div>
+                    <i class="fa-solid fa-sun"></i> Use in the AM<br><br>
+                    <i class="fa-solid fa-moon"></i> Use in the PM<br><br>
+                    <i class="fa-solid fa-eye"></i> For Eyes<br><br>
+                    <i class="fa-solid fa-eye-slash"></i> Avoid Contact with Eyes<br>
+                </div>
+            </span>
+        </div>
+
+        <!-- AM Routine -->
+        <span style="font-family: Raleway, serif;">
+            <div>
+                <h1>A.M.</h1>
+                <hr>
+            </div>
+            <div class="am">
+                <div>
+                    <img src="images/1.webp" alt="Squalane Cleanser" width="100px" height="100px" /><br>
+                    <i class="fa-regular fa-sun"></i> <i class="fa-regular fa-moon"></i>
+                    <h3>Squalane Cleanser</h3>
+                    <p>A moisturizing all-in-one cleanser</p>
+                    <p><b>50ml</b></p>
+                </div>
+                <div>
+                    <img src="images/2.png" alt="Multi-Peptide + HA Serum" width="100px" height="100px" /><br>
+                    <i class="fa-regular fa-sun"></i> <i class="fa-regular fa-moon"></i>
+                    <h3>Multi-Peptide + HA Serum</h3>
+                    <p>Multi-Technology Peptide Serum</p>
+                    <p><b>30ml</b></p>
+                </div>
+                <div>
+                    <img src="images/3.webp" alt="Natural Moisturizing Factors + HA" width="100px" height="100px"><br>
+                    <i class="fa-regular fa-sun"></i> <i class="fa-regular fa-moon"></i>
+                    <h3>Natural Moisturizing Factors + HA</h3>
+                    <p>Surface Hydration Formula</p>
+                    <p><b>30ml</b></p>
+                </div>
+            </div>
+
+            <!-- PM Routine -->
+            <div>
+                <h1>P.M.</h1>
+                <hr>
+            </div>
+            <div class="am">
+                <div>
+                    <img src="images/1.webp" alt="1" width="100px" height="100px" /><br>
+                    <i class="fa-regular fa-sun"></i> <i class="fa-regular fa-moon"></i>
+                    <h3>Squalane Cleanser</h3>
+                    <p>A moisturizing all-in-one cleanser</p>
+                    <p><b>50ml</b></p>
+                </div>
+                <div>
+                    <img src="images/2.png" alt="2" width="100px" height="100px" /><br>
+                    <i class="fa-regular fa-sun"></i> <i class="fa-regular fa-moon"></i>
+                    <h3>Multi-Peptide + HA Serum</h3>
+                    <p>Multi-Technology Peptide Serum</p>
+                    <p><b>30ml</b></p>
+                </div>
+                <div>
+                    <img src="images/4.webp" alt="4" width="100px" height="100px"><br>
+                    <i class="fa-regular fa-sun"></i> <i class="fa-regular fa-moon"></i>
+                    <h3>Granactive Retinoid 2% Emulsion</h3>
+                    <p>Next-generation retinol-alternative <br> technologies to address signs of aging.</p>
+                    <p><b>30ml</b></p>
+                </div>
+            </div>
+        </span>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">The Ordinary DNA</a></li>
+                    <li><a href="#">Join Us</a></li>
+                </ul>
+                <p>Manufacture information: DECIEM Eastside</p>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Care</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Disposal Instructions</a></li>
+                    <li><a href="#">Return Policy</a></li>
+                    <li><a href="#">Promotion Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <ul><b>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">Sign In</a></li>
+                    <li><a href="#">Store Locator</a></li>
+                </ul></b>
+            </div>
+            <div class="footer-section">
+                <h3>Our Commitments</h3>
+                <ul>
+                    <li><a href="#">Accessibility</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Change is the Journey</a></li>
+                    <li><a href="#">Everything Is Chemicals</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Be in the know.</h3>
+                <p>Subscribe to receive science-backed tips, access to special offers, and new innovations.</p>
+                <div class="email-input">
+                    <input type="email" placeholder="Email Address">
+                    <button>&rarr;</button>
+                </div>
+                <p class="text-xs">By providing your email address you are agreeing to receive email communications from
+                    DECIEM Inc., its affiliates, brands (The Ordinary, NIOD, and LooPHA) and/or marketing partners. This can
+                    be changed at any time. Please refer to our <a href="#" class="underline">Privacy Policy</a> and <a
+                        href="#" class="underline">Terms of Use</a> for more details or <a href="#"
+                        class="underline">Contact Us</a>.</p>
+                <br>
+                <br>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/theordinary/"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/theordinary/"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/playlist?list=PLo6ELSZywkj0CEJb2e7OoMqavti4-MYPK"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@theordinary?lang=en"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h3>Location</h3>
+            <div class="location">
+                <span><i class="fa-solid fa-location-dot"></i> KENYA</span>
+                <a href="#">Change</a>
+            </div>
+            <p class="language">Language <span>EN</span></p>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector(".hamburger");
+        const navbarLinks = document.querySelector(".navbar-links");
+        hamburger.addEventListener("click", () => {
+            navbarLinks.classList.toggle("active");
+        });
+    </script>
+</body>
+</html>
