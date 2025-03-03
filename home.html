@@ -4,188 +4,341 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Ordinary</title>
+    <title>The Ordinaire</title>
     <style>
-        body {
-            font-family: "Raleway", serif;
-            font-optical-sizing: auto;
-            font-style: normal;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            box-sizing: border-box;
-        }
+ 
+    body {
+        font-family: "Raleway", serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        box-sizing: border-box;
+       background-color: white;
+    }
 
-        *,
-        *::before,
-        *::after {
-            box-sizing: inherit;
-        }
+       .slide {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        padding-left: 20px;
+    }
 
+    .container {
+        padding: 2%;
+        font-size: small;
+        max-width: 100%;
+    }
+
+    .container img {
+        background-color: whitesmoke;
+        width: 200px;
+        height: 200px;
+        max-width: 100%;
+    }
+
+    .concerns {
+        display: flex;
+        grid-template-columns: 1fr;
+        justify-content: space-between;
+        gap: 2%;
+        text-align: center;
+        max-width: 100%;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .concerns img {
+        width: 150px;
+        height: 150px;
+        padding: 2%;
+        max-width: 100%;
+    }
+
+    .relief {
+        display: flex;
+        grid-template-columns: repeat(3, 1fr);
+        justify-content: space-between;
+        gap: 2%;
+        padding: 5%;
+        max-width: 100%;
+    }
+
+    #para {
+        padding-top: 8%;
+    }
+
+    .common {
+        padding-left: 5%;
+        padding-right: 5%;
+        max-width: 100%;
+    }
+
+    .background-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 95%;
+        z-index: 1;
+        object-fit: cover;
+    }
+
+    .content {
+        position: relative;
+        z-index: 2;
+        text-align: left;
+        color: black;
+        max-width: 600px;
+    }
+
+    .content h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+
+    .content p {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+    }
+
+    .content button {
+        padding: 10px 20px;
+        font-size: 1rem;
+        background: whitesmoke;
+        color: black;
+        border-color: black;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .content button:hover {
+        background: #f0f0f0;
+    }
+
+
+    .bestsellers {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        padding: 20px;
+        background: whitesmoke;
+    }
+
+    .bestsellers .container {
+      
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 15px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .bestsellers .container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .bestsellers img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .bestsellers h3 {
+        font-size: 18px;
+        margin: 10px 0;
+    }
+
+    .bestsellers p {
+        font-size: 14px;
+        margin: 5px 0;
+    }
+
+    .button-group {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+    .add-to-cart, .learn-more {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    .add-to-cart {
+        background-color: lightgray;
+        color: black;
+    }
+
+    .add-to-cart.added {
+        background-color: black;
+        color: white;
+    }
+
+    .learn-more {
+        background-color: lightgrey;
+        color: black;
+    }
+
+    .learn-more:hover {
+        background-color: whitesmoke;
+    }
+
+    .skin {
+        display: flex;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: space-between;
+        gap: 5%;
+        padding: 5%;
+        max-width: 100%;
+    }
+
+    #about {
+        border-style: solid;
+        border-color: lightgray;
+        background: white;
+    }
+
+    .bestsellersh1 {
+    position: relative; 
+    text-align: left; 
+}
+
+.view-all-button {
+    position: absolute; 
+    top: 0;
+    right: 0;
+    padding: 10px 20px;
+    background-color: whitesmoke; 
+    border-color: black;
+    color: black; 
+    text-decoration: none;
+    font-family: raleway, serif;
+    font-size: 16px;
+    border-radius: 5px;
+    /* border: none;  */
+    cursor: pointer; 
+    /* transition: background-color 0.3s ease;  */
+}
+
+.view-all-button:hover {
+    background-color: lightgray; 
+}
+/* Hamburger Menu Styles */
+.navbar-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger .line {
+    width: 25px;
+    height: 3px;
+    background-color: black;
+    margin: 4px 0;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .navbar-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: white;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 10px 0;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .navbar-links.active {
+        display: flex;
+    }
+
+    .navbar-links li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}
+
+   
+    @media (max-width: 1024px) {
+        .bestsellers {
+            grid-template-columns: repeat(2, 1fr); 
+        }
+    }
+
+    @media (max-width: 768px) {
         .slide {
-            display: flex;
-            grid-template-columns: 200px 1fr;
-            justify-content: space-between;
-            gap: 5%;
-            padding-right: 3%;
-            padding-bottom: 3%;
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            align-items: center;
-            justify-content: flex-start;
-            overflow: hidden;
-            padding-left: 20px;
-        }
-
-
-        .container {
-            padding: 2%;
-            font-size: small;
-            max-width: 100%;
-        }
-
-        .container img {
-            background-color: whitesmoke;
-            width: 200px;
-            height: 200px;
-            max-width: 100%;
-        }
-
-        .concerns {
-            display: flex;
-            grid-template-columns: 1fr;
-            justify-content: space-between;
-            gap: 2%;
-            text-align: center;
-            max-width: 100%;
-            padding-left: 5%;
-            padding-right: 5%;
-        }
-
-        .concerns img {
-            width: 150px;
-            height: 150px;
-            padding: 2%;
-            max-width: 100%;
-        }
-
-        .relief {
-            display: flex;
-            grid-template-columns: repeat(3, 1fr);
-            justify-content: space-between;
-            gap: 2%;
-            padding: 5%;
-            max-width: 100%;
-        }
-
-        #para {
-            padding-top: 8%;
-        }
-
-        .common {
-            padding-left: 5%;
-            padding-right: 5%;
-            max-width: 100%;
-        }
-
-        .background-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 95%;
-            z-index: 1;
-        }
-
-        .content {
-            position: relative;
-            z-index: 2;
-            text-align: left;
-            color: black;
-            max-width: 600px;
+            height: auto;
+            padding: 20px;
         }
 
         .content h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-size: 2rem;
         }
 
         .content p {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-        }
-
-        .content button {
-            padding: 10px 20px;
             font-size: 1rem;
-            background: whitesmoke;
-            color: black;
-            border-color: black;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        .content button:hover {
-            background: #f0f0f0;
         }
 
         .bestsellers {
-            display: flex;
-            justify-content: space-between;
-            gap: 2%;
-            padding-left: 5%;
-            padding-right: 5%;
-            max-width: 100%;
-            flex-wrap: wrap;
-            background: whitesmoke;
+            grid-template-columns: 1fr; 
         }
 
-        .bestsellers .container {
-            flex: 1 1 22%;
-            padding: 1%;
-            font-size: small;
-            text-align: center;
-            box-sizing: border-box;
+        .concerns {
+            flex-direction: column;
+            align-items: center;
         }
 
-        .bestsellers img {
-            width: 150px;
-            height: 150px;
-            max-width: 100%;
-        }
-
-        .bestsellers h3 {
-            font-size: 1rem;
-            margin: 10px 0;
-        }
-
-        .bestsellers p {
-            font-size: 0.9rem;
-            margin: 5px 0;
-        }
-
-        .bestsellers button {
-            padding: 8px 16px;
-            font-size: 0.9rem;
-            margin-top: 10px;
+        .relief {
+            flex-direction: column;
+            align-items: center;
         }
 
         .skin {
-            display: flex;
-            grid-template-columns: repeat(2, 1fr);
-            justify-content: space-between;
-            gap: 5%;
-            padding: 5%;
-            max-width: 100%;
-            
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .bestsellers .container {
+            flex: 1 1 100%;
         }
 
-        #about {
-            border-style: solid;
-            border-color: lightgray;
-            background: white;
+        .content h1 {
+            font-size: 1.5rem;
         }
+
+        .content p {
+            font-size: 0.9rem;
+        }
+    }
+</style>
     </style>
     <link rel="stylesheet" href="navbar.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -193,8 +346,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-
-
 </head>
 
 <body>
@@ -202,7 +353,8 @@
     <nav class="navbar">
         <div class="navbar-container">
             <div class="logo">
-                <img src="images/logo.jpeg" alt="The Ordinary" width="150px" height="auto" />
+                 <p>The <br><span style="font-family: raleway, serif; font-size: larger;"> <b>
+                 Ordinaire</b></span></p>
             </div>
             <ul class="navbar-links">
                 <li><a href="home.html">Home</a></li>
@@ -211,8 +363,9 @@
                 <li><a href="About.html">About Us</a></li>
                 <li><a href="ContactUs.html">Contact Us</a></li>
             </ul>
-            <div class="button">
+            <div class="icon">
                 <a href="shop.html"><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="register.html"><i class="fa-regular fa-user"></i></a>
             </div>
             <div class="hamburger">
                 <div class="line"></div>
@@ -233,42 +386,62 @@
         </div>
         <img src="images/advanced age support.webp" alt="advanced" class="background-image">
     </div>
-    <!-- Bestsellers Section -->
-    <div class="best">
-        <div class="bestsellersh1">
-            <h1><span style="text-align: center; font-family: raleway, serif;">Bestsellers</span></h1>
+<!-- bestsellers section -->
+<div class="best">
+    <div class="bestsellersh1">
+        <h1><span style="text-align: center; font-family: raleway, serif;">Bestsellers</span></h1>
+        <a href="shop.html" class="view-all-button">View All</a> 
+    </div>
+    <div class="bestsellers">
+        <!-- Product 1 -->
+        <div class="container">
+            <img src="images/rdn-niacinamide-10pct-zinc-1pct-30ml.webp" alt="znc" />
+            <h3>Niacinamide 10% + Zinc 1%</h3>
+            <p>Oil Control, Brightens, Smooths</p>
+            <p>7.20 USD</p>
+            <div class="button-group">
+                <button class="add-to-cart">Add To Cart</button>
+                <a href="learn.html#product1"><button class="learn-more">Learn More</button></a>
+            </div>
         </div>
-        <div class="bestsellers">
-            <div class="container">
-                <img src="images/rdn-niacinamide-10pct-zinc-1pct-30ml.webp" alt="znc" />
-                <h3>Niacinamide 10% + Zinc 1%</h3>
-                <p>Oil Control, Brightens, Smooths</p>
-                <p>7.20 USD</p><br><br>
-                <a href="shop.html"><button>Add To Cart</button></a>
+
+        <!-- Product 2 -->
+        <div class="container">
+            <img src="images/ord-hyaluronic-acid-2pct-B5-30ml-Clr-Acu.webp" alt="hyaluronic" />
+            <h3>Hyaluronic Acid 2% + B5 (with Ceramides)</h3>
+            <p>Plumps, Smooths</p>
+            <p>11.90 USD</p>
+            <div class="button-group">
+                <button class="add-to-cart">Add To Cart</button>
+                <a href="learn.html#product2"><button class="learn-more">Learn More</button></a>
             </div>
-            <div class="container">
-                <img src="images/ord-hyaluronic-acid-2pct-B5-30ml-Clr-Acu.webp" alt="hyaluronic" />
-                <h3>Hyaluronic Acid 2% + B5 (with Ceramides)</h3>
-                <p>Plumps, Smooths</p>
-                <p>11.90 USD</p><br>
-                <a href="shop.html"><button><span style="padding: 0%;">Add To Cart</span></button></a>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="container">
+            <img src="images/rdn-natural-moisturizing-factors-ha-30ml.webp" alt="phyto" />
+            <h3>Natural Moisturizing Factors + PhytoCeramides</h3>
+            <p>Nourishes, Plumps</p>
+            <p>13.00 USD</p>
+            <div class="button-group">
+                <button class="add-to-cart">Add To Cart</button>
+                <a href="learn.html#product3"><button class="learn-more">Learn More</button></a>
             </div>
-            <div class="container">
-                <img src="images/rdn-natural-moisturizing-factors-ha-30ml.webp" alt="phyto" />
-                <h3>Natural Moisturizing Factors + PhytoCeramides</h3>
-                <p>Nourishes, Plumps</p>
-                <p>13.00 USD</p><br>
-                <a href="shop.html"><button> Add To Cart</button></a>
-            </div>
-            <div class="container">
-                <img src="images/ord-glyc-acid-7pct-100ml-Aug-UPC.webp" alt="toner" />
-                <h3>Glycolic Acid 7% Exfoliating Toner</h3>
-                <p>Evens Texture & Tone Radiance</p>
-                <p>10.40 USD</p><br>
-                <a href="shop.html"><button>Add To Cart</button></a>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="container">
+            <img src="images/ord-glyc-acid-7pct-100ml-Aug-UPC.webp" alt="toner" />
+            <h3>Glycolic Acid 7% Exfoliating Toner</h3>
+            <p>Evens Texture & Tone Radiance</p>
+            <p>10.40 USD</p>
+            <div class="button-group">
+                <button class="add-to-cart">Add To Cart</button>
+                <a href="learn.html#product4"><button class="learn-more">Learn More</button></a>
             </div>
         </div>
     </div>
+</div>
     <!-- common concerns  -->
     <span style="font-family: raleway, serif;">
         <div class="common">
@@ -301,10 +474,10 @@
                 <div>
                     <img src="images/Dullness.webp" alt="dullness" />
                     <p>Dullness</p>
+                </div>
+            </div>
+        </div>
     </span>
-    </div>
-    </div>
-    </div>
     <!-- redness relief -->
     <hr>
     <span style="font-family: raleway, serif;">
@@ -331,7 +504,7 @@
         <div class="skin">
             <div><span style="font-size: small;">
                     <h1>Skincare with Integrity</h1>
-                    <p>Skincare should be effective, honest, and accessible to everyone. At The Ordinary, we are
+                    <p>Skincare should be effective, honest, and accessible to everyone. At The Ordinaire, we are
                         committed to
                         providing quality solutions grounded in science, transparency, and trust. Our goal is to help
                         you build a
@@ -350,20 +523,35 @@
             hamburger.addEventListener("click", () => {
                 navbarLinks.classList.toggle("active");
             });
+        
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    if (button.textContent === 'Add To Cart') {
+                        button.textContent = 'Added To Cart';
+                        button.classList.add('added');
+                    } else {
+                        button.textContent = 'Add To Cart';
+                        button.classList.remove('added');
+                    }
+                });
+            });
         </script>
 </body>
-<!-- footer begins -->
 <footer>
     <div class="footer-grid">
+        <!-- Company Section -->
         <div class="footer-section">
             <h3>Company</h3>
             <ul>
                 <li><a href="#">About Us</a></li>
-                <li><a href="#">The Ordinary DNA</a></li>
+                <li><a href="#">The Ordinaire DNA</a></li>
                 <li><a href="#">Join Us</a></li>
             </ul>
             <p>Manufacture information: DECIEM Eastside</p>
         </div>
+
+        <!-- Customer Care Section -->
         <div class="footer-section">
             <h3>Customer Care</h3>
             <ul>
@@ -373,14 +561,19 @@
                 <li><a href="#">Promotion Terms & Conditions</a></li>
             </ul>
         </div>
+
+        <!-- Quick Links Section -->
         <div class="footer-section">
-            <ul><b>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Track Order</a></li>
-                    <li><a href="#">Sign In</a></li>
-                    <li><a href="#">Store Locator</a></li>
-            </ul></b>
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Track Order</a></li>
+                <li><a href="#">Sign In</a></li>
+                <li><a href="#">Store Locator</a></li>
+            </ul>
         </div>
+
+        <!-- Our Commitments Section -->
         <div class="footer-section">
             <h3>Our Commitments</h3>
             <ul>
@@ -390,6 +583,8 @@
                 <li><a href="#">Everything Is Chemicals</a></li>
             </ul>
         </div>
+
+        <!-- Newsletter Section -->
         <div class="footer-section">
             <h3>Be in the know.</h3>
             <p>Subscribe to receive science-backed tips, access to special offers, and new innovations.</p>
@@ -398,28 +593,30 @@
                 <button>&rarr;</button>
             </div>
             <p class="text-xs">By providing your email address you are agreeing to receive email communications from
-                DECIEM Inc., its affiliates, brands (The Ordinary, NIOD, and LooPHA) and/or marketing partners. This can
+                DECIEM Inc., its affiliates, brands (The Ordinaire, NIOD, and LooPHA) and/or marketing partners. This can
                 be changed at any time. Please refer to our <a href="#" class="underline">Privacy Policy</a> and <a
                     href="#" class="underline">Terms of Use</a> for more details or <a href="#"
                     class="underline">Contact Us</a>.</p>
-            <br>
-            <br>
             <div class="social-icons">
-                <a href="https://www.facebook.com/theordinary/"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/theordinary/"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.facebook.com/theordinaire/"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/theordinaire/"><i class="fa-brands fa-instagram"></i></a>
                 <a href="https://www.youtube.com/playlist?list=PLo6ELSZywkj0CEJb2e7OoMqavti4-MYPK"><i
                         class="fa-brands fa-youtube"></i></a>
-                <a href="https://www.tiktok.com/@theordinary?lang=en"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://www.tiktok.com/@theordinaire?lang=en"><i class="fa-brands fa-tiktok"></i></a>
             </div>
         </div>
     </div>
-    <div class="footer-section">
-        <h3>Location</h3>
-        <div class="location">
-            <span><i class="fa-solid fa-location-dot"></i> KENYA</span>
-            <a href="#">Change</a>
+
+    <!-- Location Section -->
+    <div class="footer-bottom">
+        <div class="footer-section">
+            <h3>Location</h3>
+            <div class="location">
+                <span><i class="fa-solid fa-location-dot"></i> KENYA</span>
+                <a href="#">Change</a>
+            </div>
+            <p class="language">Language <span>EN</span></p>
         </div>
-        <p class="language">Language <span>EN</span></p>
     </div>
 </footer>
 

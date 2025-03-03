@@ -7,45 +7,138 @@
     <title>shop</title>
 
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
+  body {
+        background-color: lightgray; 
+       
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        font-family: 'raleway', serif;
+        margin: 0;
+        padding: 0;
+    }
+
+
+    .container {
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .shop {
+        display: flex;
+        gap: 20px;
+        max-width: 1200px;
+        width: 100%;
+    }
+
+    .filters {
+        width: 20%;
+        background-color: rgba(255, 255, 255, 0.8); 
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .two {
+        width: 80%;
+    }
+
+    .box {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 20px;
+    }
+
+    .card {
+        background-color: rgba(255, 255, 255, 0.9);
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 15px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .card img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .card h3 {
+        font-size: 18px;
+        margin: 10px 0;
+    }
+
+    .card p {
+        font-size: 14px;
+        margin: 5px 0;
+    }
+
+    .button-group {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+    .add-to-cart, .learn-more {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    .add-to-cart {
+        background-color: lightgray;
+        color: black;
+    }
+
+    .add-to-cart.added {
+        background-color: black;
+        color: white;
+    }
+
+    .learn-more {
+        background-color: lightgray;
+        color: black;
+    }
+
+    .learn-more:hover {
+        background-color: whitesmoke;
+    }
+
+  
+    @media (max-width: 1024px) {
+        .box {
+            grid-template-columns: repeat(2, 1fr); 
         }
-        .box{
-            display: flex;
-            grid-template-columns: repeat(4, 1fr);
-            justify-content: space-between;
-            gap: 2%;
-        }
-        .box img{
-            width: 100px;
-            height: 100px;
-        }
-        .shop{
-            display: flex;
-            grid-template-columns: 800px 1fr;
-            justify-content: space-between;
-            gap: 2%;
-        }
-        .filters{
-            font-size: small;
-        }
-        .two{
-            background: whitesmoke;
-            padding-left: 2%;
-            padding-right: 2%;
-            padding-bottom: 2%;
-        }
-        @media (max-width: 1024px) {
-            .container {
-                grid-template-columns: 500px 1fr;
-            }
+    }
+
+    @media (max-width: 768px) {
+        .box {
+            grid-template-columns: 1fr; 
         }
 
-        @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
+        .filters {
+            width: 100%; 
         }
+
+        .two {
+            width: 100%; 
+        }
+    }
+    html {
+    scroll-behavior: smooth;
+}
+</style>
+</style>
     </style>
     <link rel="stylesheet" href="navbar.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -53,6 +146,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   
 </head>
 
 <body>
@@ -60,7 +154,8 @@
     <nav class="navbar">
         <div class="navbar-container">
             <div class="logo">
-                <img src="images/logo.jpeg" alt="The Ordinary" width="150px" height="auto" />
+                 <p>The <br><span style="font-family: raleway, serif; font-size: larger;"> <b>
+                 Ordinaire</b></span></p>
             </div>
             <ul class="navbar-links">
                 <li><a href="home.html">Home</a></li>
@@ -69,8 +164,9 @@
                 <li><a href="About.html">About Us</a></li>
                 <li><a href="ContactUs.html">Contact Us</a></li>
             </ul>
-            <div class="button">
+            <div class="icon">
                 <a href="shop.html"><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="register.html"><i class="fa-regular fa-user"></i></a>
             </div>
             <div class="hamburger">
                 <div class="line"></div>
@@ -81,148 +177,247 @@
     </nav>
     <hr>
     <!-- end of navbar -->
-   <div class="container">
-    <div class="shop">
-        <div class="filters">
-            <h2>Filters</h2>
-            <h4>Concern</h4>
-            <input type="checkbox"> Signs Of Aging <br><br>
-            <input type="checkbox"> Uneven Skin Tone <br><br>
-            <input type="checkbox"> Signs Of Congestion <br><br>
-            <input type="checkbox"> Textural Irregularities <br><br>
-            <input type="checkbox"> Dryness <br><br>
-            <input type="checkbox"> Crow's Feet <br><br>
-            <input type="checkbox"> Dullness <br><br>
-            <input type="checkbox"> Cleansing <br><br>
-            <input type="checkbox"> Dark Circles <br><br>
-            <input type="checkbox"> Hair <br><br>
-            <input type="checkbox"> Look Of Redness <br><br>
+    <div class="container">
+        <div class="shop">
+            <!-- Filters Section -->
+            <div class="filters">
+                <div>
+                <h2>Filters</h2>
+                <h4>Concern</h4>
+                <input type="checkbox"> Signs Of Aging <br><br>
+                <input type="checkbox"> Uneven Skin Tone <br><br>
+                <input type="checkbox"> Signs Of Congestion <br><br>
+                <input type="checkbox"> Textural Irregularities <br><br>
+                <input type="checkbox"> Dryness <br><br>
+                <input type="checkbox"> Crow's Feet <br><br>
+                <input type="checkbox"> Dullness <br><br>
+                <input type="checkbox"> Cleansing <br><br>
+                <input type="checkbox"> Dark Circles <br><br>
+                <input type="checkbox"> Hair <br><br>
+                <input type="checkbox"> Look Of Redness <br><br>
+            </div>
+            <div>
+                <h4>Active ingredient</h4>
+                <input type="checkbox"> Direct Acids <br><br>
+                <input type="checkbox"> Oils <br><br>
+            </div>
+            <div>
+                <h4>Product Type</h4>
+                <input type="checkbox"> Serums <br><br>
+                <input type="checkbox"> Face Oils <br><br>
+                <input type="checkbox"> Sets & Collections <br><br>
+                <input type="checkbox"> Foundation <br><br>
+            </div>
+            <div>
+                <h4>Preferences</h4>
+                <input type="checkbox"> Alcohol-Free <br><br>
+                <input type="checkbox"> Cruelty-Free <br><br>
+                <input type="checkbox"> Gluten-Free <br><br>
+                <input type="checkbox"> Oil-Free <br><br>
+                <input type="checkbox"> Silicone-Free <br><br>
+                <input type="checkbox"> Vegan <br><br>
+                <input type="checkbox"> Water-Free <br><br>
+            </div>
+            <div>
+                <h4>Time Of Use</h4>
+                <input type="checkbox"> AM <br><br>
+                <input type="checkbox"> PM <br><br>
+            </div>
+            <div>
+                <h4>Regimen Step</h4>
+                <input type="checkbox"> Prep <br><br>
+                <input type="checkbox"> Treat <br><br>
+                <input type="checkbox"> Seal <br><br>
+            </div>
         </div>
-        <div class="two">
-            <div class="box">
-                <div class="container">
-                    <img src="images/rdn-niacinamide-10pct-zinc-1pct-30ml.webp" alt="znc" />
-                    <h3>Niacinamide 10% + Zinc 1%</h3>
-                    <p>Oil Control, Brightens, Smooths</p>
-                    <p>7.20 USD</p><br>
-                    <br>
-                    <a href="shop.html"><button>Add To Cart</button></a>
-                </div>
-                <div class="container">
-                    <img src="images/ord-hyaluronic-acid-2pct-B5-30ml-Clr-Acu.webp" alt="hyaluronic" />
-                    <h3>Hyaluronic Acid 2% + <br> B5 (with Ceramides)</h3>
-                    <p>Plumps, Smooths</p>
-                    <p>11.90 USD</p><br>
-                    <a href="shop.html"><button><span style="padding: 0%;">Add To Cart</span></button></a>
-                </div>
-                <div class="container">
-                    <img src="images/rdn-natural-moisturizing-factors-ha-30ml.webp" alt="phyto" />
-                    <h3>Natural Moisturizing Factors <br> + PhytoCeramides</h3>
-                    <p>Nourishes, Plumps</p>
-                    <p>13.00 USD</p><br>
-                    <a href="shop.html"><button> Add To Cart</button></a>
-                </div>
-                <div class="container">
-                    <img src="images/ord-glyc-acid-7pct-100ml-Aug-UPC.webp" alt="toner" />
-                    <h3>Glycolic Acid 7% <br> Exfoliating Toner</h3>
-                    <p>Evens Texture & Tone Radiance</p>
-                    <p>10.40 USD</p><br>
-                    <a href="shop.html"><button>Add To Cart</button></a>
-                </div>
-            </div>
-            <br>
-            <br>
-            <hr>
-            <!-- part2 -->
-            <div class="box">
-                <div class="container">
-                    <img src="images/10.webp" alt="znc" />
-                    <h3>Natural Moisturizing Factors + HA</h3>
-                    <p>Supports Skin Barrier</p>
-                    <p>8.00 USD</p><br>
-                    <a href="shop.html"><button>Add To Cart</button></a>
-                </div>
-                <div class="container">
-                    <img src="images/20.webp" alt="hyaluronic" />
-                    <h3>Squalane Cleanser</h3>
-                    <p>Removes Makeup, Softens Skin</p>
-                    <p>25.20 USD</p><br>
-                    <a href="shop.html"><button><span style="padding: 0%;">Add To Cart</span></button></a>
-                </div>
-                <div class="container">
-                    <img src="images/21.webp" alt="phyto" />
-                    <h3>Glycolipid Cream Cleanser</h3>
-                    <p>Removes Impurities And Makeup</p>
-                    <p>15.00 USD</p>
-                    <a href="shop.html"><button> Add To Cart</button></a>
-                </div>
-                <div class="container">
-                    <img src="images/22.webp" alt="toner" />
-                    <h3>Multi-Peptide Eye Serum</h3>
-                    <p>Age Support, Dark Cirlces</p>
-                    <p>30.00 USD</p><br>
-                    <a href="shop.html"><button>Add To Cart</button></a>
-                </div>
-            </div>
-            <br>
-            <br>
-            <hr>
-            <!-- part3 -->
-             <div class="box">
-                <div class="container">
-                    <img src="images/23.webp" alt="znc" />
-                    <h3>Multi-Peptide + HA Serum</h3>
-                    <p>For Early Signs Of Aging</p>
-                    <p>23.90 USD</p><br><br>
-                    <a href="shop.html"><button>Add To Cart</button></a>
-                </div>
-                <div class="container">
-                    <img src="images/24.webp" alt="hyaluronic" />
-                    <h3>Multi-Peptide + Copper <br> Peptides 1% Serum</h3>
-                    <p>For Advanced Signs Of Aging</p>
-                    <p>38.40 USD</p><br>
-                    <a href="shop.html"><button><span style="padding: 0%;">Add To Cart</span></button></a>
-                </div>
-                <div class="container">
-                    <img src="images/25.webp" alt="phyto" />
-                    <h3>Retinal 0.2% Emulsion</h3>
-                    <p>Firms, Reduces Look Of Dark Spots</p>
-                    <p>17.90 USD</p><br><br>
-                    <a href="shop.html"><button> Add To Cart</button></a>
-                </div>
-                <div class="container">
-                    <img src="images/26.webp" alt="toner" />
-                    <h3>Multi-Peptide Serum  <br>for Hair Density</h3>
-                    <p>For Density And Thickness</p>
-                    <p>27.40 USD</p><br>
-                    <a href="shop.html"><button>Add To Cart</button></a>
-                </div>
-             </div>
+            <!-- Products Section -->
+            <div class="two">
+                <!-- Product Cards -->
+                <div class="box">
+                    <!-- Card 1 -->
+                    <div class="card">
+                        <img src="images/rdn-niacinamide-10pct-zinc-1pct-30ml.webp" alt="znc" />
+                        <h3>Niacinamide 10% + Zinc 1%</h3>
+                        <p>Oil Control, Brightens, Smooths</p>
+                        <p><b>7.20 USD</b></p>
+                        <div class="button-group">
+                            <button class="add-to-cart">Add To Cart</button>
+                            <a href="learn.html#product1"><button class="learn-more">Learn More</button></a>
+                        </div>
+                    </div>
+    
+                    <!-- Card 2 -->
+                    <div class="card">
+                        <img src="images/ord-hyaluronic-acid-2pct-B5-30ml-Clr-Acu.webp" alt="hyaluronic" />
+                        <h3>Hyaluronic Acid 2% + <br> B5 (with Ceramides)</h3>
+                        <p>Plumps, Smooths</p>
+                        <p><b>11.90 USD</b></p>
+                        <div class="button-group">
+                            <button class="add-to-cart">Add To Cart</button>
+                            <a href="learn.html#product2"><button class="learn-more">Learn More</button></a>
 
+                        </div>
+                    </div>
+    
+                    <!-- Card 3 -->
+                    <div class="card">
+                        <img src="images/rdn-natural-moisturizing-factors-ha-30ml.webp" alt="phyto" />
+                        <h3>Natural Moisturizing Factors <br> + PhytoCeramides</h3>
+                        <p>Nourishes, Plumps</p>
+                        <p><b>13.00 USD</b></p>
+                        <div class="button-group">
+                            <button class="add-to-cart">Add To Cart</button>
+                            <a href="learn.html#product3"><button class="learn-more">Learn More</button></a>
+                        </div>
+                    </div>
+    
+                    <!-- Card 4 -->
+                    <div class="card">
+                        <img src="images/ord-glyc-acid-7pct-100ml-Aug-UPC.webp" alt="toner" />
+                        <h3>Glycolic Acid 7% <br> Exfoliating Toner</h3>
+                        <p>Evens Texture & Tone Radiance</p>
+                        <p><b>10.40 USD</b></p>
+                        <div class="button-group">
+                            <button class="add-to-cart">Add To Cart</button>
+                            <a href="learn.html#product4"><button class="learn-more">Learn More</button></a>
+                        </div>
+                    </div>
+    
+                    <!-- Card 5 -->
+                    <div class="card">
+                        <img src="images/10.webp" alt="znc" />
+                        <h3>Natural Moisturizing Factors + HA</h3>
+                        <p>Supports Skin Barrier</p>
+                        <p><b>8.00 USD</b></p>
+                        <div class="button-group">
+                            <button class="add-to-cart">Add To Cart</button>
+                            <a href="learn.html#product5"><button class="learn-more">Learn More</button></a>
+                        </div>
+                    </div>
+    
+                    <!-- Card 6 -->
+                    <div class="card">
+                        <img src="images/20.webp" alt="hyaluronic" />
+                        <h3>Squalane Cleanser</h3>
+                        <p>Removes Makeup, Softens Skin</p>
+                        <p><b>25.20 USD</b></p>
+                        <div class="button-group">
+                            <button class="add-to-cart">Add To Cart</button>
+                            <a href="learn.html#product6"><button class="learn-more">Learn More</button></a>
+                        </div>
+                    </div>
+    
+                    <!-- Card 7 -->
+                    <div class="card">
+                        <img src="images/21.webp" alt="phyto" />
+                        <h3>Glycolipid Cream Cleanser</h3>
+                        <p>Removes Impurities And Makeup</p>
+                        <p><b>15.00 USD</b></p>
+                        <div class="button-group">
+                            <button class="add-to-cart">Add To Cart</button>
+                            <a href="learn.html#product7"><button class="learn-more">Learn More</button></a>
+                        </div>
+                    </div>
+    
+                    <!-- Card 8 -->
+                    <div class="card">
+                        <img src="images/22.webp" alt="toner" />
+                        <h3>Multi-Peptide Eye Serum</h3>
+                        <p>Age Support, Dark Circles</p>
+                        <p><b>30.00 USD</b></p>
+                        <div class="button-group">
+                            <button class="add-to-cart">Add To Cart</button>
+                            <a href="learn.html#product8"><button class="learn-more">Learn More</button></a>
+                        </div>
+                    </div>
+    
+                    <!-- Card 9 -->
+                    <div class="card">
+                        <img src="images/23.webp" alt="znc" />
+                        <h3>Multi-Peptide + HA Serum</h3>
+                        <p>For Early Signs Of Aging</p>
+                        <p><b>23.90 USD</b></p>
+                        <div class="button-group">
+                            <button class="add-to-cart">Add To Cart</button>
+                            <a href="learn.html#product9"><button class="learn-more">Learn More</button></a>
+                        </div>
+                    </div>
+    
+                    <!-- Card 10 -->
+                    <div class="card">
+                        <img src="images/24.webp" alt="hyaluronic" />
+                        <h3>Multi-Peptide + Copper <br> Peptides 1% Serum</h3>
+                        <p>For Advanced Signs Of Aging</p>
+                        <p><b>38.40 USD</b></p>
+                        <div class="button-group">
+                            <button class="add-to-cart">Add To Cart</button>
+                            <a href="learn.html#product10"><button class="learn-more">Learn More</button></a>
+                        </div>
+                    </div>
+    
+                    <!-- Card 11 -->
+                    <div class="card">
+                        <img src="images/25.webp" alt="phyto" />
+                        <h3>Retinal 0.2% Emulsion</h3>
+                        <p>Firms, Reduces Look Of Dark Spots</p>
+                        <p><b>17.90 USD</b></p>
+                        <div class="button-group">
+                            <button class="add-to-cart">Add To Cart</button>
+                            <a href="learn.html#product11"><button class="learn-more">Learn More</button></a>
+                        </div>
+                    </div>
+    
+                    <!-- Card 12 -->
+                    <div class="card">
+                        <img src="images/26.webp" alt="toner" />
+                        <h3>Multi-Peptide Serum <br> for Hair Density</h3>
+                        <p>For Density And Thickness</p>
+                        <p><b>27.40 USD</b></p>
+                        <div class="button-group">
+                            <button class="add-to-cart">Add To Cart</button>
+                            <a href="learn.html#product12"><button class="learn-more">Learn More</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
     <script>
+        
         const hamburger = document.querySelector(".hamburger");
         const navbarLinks = document.querySelector(".navbar-links");
         hamburger.addEventListener("click", () => {
             navbarLinks.classList.toggle("active");
         });
+       
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (button.textContent === 'Add To Cart') {
+                    button.textContent = 'Added To Cart';
+                    button.classList.add('added');
+                } else {
+                    button.textContent = 'Add To Cart';
+                    button.classList.remove('added');
+                }
+            });
+        });
     </script>
-</body><hr>
-
 <!-- footer begins -->
 <footer>
     <div class="footer-grid">
+        <!-- Company Section -->
         <div class="footer-section">
             <h3>Company</h3>
             <ul>
                 <li><a href="#">About Us</a></li>
-                <li><a href="#">The Ordinary DNA</a></li>
+                <li><a href="#">The Ordinaire DNA</a></li>
                 <li><a href="#">Join Us</a></li>
             </ul>
             <p>Manufacture information: DECIEM Eastside</p>
         </div>
+
+        <!-- Customer Care Section -->
         <div class="footer-section">
             <h3>Customer Care</h3>
             <ul>
@@ -232,14 +427,19 @@
                 <li><a href="#">Promotion Terms & Conditions</a></li>
             </ul>
         </div>
+
+        <!-- Quick Links Section -->
         <div class="footer-section">
-            <ul><b>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Track Order</a></li>
-                    <li><a href="#">Sign In</a></li>
-                    <li><a href="#">Store Locator</a></li>
-            </ul></b>
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Track Order</a></li>
+                <li><a href="#">Sign In</a></li>
+                <li><a href="#">Store Locator</a></li>
+            </ul>
         </div>
+
+        <!-- Our Commitments Section -->
         <div class="footer-section">
             <h3>Our Commitments</h3>
             <ul>
@@ -249,6 +449,8 @@
                 <li><a href="#">Everything Is Chemicals</a></li>
             </ul>
         </div>
+
+        <!-- Newsletter Section -->
         <div class="footer-section">
             <h3>Be in the know.</h3>
             <p>Subscribe to receive science-backed tips, access to special offers, and new innovations.</p>
@@ -257,28 +459,30 @@
                 <button>&rarr;</button>
             </div>
             <p class="text-xs">By providing your email address you are agreeing to receive email communications from
-                DECIEM Inc., its affiliates, brands (The Ordinary, NIOD, and LooPHA) and/or marketing partners. This can
+                DECIEM Inc., its affiliates, brands (The Ordinaire, NIOD, and LooPHA) and/or marketing partners. This can
                 be changed at any time. Please refer to our <a href="#" class="underline">Privacy Policy</a> and <a
                     href="#" class="underline">Terms of Use</a> for more details or <a href="#"
                     class="underline">Contact Us</a>.</p>
-            <br>
-            <br>
             <div class="social-icons">
-                <a href="https://www.facebook.com/theordinary/"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/theordinary/"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.facebook.com/theordinaire/"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/theordinaire/"><i class="fa-brands fa-instagram"></i></a>
                 <a href="https://www.youtube.com/playlist?list=PLo6ELSZywkj0CEJb2e7OoMqavti4-MYPK"><i
                         class="fa-brands fa-youtube"></i></a>
-                <a href="https://www.tiktok.com/@theordinary?lang=en"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://www.tiktok.com/@theordinaire?lang=en"><i class="fa-brands fa-tiktok"></i></a>
             </div>
         </div>
     </div>
-    <div class="footer-section">
-        <h3>Location</h3>
-        <div class="location">
-            <span><i class="fa-solid fa-location-dot"></i> KENYA</span>
-            <a href="#">Change</a>
+
+    <!-- Location Section -->
+    <div class="footer-bottom">
+        <div class="footer-section">
+            <h3>Location</h3>
+            <div class="location">
+                <span><i class="fa-solid fa-location-dot"></i> KENYA</span>
+                <a href="#">Change</a>
+            </div>
+            <p class="language">Language <span>EN</span></p>
         </div>
-        <p class="language">Language <span>EN</span></p>
     </div>
 </footer>
 
