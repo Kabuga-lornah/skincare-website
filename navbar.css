@@ -1,5 +1,6 @@
 .navbar {
     background-color: white;
+    font-family: "raleway", serif;
     padding: 10px 20px;
     margin: 0;
 }
@@ -23,11 +24,6 @@
     margin: 0 auto;
 }
 
-.logo img {
-    height: 50px;
-    width: 100px;
-}
-
 .navbar-links li {
     position: relative;
 }
@@ -37,59 +33,59 @@
     color: black;
     font-weight: 200;
     padding: 10px 10px;
-    /* display: block; */
     transition: color 0.3s ease;
 }
 
-.button {
+.navbar-links li a.active {
+    font-weight: bold; /* Highlight the active link */
+    color: #000; /* Ensure the active link is black */
+    border-bottom: 2px solid black; /* Add a bottom border for emphasis */
+}
+
+.icon {
     margin-left: auto;
 }
 
-.button button {
+.icon {
+    display: flex;
+    gap: 20px;
+}
+
+.icon a {
+    color: black; /* Ensure icons are black */
+}
+
+.icon {
     padding: 10px 20px;
-    border-color: black;
-    background-color: white;
-    color: black;
     border-radius: 40px;
+    color: black;
     cursor: pointer;
 }
 
-/* footer */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-    color: #000000;
-    margin: 0;
-    padding: 0;
-}
-
 footer {
-    background-color: #f8f8f8;
-    /* Adjust color if needed */
-    padding: 40px 80px;
-    /* Adds padding to the sides */
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: start;
-    font-family: Arial, sans-serif;
+    background-color: whitesmoke;
+    padding: 40px 20px;
+    border-top: 1px solid #e0e0e0;
 }
 
 .footer-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
-    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 .footer-section {
-    max-width: 250px;
+    margin-bottom: 20px;
 }
 
 .footer-section h3 {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 10px;
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #333;
 }
 
 .footer-section ul {
@@ -98,57 +94,107 @@ footer {
 }
 
 .footer-section ul li {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .footer-section ul li a {
     text-decoration: none;
-    color: #333;
+    color: #555;
     font-size: 14px;
+}
+
+.footer-section ul li a:hover {
+    color: #000;
 }
 
 .footer-section p {
     font-size: 14px;
     color: #555;
+    margin: 10px 0;
 }
 
 .email-input {
     display: flex;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    overflow: hidden;
+    gap: 10px;
+    margin-top: 15px;
 }
 
 .email-input input {
-    border: none;
     padding: 10px;
-    flex-grow: 1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
 }
 
 .email-input button {
-    border: none;
-    background: #000;
+    padding: 10px 20px;
+    background-color: #333;
     color: white;
-    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
+}
+
+.email-input button:hover {
+    background-color: #555;
+}
+
+.text-xs {
+    font-size: 12px;
+    color: #777;
+    margin-top: 10px;
+}
+
+.underline {
+    text-decoration: underline;
 }
 
 .social-icons {
     display: flex;
     gap: 15px;
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 .social-icons a {
-    color: #333;
-    font-size: 18px;
+    color: #555;
+    font-size: 20px;
+}
+
+.social-icons a:hover {
+    color: #000;
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.footer-bottom .footer-section {
+    margin-bottom: 0;
+}
+
+.footer-bottom .location {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.footer-bottom .location a {
+    color: #555;
     text-decoration: none;
 }
 
-.location {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.footer-bottom .location a:hover {
+    color: #000;
+}
+
+.footer-bottom .language {
+    font-size: 14px;
+    color: #555;
 }
 
 .language {
@@ -171,9 +217,10 @@ footer {
     font-weight: bold;
     margin-right: 8px;
 }
+
 /* Hamburger Menu for Mobile */
 .hamburger {
-    display: none; /* Hidden by default */
+    display: none;
     flex-direction: column;
     cursor: pointer;
 }
@@ -188,18 +235,18 @@ footer {
 /* Responsive Navbar */
 @media (max-width: 768px) {
     .navbar-links {
-        display: none; /* Hide the links by default on small screens */
+        display: none;
         flex-direction: column;
         width: 100%;
         background-color: white;
         position: absolute;
-        top: 60px; /* Adjust based on navbar height */
+        top: 60px;
         left: 0;
         border-bottom: 1px solid lightgray;
     }
 
     .navbar-links.active {
-        display: flex; /* Show the links when active */
+        display: flex;
     }
 
     .navbar-links li {
@@ -208,42 +255,40 @@ footer {
     }
 
     .hamburger {
-        display: flex; /* Show the hamburger icon */
+        display: flex;
     }
 }
 
-/* Responsive Bestsellers Section */
 @media (max-width: 768px) {
     .bestsellers .container {
-        flex: 1 1 45%; /* Two items per row on tablets */
+        flex: 1 1 45%;
     }
 }
 
 @media (max-width: 480px) {
     .bestsellers .container {
-        flex: 1 1 100%; /* One item per row on mobile */
+        flex: 1 1 100%;
     }
 }
 
-/* Responsive Common Concerns Section */
 @media (max-width: 768px) {
     .concerns {
-        gap: 5%; /* Adjust gap for tablets */
+        gap: 5%;
     }
 
     .concerns img {
-        width: 100px; /* Smaller images for tablets */
+        width: 100px;
         height: 100px;
     }
 }
 
 @media (max-width: 480px) {
     .concerns {
-        gap: 10%; /* Adjust gap for mobile */
+        gap: 10%;
     }
 
     .concerns img {
-        width: 80px; /* Smaller images for mobile */
+        width: 80px;
         height: 80px;
     }
 }
@@ -251,12 +296,12 @@ footer {
 /* Responsive Footer */
 @media (max-width: 768px) {
     .footer-section {
-        flex: 1 1 45%; /* Two columns on tablets */
+        flex: 1 1 45%;
     }
 }
 
 @media (max-width: 480px) {
     .footer-section {
-        flex: 1 1 100%; /* One column on mobile */
+        flex: 1 1 100%;
     }
 }

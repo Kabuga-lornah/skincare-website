@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+    <style>
+      body .registration-form {
+        display: block;
+        justify-content: center;
+        align-items: center;
+        font-family: "Raleway", serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+      }
+      .registration-form {
+        background-color: white;
+        padding: 20px;
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .registration-form h2 {
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-bottom: 1px solid #ccc;
+        font-size: 16px;
+        background-color: transparent;
+      }
+
+      .form-group input:focus {
+        outline: none;
+        border-bottom-color: lightgray;
+      }
+
+      .form-group button {
+        width: 100%;
+        padding: 10px;
+        background-color: lightgray;
+        color: black;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .form-group button:hover {
+        background-color: #d3d3d3;
+      }
+
+      .form-group .error-message {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+      }
+
+      .form-group .success-message {
+        color: green;
+        font-size: 14px;
+        margin-top: 5px;
+      }
+      .sign {
+        display: flex;
+        grid-template-columns: 600px 1fr;
+        gap: 5%;
+      }
+      img {
+        padding: 5%;
+        border-radius: 30px;
+      }
+      .button {
+        color: black;
+      }
+    </style>
+    <link rel="stylesheet" href="navbar.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <div class="logo">
+          <p>
+            The <br /><span
+              style="font-family: raleway, serif; font-size: larger"
+            >
+              <b>Ordinaire</b></span
+            >
+          </p>
+        </div>
+        <ul class="navbar-links">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="routines&tips.html">Routines & Tips</a></li>
+          <li><a href="community&testimonials.html">Testimonials</a></li>
+          <li><a href="About.html">About Us</a></li>
+          <li><a href="ContactUs.html">Contact Us</a></li>
+        </ul>
+        <div class="icon">
+          <a href="shop.html"><i class="fa-solid fa-cart-shopping"></i></a>
+          <a href="register.html"><i class="fa-regular fa-user"></i></a>
+        </div>
+        <div class="hamburger">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+      </div>
+    </nav>
+    <hr />
+    <!-- End of Navbar -->
+    <div class="sign">
+      <div>
+        <img
+          src="images/register background.jpg"
+          alt="re"
+          width="300px"
+          height="400px"
+        />
+      </div>
+
+      <!-- Registration Form -->
+      <div class="registration-form">
+        <h1>Sign Up</h1>
+        <form id="registerForm">
+          <!-- Full Name -->
+          <div class="form-group">
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Full Name"
+              required
+            />
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email"
+              required
+            />
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Password"
+              required
+              minlength="8"
+            />
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="form-group">
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              required
+            />
+          </div>
+
+          <!-- Submit Button -->
+          <div class="form-group">
+            <button type="submit">Sign Up</button>
+          </div>
+        </form>
+
+        <!-- Error and Success Messages -->
+        <div id="passwordError" class="error-message"></div>
+        <div id="successMessage" class="success-message"></div>
+      </div>
+      <hr />
+    </div>
+    <!-- Footer -->
+    <footer>
+      <div class="footer-grid">
+        <!-- Company Section -->
+        <div class="footer-section">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">The Ordinaire DNA</a></li>
+            <li><a href="#">Join Us</a></li>
+          </ul>
+          <p>Manufacture information: DECIEM Eastside</p>
+        </div>
+
+        <!-- Customer Care Section -->
+        <div class="footer-section">
+          <h3>Customer Care</h3>
+          <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Disposal Instructions</a></li>
+            <li><a href="#">Return Policy</a></li>
+            <li><a href="#">Promotion Terms & Conditions</a></li>
+          </ul>
+        </div>
+
+        <!-- Quick Links Section -->
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Track Order</a></li>
+            <li><a href="#">Sign In</a></li>
+            <li><a href="#">Store Locator</a></li>
+          </ul>
+        </div>
+
+        <!-- Our Commitments Section -->
+        <div class="footer-section">
+          <h3>Our Commitments</h3>
+          <ul>
+            <li><a href="#">Accessibility</a></li>
+            <li><a href="#">Sustainability</a></li>
+            <li><a href="#">Change is the Journey</a></li>
+            <li><a href="#">Everything Is Chemicals</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter Section -->
+        <div class="footer-section">
+          <h3>Be in the know.</h3>
+          <p>
+            Subscribe to receive science-backed tips, access to special offers,
+            and new innovations.
+          </p>
+          <div class="email-input">
+            <input type="email" placeholder="Email Address" />
+            <button>&rarr;</button>
+          </div>
+          <p class="text-xs">
+            By providing your email address you are agreeing to receive email
+            communications from DECIEM Inc., its affiliates, brands (The
+            Ordinaire, NIOD, and LooPHA) and/or marketing partners. This can be
+            changed at any time. Please refer to our
+            <a href="#" class="underline">Privacy Policy</a> and
+            <a href="#" class="underline">Terms of Use</a> for more details or
+            <a href="#" class="underline">Contact Us</a>.
+          </p>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/theordinaire/"
+              ><i class="fa-brands fa-facebook-f"></i
+            ></a>
+            <a href="https://www.instagram.com/theordinaire/"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+            <a
+              href="https://www.youtube.com/playlist?list=PLo6ELSZywkj0CEJb2e7OoMqavti4-MYPK"
+              ><i class="fa-brands fa-youtube"></i
+            ></a>
+            <a href="https://www.tiktok.com/@theordinaire?lang=en"
+              ><i class="fa-brands fa-tiktok"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Location Section -->
+      <div class="footer-bottom">
+        <div class="footer-section">
+          <h3>Location</h3>
+          <div class="location">
+            <span><i class="fa-solid fa-location-dot"></i> KENYA</span>
+            <a href="#">Change</a>
+          </div>
+          <p class="language">Language <span>EN</span></p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const hamburger = document.querySelector(".hamburger");
+            const navbarLinks = document.querySelector(".navbar-links");
+            hamburger.addEventListener("click", () => {
+                navbarLinks.classList.toggle("active");
+            });
+
+
+      // JavaScript for form validation
+      const form = document.getElementById("registerForm");
+      const passwordInput = document.getElementById("password");
+      const confirmPasswordInput = document.getElementById("confirmPassword");
+      const passwordError = document.getElementById("passwordError");
+      const successMessage = document.getElementById("successMessage");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Clear previous messages
+        passwordError.textContent = "";
+        successMessage.textContent = "";
+
+        // Check if passwords match
+        if (passwordInput.value !== confirmPasswordInput.value) {
+          passwordError.textContent = "Passwords do not match!";
+          return;
+        }
+
+        // If validation passes, show success message
+        successMessage.textContent = "Registration successful!";
+        form.reset(); // Clear the form
+      });
+    </script>
+  </body>
+</html>

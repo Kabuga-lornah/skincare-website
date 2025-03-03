@@ -1,227 +1,374 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Routines & Tips</title>
     <style>
-        /* General Styles */
-        body {
-            font-family: "Raleway", sans-serif;
-            margin: 0;
-            padding: 0;
+     
+      body {
+        font-family: "Raleway", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+        color: #333;
+      }
+
+     
+      .regimens {
+        padding: 40px 20px;
+        text-align: center;
+      }
+
+      .regimens h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+      }
+
+      .regimens p {
+        font-size: 1rem;
+        max-width: 800px;
+        margin: 0 auto 40px;
+        line-height: 1.6;
+      }
+
+      .icon-container {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+      }
+
+      .icon-container div {
+        text-align: center;
+      }
+
+      .icon-container i {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+      }
+
+      .icon-container p {
+        font-size: 0.9rem;
+        margin: 0;
+      }
+
+      
+      .routine-section {
+        padding: 20px;
+        background-color: white;
+        margin: 20px auto;
+        max-width: 1200px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .routine-section h1 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+      }
+
+      .am,
+      .pm {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+      }
+
+      .product-card {
+        background-image: url(images/postcard\ background.jpeg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 20px;
+        width: 250px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .product-card img {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 15px;
+      }
+
+      .product-card h3 {
+        font-size: 1.2rem;
+        margin: 10px 0;
+      }
+
+      .product-card p {
+        font-size: 0.9rem;
+        color: #666;
+      }
+
+      .product-card .icons {
+        margin: 10px 0;
+      }
+
+      .product-card .icons i {
+        font-size: 1.2rem;
+        margin: 0 5px;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #333;
+        color: black;
+        padding: 40px 20px;
+        text-align: center;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .footer-section h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+      }
+
+      .footer-section ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-section ul li {
+        margin: 10px 0;
+      }
+
+      .footer-section ul li a {
+        color: white;
+        text-decoration: none;
+      }
+
+      .footer-section ul li a:hover {
+        text-decoration: underline;
+      }
+
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .social-icons a {
+        color: white;
+        font-size: 1.5rem;
+      }
+
+      .social-icons a:hover {
+        color: #ddd;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2rem;
         }
 
-        .am {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 5%;
-            padding-left: 3%;
-            padding-right: 3%;
+        .hero p {
+          font-size: 1rem;
         }
 
-        .regimens {
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
+        .am,
+        .pm {
+          flex-direction: column;
+          align-items: center;
         }
 
-        .regimens img {
-            max-width: 100%;
-            height: auto;
+        .product-card {
+          width: 80%;
         }
-
-        .navbar-links {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .hamburger .line {
-            width: 25px;
-            height: 3px;
-            background-color: black;
-            margin: 4px 0;
-        }
-
-        /* Media Queries for Responsiveness */
-        @media (max-width: 1024px) {
-            /* Tablet Styles */
-            .am {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .navbar-links {
-                display: none;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-        }
-
-        @media (max-width: 768px) {
-            /* Phone Styles */
-            .am {
-                flex-direction: column;
-                align-items: center;
-                gap: 20px;
-            }
-
-            .regimens {
-                padding: 10px;
-            }
-
-            .navbar-links {
-                display: none;
-                flex-direction: column;
-                align-items: center;
-                width: 100%;
-            }
-
-            .navbar-links.active {
-                display: flex;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-        }
+      }
     </style>
-    <link rel="stylesheet" href="navbar.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-</head>
-<body>
-    <!-- Navbar -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="navbar.css" />
+  </head>
+  <body>
+    <!-- navbar -->
     <nav class="navbar">
-        <div class="navbar-container">
-            <div class="logo">
-                <img src="images/logo.jpeg" alt="The Ordinary" width="150px" height="auto" />
-            </div>
-            <ul class="navbar-links">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="routines&tips.html">Routines & Tips</a></li>
-                <li><a href="community&testimonials.html">Testimonials</a></li>
-                <li><a href="About.html">About Us</a></li>
-                <li><a href="ContactUs.html">Contact Us</a></li>
-            </ul>
-            <div class="button">
-                <a href="shop.html"><i class="fa-solid fa-cart-shopping"></i></a>
-            </div>
-            <div class="hamburger">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-            </div>
+      <div class="navbar-container">
+        <div class="logo">
+          <p>
+            The <br /><span
+              style="font-family: raleway, serif; font-size: larger"
+            >
+              <b> Ordinaire</b></span
+            >
+          </p>
         </div>
+        <ul class="navbar-links">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="routines&tips.html">Routines & Tips</a></li>
+          <li><a href="community&testimonials.html">Testimonials</a></li>
+          <li><a href="About.html">About Us</a></li>
+          <li><a href="ContactUs.html">Contact Us</a></li>
+        </ul>
+        <div class="icon">
+          <a href="shop.html"><i class="fa-solid fa-cart-shopping"></i></a>
+          <a href="register.html"><i class="fa-regular fa-user"></i></a>
+        </div>
+        <div class="hamburger">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+      </div>
     </nav>
-    <hr>
-    <!-- End of Navbar -->
+    <hr />
+    <!-- end of navbar -->
 
-    <!-- Main Content -->
-    <div class="container">
-        <div class="regimens">
-            <span style="font-family: Raleway, serif; font-size: small;">
-                <div>
-                    <h1>Example Regimens</h1>
-                    <p>
-                        We have developed this guide to offer suggestions on how to combine multiple formulations from The Ordinary in a single regimen.
-                        In general terms, water formulations should be applied before oil formulations, and we recommend using a maximum of three serum
-                        formulations in a single regimen.
-                    </p>
-                </div>
-                <div>
-                    <i class="fa-solid fa-sun"></i> Use in the AM<br><br>
-                    <i class="fa-solid fa-moon"></i> Use in the PM<br><br>
-                    <i class="fa-solid fa-eye"></i> For Eyes<br><br>
-                    <i class="fa-solid fa-eye-slash"></i> Avoid Contact with Eyes<br>
-                </div>
-            </span>
+    <!-- Regimens Section -->
+    <div class="regimens">
+      <h1>Example Regimens</h1>
+      <p>
+        We have developed this guide to offer suggestions on how to combine
+        multiple formulations from The Ordinary in a single regimen. In general
+        terms, water formulations should be applied before oil formulations, and
+        we recommend using a maximum of three serum formulations in a single
+        regimen.
+      </p>
+      <div class="icon-container">
+        <div>
+          <i class="fa-solid fa-sun"></i>
+          <p>Use in the AM</p>
         </div>
-
-        <!-- AM Routine -->
-        <span style="font-family: Raleway, serif;">
-            <div>
-                <h1>A.M.</h1>
-                <hr>
-            </div>
-            <div class="am">
-                <div>
-                    <img src="images/1.webp" alt="Squalane Cleanser" width="100px" height="100px" /><br>
-                    <i class="fa-regular fa-sun"></i> <i class="fa-regular fa-moon"></i>
-                    <h3>Squalane Cleanser</h3>
-                    <p>A moisturizing all-in-one cleanser</p>
-                    <p><b>50ml</b></p>
-                </div>
-                <div>
-                    <img src="images/2.png" alt="Multi-Peptide + HA Serum" width="100px" height="100px" /><br>
-                    <i class="fa-regular fa-sun"></i> <i class="fa-regular fa-moon"></i>
-                    <h3>Multi-Peptide + HA Serum</h3>
-                    <p>Multi-Technology Peptide Serum</p>
-                    <p><b>30ml</b></p>
-                </div>
-                <div>
-                    <img src="images/3.webp" alt="Natural Moisturizing Factors + HA" width="100px" height="100px"><br>
-                    <i class="fa-regular fa-sun"></i> <i class="fa-regular fa-moon"></i>
-                    <h3>Natural Moisturizing Factors + HA</h3>
-                    <p>Surface Hydration Formula</p>
-                    <p><b>30ml</b></p>
-                </div>
-            </div>
-
-            <!-- PM Routine -->
-            <div>
-                <h1>P.M.</h1>
-                <hr>
-            </div>
-            <div class="am">
-                <div>
-                    <img src="images/1.webp" alt="1" width="100px" height="100px" /><br>
-                    <i class="fa-regular fa-sun"></i> <i class="fa-regular fa-moon"></i>
-                    <h3>Squalane Cleanser</h3>
-                    <p>A moisturizing all-in-one cleanser</p>
-                    <p><b>50ml</b></p>
-                </div>
-                <div>
-                    <img src="images/2.png" alt="2" width="100px" height="100px" /><br>
-                    <i class="fa-regular fa-sun"></i> <i class="fa-regular fa-moon"></i>
-                    <h3>Multi-Peptide + HA Serum</h3>
-                    <p>Multi-Technology Peptide Serum</p>
-                    <p><b>30ml</b></p>
-                </div>
-                <div>
-                    <img src="images/4.webp" alt="4" width="100px" height="100px"><br>
-                    <i class="fa-regular fa-sun"></i> <i class="fa-regular fa-moon"></i>
-                    <h3>Granactive Retinoid 2% Emulsion</h3>
-                    <p>Next-generation retinol-alternative <br> technologies to address signs of aging.</p>
-                    <p><b>30ml</b></p>
-                </div>
-            </div>
-        </span>
+        <div>
+          <i class="fa-solid fa-moon"></i>
+          <p>Use in the PM</p>
+        </div>
+        <div>
+          <i class="fa-solid fa-eye"></i>
+          <p>For Eyes</p>
+        </div>
+        <div>
+          <i class="fa-solid fa-eye-slash"></i>
+          <p>Avoid Eyes</p>
+        </div>
+      </div>
     </div>
+
+    <!-- AM Routine -->
+    <div class="routine-section">
+      <h1>A.M. Routine</h1>
+      <div class="am">
+        <div class="product-card">
+          <img src="images/1.webp" alt="Squalane Cleanser" />
+          <div class="icons">
+            <i class="fa-regular fa-sun"></i>
+            <i class="fa-regular fa-moon"></i>
+          </div>
+          <h3>Squalane Cleanser</h3>
+          <p>A moisturizing all-in-one cleanser</p>
+          <p><b>50ml</b></p>
+        </div>
+        <div class="product-card">
+          <img src="images/2.png" alt="Multi-Peptide + HA Serum" />
+          <div class="icons">
+            <i class="fa-regular fa-sun"></i>
+            <i class="fa-regular fa-moon"></i>
+          </div>
+          <h3>Multi-Peptide + HA Serum</h3>
+          <p>Multi-Technology Peptide Serum</p>
+          <p><b>30ml</b></p>
+        </div>
+        <div class="product-card">
+          <img src="images/3.webp" alt="Natural Moisturizing Factors + HA" />
+          <div class="icons">
+            <i class="fa-regular fa-sun"></i>
+            <i class="fa-regular fa-moon"></i>
+          </div>
+          <h3>Natural Moisturizing Factors + HA</h3>
+          <p>Surface Hydration Formula</p>
+          <p><b>30ml</b></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PM Routine -->
+    <div class="routine-section">
+      <h1>P.M. Routine</h1>
+      <div class="pm">
+        <div class="product-card">
+          <img src="images/1.webp" alt="Squalane Cleanser" />
+          <div class="icons">
+            <i class="fa-regular fa-sun"></i>
+            <i class="fa-regular fa-moon"></i>
+          </div>
+          <h3>Squalane Cleanser</h3>
+          <p>A moisturizing all-in-one cleanser</p>
+          <p><b>50ml</b></p>
+        </div>
+        <div class="product-card">
+          <img src="images/2.png" alt="Multi-Peptide + HA Serum" />
+          <div class="icons">
+            <i class="fa-regular fa-sun"></i>
+            <i class="fa-regular fa-moon"></i>
+          </div>
+          <h3>Multi-Peptide + HA Serum</h3>
+          <p>Multi-Technology Peptide Serum</p>
+          <p><b>30ml</b></p>
+        </div>
+        <div class="product-card">
+          <img src="images/4.webp" alt="Granactive Retinoid 2% Emulsion" />
+          <div class="icons">
+            <i class="fa-regular fa-sun"></i>
+            <i class="fa-regular fa-moon"></i>
+          </div>
+          <h3>Granactive Retinoid 2% Emulsion</h3>
+          <p>
+            Next-generation retinol-alternative technologies to address signs of
+            aging.
+          </p>
+          <p><b>30ml</b></p>
+        </div>
+      </div>
+    </div>
+    <script>
+      const hamburger = document.querySelector(".hamburger");
+      const navbarLinks = document.querySelector(".navbar-links");
+      hamburger.addEventListener("click", () => {
+        navbarLinks.classList.toggle("active");
+      });
+    </script>
 
     <!-- Footer -->
     <footer>
         <div class="footer-grid">
+            <!-- Company Section -->
             <div class="footer-section">
                 <h3>Company</h3>
                 <ul>
                     <li><a href="#">About Us</a></li>
-                    <li><a href="#">The Ordinary DNA</a></li>
+                    <li><a href="#">The Ordinaire DNA</a></li>
                     <li><a href="#">Join Us</a></li>
                 </ul>
                 <p>Manufacture information: DECIEM Eastside</p>
             </div>
+    
+            <!-- Customer Care Section -->
             <div class="footer-section">
                 <h3>Customer Care</h3>
                 <ul>
@@ -231,14 +378,19 @@
                     <li><a href="#">Promotion Terms & Conditions</a></li>
                 </ul>
             </div>
+    
+            <!-- Quick Links Section -->
             <div class="footer-section">
-                <ul><b>
+                <h3>Quick Links</h3>
+                <ul>
                     <li><a href="#">Contact Us</a></li>
                     <li><a href="#">Track Order</a></li>
                     <li><a href="#">Sign In</a></li>
                     <li><a href="#">Store Locator</a></li>
-                </ul></b>
+                </ul>
             </div>
+    
+            <!-- Our Commitments Section -->
             <div class="footer-section">
                 <h3>Our Commitments</h3>
                 <ul>
@@ -248,6 +400,8 @@
                     <li><a href="#">Everything Is Chemicals</a></li>
                 </ul>
             </div>
+    
+            <!-- Newsletter Section -->
             <div class="footer-section">
                 <h3>Be in the know.</h3>
                 <p>Subscribe to receive science-backed tips, access to special offers, and new innovations.</p>
@@ -256,36 +410,31 @@
                     <button>&rarr;</button>
                 </div>
                 <p class="text-xs">By providing your email address you are agreeing to receive email communications from
-                    DECIEM Inc., its affiliates, brands (The Ordinary, NIOD, and LooPHA) and/or marketing partners. This can
+                    DECIEM Inc., its affiliates, brands (The Ordinaire, NIOD, and LooPHA) and/or marketing partners. This can
                     be changed at any time. Please refer to our <a href="#" class="underline">Privacy Policy</a> and <a
                         href="#" class="underline">Terms of Use</a> for more details or <a href="#"
                         class="underline">Contact Us</a>.</p>
-                <br>
-                <br>
                 <div class="social-icons">
-                    <a href="https://www.facebook.com/theordinary/"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/theordinary/"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/playlist?list=PLo6ELSZywkj0CEJb2e7OoMqavti4-MYPK"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="https://www.tiktok.com/@theordinary?lang=en"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://www.facebook.com/theordinaire/"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/theordinaire/"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/playlist?list=PLo6ELSZywkj0CEJb2e7OoMqavti4-MYPK"><i
+                            class="fa-brands fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@theordinaire?lang=en"><i class="fa-brands fa-tiktok"></i></a>
                 </div>
             </div>
         </div>
-        <div class="footer-section">
-            <h3>Location</h3>
-            <div class="location">
-                <span><i class="fa-solid fa-location-dot"></i> KENYA</span>
-                <a href="#">Change</a>
+    
+        <!-- Location Section -->
+        <div class="footer-bottom">
+            <div class="footer-section">
+                <h3>Location</h3>
+                <div class="location">
+                    <span><i class="fa-solid fa-location-dot"></i> KENYA</span>
+                    <a href="#">Change</a>
+                </div>
+                <p class="language">Language <span>EN</span></p>
             </div>
-            <p class="language">Language <span>EN</span></p>
         </div>
     </footer>
-
-    <script>
-        const hamburger = document.querySelector(".hamburger");
-        const navbarLinks = document.querySelector(".navbar-links");
-        hamburger.addEventListener("click", () => {
-            navbarLinks.classList.toggle("active");
-        });
-    </script>
-</body>
+  </body>
 </html>

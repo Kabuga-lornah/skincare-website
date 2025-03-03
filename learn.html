@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learn More</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+
+      .learn {
+        background-image: url(images/learn\ more.jpeg);
+        background-size: cover; 
+        background-position: center; 
+        background-repeat: no-repeat; 
+        display: none;
+        margin: 0 auto;
+        max-width: 600px;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        margin-bottom: 50px;
+      }
+
+      .learn h1 {
+        text-align: center;
+      }
+
+      .learn:target {
+        display: block;
+      }
+
+      .learn img {
+        max-width: 300px;
+        height: 300px;
+        margin-bottom: 20px;
+        padding-left: 28%;
+      }
+
+      .learn h1 h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      .learn p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #555;
+        margin-bottom: 20px;
+      }
+
+      .back-button {
+        display: inline-block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color: lightgray;
+        color: black;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 16px;
+        text-align: center;
+      }
+
+      .back-button:hover {
+        background-color: whitesmoke;
+      }
+
+      .add-to-cart {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color: #333;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .add-to-cart:hover {
+        background-color: #555;
+      }
+
+      .add-to-cart.added {
+        background-color: black;
+        cursor: default;
+      }
+
+      @media (max-width: 768px) {
+        .learn-more-card {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <link rel="stylesheet" href="navbar.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet"
+  />
+  <body>
+    <!-- navbar -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <div class="logo">
+          <p>
+            The <br /><span
+              style="font-family: raleway, serif; font-size: larger"
+            >
+              <b> Ordinaire</b></span
+            >
+          </p>
+        </div>
+        <ul class="navbar-links">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="routines&tips.html">Routines & Tips</a></li>
+          <li><a href="community&testimonials.html">Testimonials</a></li>
+          <li><a href="About.html">About Us</a></li>
+          <li><a href="ContactUs.html">Contact Us</a></li>
+        </ul>
+        <div class="icon">
+          <a href="shop.html"><i class="fa-solid fa-cart-shopping"></i></a>
+          <a href="register.html"><i class="fa-regular fa-user"></i></a>
+        </div>
+        <div class="hamburger">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+      </div>
+    </nav>
+    <hr />
+    <!-- end of navbar -->
+    <!-- Product 1 -->
+    <div id="product1" class="learn">
+      <div>
+        <img src="images/rdn-niacinamide-10pct-zinc-1pct-30ml.webp" alt="nia" />
+      </div>
+      <div>
+        <h1>Niacinamide 10% + Zinc 1%</h1>
+        <p>
+          A universal serum for blemish-prone skin that smooths, brightens, and
+          supports. <br />
+          <span style="text-align: left">
+            <b>Targets:</b> Textural Irregularities, Dryness, Dullness, Visible
+            Shine, Signs of Congestion <br />
+            <b>Suited to:</b> All Skin Types <br />
+            <b>Format</b> Serum: Water-Based <br />
+            <b>Key ingredients:</b> Niacinamide, Zinc PCA
+          </span>
+        </p>
+        <h2>Product Details</h2>
+        <p>
+          Niacinamide 10% + Zinc 1% serum is a water-based formula that delivers
+          multiple niacinamide benefits to enhance skin brightness, improve
+          texture, and strengthen the skin's moisture barrier. This serum with
+          niacinamide (vitamin B3) contains a high concentration (10%) as well
+          as Zinc PCA to target dullness, uneven texture, and excess oil.
+          Niacinamide 10% + Zinc 1% also helps reduce the appearance of pores,
+          and instantly boosts skin radiance.
+        </p>
+
+        <button class="add-to-cart" id="add-to-cart-1">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div id="product2" class="learn">
+      <div>
+        <img
+          src="images/ord-hyaluronic-acid-2pct-B5-30ml-Clr-Acu.webp"
+          alt="hy"
+        />
+      </div>
+      <div>
+        <h1>Hyaluronic Acid 2% + B5 (with Ceramides)</h1>
+        <p>
+          A second-generation hyaluronic acid serum to hydrate, smooth and
+          visibly reduce lines and wrinkles. <br />
+          <b>Targets</b> Dehydration, Signs of Aging <br />
+          <b>Suited to</b> All Skin Types <br />
+          <b>Format</b> Serum: Water-Based <br />
+          <b>Key ingredients:</b> Hyaluronic acid, ceramides, pro-vitamin B5
+        </p>
+        <h2>Product Details</h2>
+        <p>
+          Hyaluronic Acid 2% + B5 (with Ceramides) is the latest hyaluronic
+          serum from The Ordinary with 5 forms of hyaluronic acid, ceramides and
+          a lightweight texture. This next generation formulation provides
+          instant and long-term plumping hydration to give softer, smoother, and
+          healthy-looking skin. This formulation contains 5 types of hyaluronic
+          acid, pro-vitamin B5 and ceramides.
+        </p>
+
+        <button class="add-to-cart" id="add-to-cart-2">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Product 3 -->
+    <div id="product3" class="learn">
+      <div>
+        <img
+          src="images/rdn-natural-moisturizing-factors-ha-30ml.webp"
+          alt="na"
+        />
+      </div>
+      <div>
+        <h1>Natural Moisturizing Factors + PhytoCeramides</h1>
+        <p>
+          Our most nourishing moisturizer. <br />
+          <b>Targets</b> Dryness <br />
+          <b>Suited to</b> All Skin Types <br />
+          <b>Format</b> Moisturizer: Rich Cream <br />
+          <b>Key ingredients</b> Glycosphingolipids, Glycolipids, Fatty Acids,
+          PCA, Sodium Lactate, Urea, Sodium Hyaluronate, and Amino Acids
+        </p>
+        <h2>Product Details</h2>
+        <p>
+          Natural Moisturizing Factors + PhytoCeramides is our most nourishing
+          moisturizer, formulated with nearly four times more moisturizing
+          emollients and two times more humectants than our Natural Moisturising
+          Factors + HA. This rich and replenishing cream immediately boosts skin
+          hydration by 68%,* helps strengthen the skin barrier, and offers
+          all-day hydration, making it ideal for dry skin. It offers a
+          triple-action approach to targeting dryness with the inclusion of
+          skin-identical Natural Moisturizing Factors, PhytoCeramides and skin
+          lipids. The inclusion of plant-derived PhytoCeramides help to improve
+          the look of skin quality, for a fresher, more plumped appearance.
+          *Clinical testing on 30 people after single application.
+        </p>
+
+        <button class="add-to-cart" id="add-to-cart-3">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Product 4 -->
+    <div id="product4" class="learn">
+      <div>
+        <img src="images/ord-glyc-acid-7pct-100ml-Aug-UPC.webp" alt="gly" />
+      </div>
+      <div>
+        <h1>Glycolic Acid 7% Exfoliating Toner</h1>
+        <p>
+          A daily glycolic acid toner that smooths skin texture, evens tone, and
+          enhances luminosity. <br />
+          <b>Targets</b> Textural Irregularities, Dullness, Uneven Skin Tone
+          <br />
+          <b>Suited to</b> All Skin Types <br />
+          <b>Format</b> Toner: Water-Based <br />
+          <b>Key ingredients</b> Glycolic Acid, Aloe Barbadensis Leaf Water,
+          Panax Ginseng Root Extract, Tasmannia Lanceolata Fruit/Leaf Extract
+        </p>
+        <h2>Product Details</h2>
+        <p>
+          Glycolic Acid 7% Exfoliating Toner is a water-based, exfoliating toner
+          formulated with 7% glycolic acid, a proven alpha-hydroxy acid (AHA)
+          that effectively exfoliates the skin. It helps to remove dead skin
+          cells, revealing a smoother, more even texture. Regular use of this
+          glycolic acid toner promotes the appearance of more luminous and
+          radiant skin while reducing the visibility of fine lines, wrinkles,
+          and other signs of aging. <br /><br />
+          This formulation also features a Tasmanian Pepperberry derivative, a
+          plant extract that helps soothe the skin and reduce irritation
+          commonly associated with exfoliation, making it suitable for frequent
+          use. The presence of this natural ingredient may cause seasonal colour
+          variation in the formula. With a carefully calibrated pH of
+          approximately 3.6, the toner has an optimal balance between salt and
+          acidity.
+        </p>
+
+        <button class="add-to-cart" id="add-to-cart-4">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Product 5 -->
+    <div id="product5" class="learn">
+      <div>
+        <img
+          src="images/rdn-natural-moisturizing-factors-ha-30ml.webp"
+          alt="na"
+        />
+      </div>
+      <div>
+        <h1>Natural Moisturizing Factors + HA</h1>
+        <p>
+          The original surface hydrator. <br />
+          <b>Targets</b> Dryness <br />
+          <b>Suited to</b> All Skin Types <br />
+          <b>Format</b> Serum: Emulsion <br />
+          <b>Key ingredients</b> Sodium Hyaluronate, Arginine, Sodium PCA, PCA,
+          Lactates, Lactic Acid, and Minerals
+        </p>
+        <h2>Product Details</h2>
+        <p>
+          Natural Moisturizing Factors + HA is an effective moisturizer designed
+          to mimic the composition of your skin's natural hydration system.
+          Infused with a comprehensive blend of ingredients that are naturally
+          present in the skin—such as amino acids, fatty acids, triglycerides,
+          urea, ceramides, phospholipids, glycerin, saccharides, sodium PCA, and
+          hyaluronic acid—this formulation keeps the outer layer of your skin
+          well-hydrated and protected, without leaving a greasy residue.
+          <br /><br />
+          This moisturizer provides both immediate and lasting effects by
+          replenishing lost moisture and fortifying the skin barrier over time.
+          The addition of hyaluronic acid enhances the product's ability to
+          retain moisture in the skin, offering effective skin hydration
+          throughout the day, while the inclusion of ceramides and phospholipids
+          ensures your skin remains supple and resilient against environmental
+          stressors. <br /><br />
+          Regular use of Natural Moisturizing Factors + HA promotes smoother,
+          softer skin with improved moisture retention. It is gentle enough for
+          daily use, suitable for all skin types, and can be incorporated into
+          any skincare regimen for enhanced hydration.
+        </p>
+
+        <button class="add-to-cart" id="add-to-cart-5">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Product 6 -->
+    <div id="product6" class="learn">
+      <div>
+        <img src="images/20.webp" alt="na" />
+      </div>
+      <div>
+        <h1>Squalane Cleanser</h1>
+        <p>
+          A moisturizing all-in-one cleanser <br />
+          <b>Targets</b> Cleansing, Dryness <br />
+          <b>Suited to</b> All Skin Types <br />
+          <b>Format</b> Cleanser: Balm Key ingredients Squalane, Sucrose
+          Stearate, Ethyl Macadamiate, Sucrose Laurate
+        </p>
+        <h2>Product Details</h2>
+        <p>
+          Squalane Cleanser is designed to effectively cleanse the skin by
+          removing makeup, dirt, and impurities, while also supporting the
+          skin's moisture barrier through hydration. Formulated with
+          plant-derived squalane, a well-known moisturizing agent, this cleanser
+          leaves skin feeling soft, smooth, and hydrated. The addition of
+          lipophilic esters helps dissolve makeup without stripping the skin.
+          This gentle cleanser formulation is non-comedogenic, soap-free, ideal
+          for daily use across all skin types and is suitable for combining with
+          other skincare products.
+        </p>
+
+        <button class="add-to-cart" id="add-to-cart-6">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Product 7 -->
+    <div id="product7" class="learn">
+      <div>
+        <img src="images/21.webp" alt="gly" />
+      </div>
+      <div>
+        <h1>Glycolipid Cream Cleanser</h1>
+        <p>
+          A gentle cream cleanser that effectively removes makeup. <br />
+          <b>Targets</b> Cleansing, Barrier Support <br />
+          <b>Suited to</b> All Skin Types <br />
+          <b>Format Cleanser:</b> Cream Key ingredients Glycolipids.
+        </p>
+        <h2>Product Details</h2>
+        <p>
+          The Glycolipid Cream Cleanser effectively cleanses the skin and
+          removes makeup such as foundation, eyeliner, and mascara. This
+          formulation uses a plant-derived glycolipid cleansing agent that
+          cleanses the skin while respecting the skin barrier to maintain
+          hydration. Additionally, this cleanser is formulated to be
+          non-stripping to respect the skin's natural pH.
+        </p>
+
+        <button class="add-to-cart" id="add-to-cart-7">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Product 8 -->
+    <div id="product8" class="learn">
+      <div>
+        <img src="images/22.webp" alt="multi" />
+      </div>
+      <div>
+        <h1>Multi-Peptide Eye Serum</h1>
+        <p>
+          A multi-technology peptide eye serum to target signs of aging around
+          the eye. <br />
+          <b>Targets</b> Early Signs of Aging, Crow's Feet, Dark Circles, Signs
+          of Aging, Puffiness <br />
+          <b>Suited to</b> All Skin Types <br />
+          <b>Format</b> Serum: Water-Based <br />
+          <b>Key ingredients</b> Epigallocatechin Gallatyl Glucoside,
+          Niacinamide, Fraxinus Excelsior Bark Extract, Palmitoyl Tripeptide-38,
+          Acetyl Tetrapeptide-5, Myristoyl Nonapeptide-3, Dipeptide
+          Diaminobutyroyl Benzylamide Diacetate, Caffeine
+        </p>
+
+        <button class="add-to-cart" id="add-to-cart-8">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Product 9 -->
+    <div id="product9" class="learn">
+      <div>
+        <img src="images/23.webp" alt="23" />
+      </div>
+      <div>
+        <h1>Multi-Peptide + HA Serum</h1>
+        <p>
+          An age-supporting peptide serum that does a little bit of everything
+          for your skin. <br />
+          <b>Targets</b> Early Signs of Aging, Dryness, Signs of Aging <br />
+          <b>Suited to</b> All Skin Types <br />
+          <b>Format</b> Serum: Water-Based <br />
+          <b>Key ingredients</b>
+          Lactococcus Ferment Lysate, Acetyl Hexapeptide-8, Palmitoyl
+          Tripeptide-1, Pentapeptide-18, Palmitoyl Tetrapeptide-7, Palmitoyl
+          Tripeptide-38, Dipeptide Diaminobutyroyl Benzylamide Diacetate,
+          Acetylarginyltryptophyl Diphenylglycine, Sodium Hyaluronate
+        </p>
+        <h2>Product Details</h2>
+        <p>
+          Multi-Peptide + HA Serum is a comprehensive, age-supporting
+          formulation that combines multiple technologies to help address common
+          signs of early skin aging including the look of fine lines and the
+          feel of skin elasticity and firmness. By utilizing four well-studied
+          peptide technologies—SYN™-AKE, Matrixyl™ synthe'6™, Matrixyl™ 3000,
+          and ARGIRELOX™— alongside amino acids, and multiple hyaluronic acid
+          complexes, this multi peptide serum reduces the appearance of crow's
+          feet, improves skin elasticity and enhances firmness.
+        </p>
+
+        <button class="add-to-cart" id="add-to-cart-9">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Product 10 -->
+    <div id="product10" class="learn">
+      <div>
+        <img src="images/24.webp" alt="24" />
+      </div>
+      <div>
+        <h1>Multi-Peptide + Copper Peptides 1% Serum</h1>
+        <p>
+          An advanced age-supporting serum with additional antioxidant support.
+          <br />
+          <b>Targets</b> Advanced Signs of Aging, Dryness <br />
+          <b>Suited to</b> All Skin Types <br />
+          <b>Format</b> Serum: Water-Based <br />
+          <b>Key ingredients</b> Copper Tripeptide-1, Lactococcus Ferment
+          Lysate, Acetyl Hexapeptide-8, Palmitoyl Tripeptide-1, Pentapeptide-18,
+          Palmitoyl Tetrapeptide-7, Palmitoyl Tripeptide-38, Dipeptide
+          Diaminobutyroyl Benzylamide Diacetate, Acetylarginyltryptophyl
+          Diphenylglycine, Sodium Hyaluronate.
+        </p>
+        <h2>Product Details</h2>
+        <p>
+          Multi-Peptide + Copper Peptides 1% (previously “Buffet” + Copper
+          Peptides 1%) is a universal formula which utilizes multiple skin
+          support technologies that target multiple signs of aging at once. The
+          formula incorporates five well-studied peptide technologies,
+          skin-friendly amino acids, and multiple hyaluronic acids.
+          <br />
+          For those looking for an all-in-one solution for skin care,
+          Multi-Peptide + Copper Peptides 1% helps to improve the appearance of
+          fine and dynamic lines and supports your skin's overall elasticity,
+          smoothness and firmness. And because this advanced serum contains
+          direct copper peptides, it also targets signs of aging that are
+          typically associated with oxidative stress, resulting in radiant,
+          healthier-looking skin.
+        </p>
+
+        <button class="add-to-cart" id="add-to-cart-10">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Product 11 -->
+    <div id="product11" class="learn">
+      <div>
+        <img src="images/25.webp" alt="25" />
+      </div>
+      <div>
+        <h1>Retinal 0.2% Emulsion</h1>
+        <p>
+          Our highest-strength retinoid formula with stabilized retinaldehyde
+          for advanced age support, optimal for nighttime use. <br />
+          <b>Targets</b> Advanced Signs of Aging, Textural Irregularities,
+          Uneven Skin Tone <br />
+          <b>Suited to</b> All Skin Types <br />
+          <b>Format</b> Serum: Emulsion <br />
+          <b>Key ingredients</b> Retinaldehyde, synthetic oat analogues.
+        </p>
+        <h2>Product Details</h2>
+        <p>
+          Retinal 0.2% Emulsion is a very high strength retinoid formula that
+          rapidly firms and smooths skin, while noticeably reducing the
+          appearance of dark spots. It helps refine skin texture, while
+          targeting uneven tone and boosting luminosity for brighter, more
+          even-looking skin. With a high 0.2% concentration of retinal, Retinal
+          0.2% Emulsion is able to noticeably improve skin firmness and improve
+          the look of lines and wrinkles, including crow's feet, frown lines,
+          and forehead wrinkles.
+        </p>
+
+        <button class="add-to-cart" id="add-to-cart-11">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Product 12 -->
+    <div id="product12" class="learn">
+      <div>
+        <img src="images/26.webp" alt="26" />
+      </div>
+      <div>
+        <h1>Multi-Peptide Serum for Hair Density</h1>
+        <p>
+          A lightweight serum for fuller, healthier-looking hair. <br />
+          <b>Targets</b> Hair <br />
+          <b>Suited to</b> All Hair Types <br />
+          <b>Format</b> Serum: Water-Based <br />
+          <b>Key ingredients</b> Caffeine, Biotinoyl Tripeptide-1, Acetyl
+          Tetrapeptide-3, Larix Europaea Wood Extract, Pisum Sativum Extract,
+          Scutellaria Baicalensis Root Extract, Triticum Vulgare Germ Extract,
+          Glycine Soja Germ Extract, Trifolium Pratense Flower Extract, Camellia
+          Sinensis Leaf Extract
+        </p>
+        <h2>Product Details</h2>
+        <p>
+          Multi-Peptide Serum for Hair Density is a concentrated leave-in
+          formula designed to support the scalp and give you thicker, denser,
+          fuller-looking hair. The formula is lightweight and offers a
+          combination of peptide technologies alongside a series of plant-based
+          extracts. This formula contains REDENSYL™, Procapil™, CAPIXYL™,
+          BAICAPIL™, AnaGain™, and High-Solubility Caffeine.
+        </p>
+
+        <button class="add-to-cart" id="add-to-cart-12">Add to Cart</button>
+      </div>
+    </div>
+
+    <script>
+      const hamburger = document.querySelector(".hamburger");
+      const navbarLinks = document.querySelector(".navbar-links");
+      hamburger.addEventListener("click", () => {
+        navbarLinks.classList.toggle("active");
+      });
+
+      document.querySelectorAll(".add-to-cart").forEach((button) => {
+        button.addEventListener("click", () => {
+          button.textContent = "Added to Cart";
+          button.classList.add("added");
+
+          button.disabled = true;
+
+          const productId = button.id.split("-")[3];
+          console.log(`Product ${productId} added to cart!`);
+        });
+      });
+    </script>
+  </body>
+  <footer>
+    <div class="footer-grid">
+      <!-- Company Section -->
+      <div class="footer-section">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">The Ordinaire DNA</a></li>
+          <li><a href="#">Join Us</a></li>
+        </ul>
+        <p>Manufacture information: DECIEM Eastside</p>
+      </div>
+
+      <!-- Customer Care Section -->
+      <div class="footer-section">
+        <h3>Customer Care</h3>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Disposal Instructions</a></li>
+          <li><a href="#">Return Policy</a></li>
+          <li><a href="#">Promotion Terms & Conditions</a></li>
+        </ul>
+      </div>
+
+      <!-- Quick Links Section -->
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Sign In</a></li>
+          <li><a href="#">Store Locator</a></li>
+        </ul>
+      </div>
+
+      <!-- Our Commitments Section -->
+      <div class="footer-section">
+        <h3>Our Commitments</h3>
+        <ul>
+          <li><a href="#">Accessibility</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Change is the Journey</a></li>
+          <li><a href="#">Everything Is Chemicals</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter Section -->
+      <div class="footer-section">
+        <h3>Be in the know.</h3>
+        <p>
+          Subscribe to receive science-backed tips, access to special offers,
+          and new innovations.
+        </p>
+        <div class="email-input">
+          <input type="email" placeholder="Email Address" />
+          <button>&rarr;</button>
+        </div>
+        <p class="text-xs">
+          By providing your email address you are agreeing to receive email
+          communications from DECIEM Inc., its affiliates, brands (The
+          Ordinaire, NIOD, and LooPHA) and/or marketing partners. This can be
+          changed at any time. Please refer to our
+          <a href="#" class="underline">Privacy Policy</a> and
+          <a href="#" class="underline">Terms of Use</a> for more details or
+          <a href="#" class="underline">Contact Us</a>.
+        </p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/theordinaire/"
+            ><i class="fa-brands fa-facebook-f"></i
+          ></a>
+          <a href="https://www.instagram.com/theordinaire/"
+            ><i class="fa-brands fa-instagram"></i
+          ></a>
+          <a
+            href="https://www.youtube.com/playlist?list=PLo6ELSZywkj0CEJb2e7OoMqavti4-MYPK"
+            ><i class="fa-brands fa-youtube"></i
+          ></a>
+          <a href="https://www.tiktok.com/@theordinaire?lang=en"
+            ><i class="fa-brands fa-tiktok"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Location Section -->
+    <div class="footer-bottom">
+      <div class="footer-section">
+        <h3>Location</h3>
+        <div class="location">
+          <span><i class="fa-solid fa-location-dot"></i> KENYA</span>
+          <a href="#">Change</a>
+        </div>
+        <p class="language">Language <span>EN</span></p>
+      </div>
+    </div>
+  </footer>
+</html>
