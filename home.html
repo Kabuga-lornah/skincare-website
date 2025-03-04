@@ -257,32 +257,44 @@
 }
 
 /* Mobile Styles */
+.navbar-links {
+    display: flex;
+    gap: 20px; /* Keeps your links spaced out */
+}
+
 @media (max-width: 768px) {
     .navbar-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: white;
+        display: none; /* Hide links by default on small screens */
+        flex-direction: column; 
+        text-align: center;
         position: absolute;
-        top: 60px;
+        background-color: white; /* Background behind the dropdown */
+        width: 100%; 
+        top: 70px; /* Push it below the navbar */
         left: 0;
         padding: 10px 0;
-        border-bottom: 1px solid #ccc;
+        z-index: 99;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
 
     .navbar-links.active {
-        display: flex;
-    }
-
-    .navbar-links li {
-        margin: 10px 0;
-        text-align: center;
+        display: flex; /* Show when toggled */
     }
 
     .hamburger {
-        display: flex;
+        display: block;
+        cursor: pointer;
+    }
+
+    .hamburger .line {
+        width: 30px;
+        height: 3px;
+        background: black;
+        margin: 5px;
+        transition: all 0.3s ease;
     }
 }
+
 
    
     @media (max-width: 1024px) {
@@ -518,12 +530,23 @@
         </div>
         <script src="script.js"></script>
         <script>
-            const hamburger = document.querySelector(".hamburger");
-            const navbarLinks = document.querySelector(".navbar-links");
-            hamburger.addEventListener("click", () => {
-                navbarLinks.classList.toggle("active");
-            });
-        
+            
+    document.addEventListener("DOMContentLoaded", function () {
+        const hamburger = document.querySelector(".hamburger");
+        const navbarLinks = document.querySelector(".navbar-links");
+
+        hamburger.addEventListener("click", function () {
+            navbarLinks.classList.toggle("active");
+        });
+
+        // Close menu when clicking outside of the navbar
+        document.addEventListener("click", function (e) {
+            if (!navbarLinks.contains(e.target) && !hamburger.contains(e.target)) {
+                navbarLinks.classList.remove("active");
+            }
+        });
+    });
+
             const addToCartButtons = document.querySelectorAll('.add-to-cart');
             addToCartButtons.forEach(button => {
                 button.addEventListener('click', () => {

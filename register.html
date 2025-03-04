@@ -83,6 +83,63 @@
       .button {
         color: black;
       }
+    
+@media (max-width: 768px) {
+  .sign {
+    flex-direction: column; 
+    align-items: center; 
+    gap: 20px;
+  }
+
+  .registration-form {
+    margin-top: 0; 
+    width: 90%; 
+  }
+
+  img {
+    width: 100%;
+    height: auto; 
+    padding: 0; 
+    border-radius: 0; 
+  }
+
+  .navbar-links {
+    display: none; 
+  }
+
+  .hamburger {
+    display: block; 
+  }
+}
+
+@media (max-width: 480px) {
+  .registration-form {
+    width: 100%;
+    padding: 10px; 
+  }
+
+  .form-group input,
+  .form-group button {
+    font-size: 14px; 
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr; 
+    gap: 20px; 
+  }
+
+  .footer-section {
+    text-align: center; 
+  }
+
+  .email-input {
+    flex-direction: column; 
+  }
+
+  .email-input button {
+    margin-top: 10px;
+  }
+}
     </style>
     <link rel="stylesheet" href="navbar.css" />
     <link
