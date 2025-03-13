@@ -1,8 +1,21 @@
+/* Navbar Styles */
 .navbar {
     background-color: white;
     font-family: "raleway", serif;
     padding: 10px 20px;
     margin: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+.logo{
+    padding-right: 5%;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .navbar-links {
@@ -14,14 +27,6 @@
     margin: 0;
     padding: 0;
     font-size: large;
-}
-
-.navbar-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 .navbar-links li {
@@ -37,40 +42,175 @@
 }
 
 .navbar-links li a.active {
-    font-weight: bold; /* Highlight the active link */
-    color: #000; /* Ensure the active link is black */
-    border-bottom: 2px solid black; /* Add a bottom border for emphasis */
-}
-
-.icon {
-    margin-left: auto;
+    font-weight: bold; 
+    color: #000; 
+    border-bottom: 2px solid black; 
 }
 
 .icon {
     display: flex;
     gap: 20px;
+    align-items: center;
+    margin-left: auto; /* Align icons to the right */
 }
 
-.icon a {
+.icon a, .cart-icon {
     color: black; /* Ensure icons are black */
+    font-size: 20px;
+    cursor: pointer;
+    position: relative;
+    text-decoration: none;
 }
 
-.icon {
-    padding: 10px 20px;
-    border-radius: 40px;
-    color: black;
+.cart-icon {
+    display: flex;
+    align-items: center;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #ff4d4d;
+    color: white;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 50%;
+}
+
+/* Cart Dropdown Styles */
+.cart-dropdown {
+    position: fixed;
+    top: 60px;
+    right: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 20px;
+    display: none;
+    z-index: 1000;
+}
+
+.cart-dropdown h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+}
+
+.cart-items {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+}
+
+.cart-item-details {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.cart-item-details h4 {
+    margin: 0;
+    font-size: 14px;
+}
+
+.cart-item-details p {
+    margin: 0;
+    font-size: 12px;
+    color: #666;
+}
+
+.remove-item {
+    color: #ff4d4d;
     cursor: pointer;
+}
+
+.empty-cart-message {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+}
+
+.checkout-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.checkout-button:hover {
+    background-color: #555;
+}
+
+
+/* Search Bar Styles */
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+    flex: 1;
+    max-width: 400px;
+}
+
+.search-bar input {
+    width: 80%;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    font-size: 14px;
+    outline: none;
+}
+
+.search-bar button {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+    background-color: #f4f4f4;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #ddd;
+}
+
+.search-bar button i {
+    color: #333;
 }
 
 footer {
     background-color: whitesmoke;
     padding: 40px 20px;
     border-top: 1px solid #e0e0e0;
+    text-align: left;
 }
 
 .footer-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(4, 1fr); 
     gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
@@ -142,7 +282,7 @@ footer {
 .text-xs {
     font-size: 12px;
     color: #777;
-    margin-top: 10px;
+    text-align: center;
 }
 
 .underline {

@@ -113,35 +113,45 @@
   />
   <body>
     <!-- navbar -->
-    <nav class="navbar">
-      <div class="navbar-container">
-        <div class="logo">
-          <p>
-            The <br /><span
-              style="font-family: raleway, serif; font-size: larger"
-            >
-              <b> Ordinaire</b></span
-            >
-          </p>
-        </div>
-        <ul class="navbar-links">
+    <!-- Navbar -->
+<nav class="navbar">
+  <div class="navbar-container">
+      <div class="logo">
+          <p>The <br><span style="font-family: raleway, serif; font-size: larger;"> <b>Ordinaire</b></span></p>
+      </div>
+
+      <ul class="navbar-links">
           <li><a href="home.html">Home</a></li>
           <li><a href="routines&tips.html">Routines & Tips</a></li>
           <li><a href="community&testimonials.html">Testimonials</a></li>
           <li><a href="About.html">About Us</a></li>
           <li><a href="ContactUs.html">Contact Us</a></li>
-        </ul>
-        <div class="icon">
-          <a href="shop.html"><i class="fa-solid fa-cart-shopping"></i></a>
+          <!-- Search Bar -->
+          <li class="search-bar">
+              <input type="text" id="search-input" placeholder="Search products..." />
+              <button><i class="fa-solid fa-magnifying-glass"></i></button>
+          </li>
+      </ul>
+
+      <div class="icon">
+          <!-- Shop Link -->
+          <a href="shop.html"><i class="fa-solid fa-store"></i></a>
+          <!-- Cart Icon with Badge -->
+          <div class="cart-icon" onclick="toggleCart()">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span class="cart-badge" id="cart-badge">0</span>
+          </div>
+          <!-- User Icon -->
           <a href="register.html"><i class="fa-regular fa-user"></i></a>
-        </div>
-        <div class="hamburger">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-        </div>
       </div>
-    </nav>
+
+      <div class="hamburger">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+      </div>
+  </div>
+</nav>
     <hr />
     <!-- end of navbar -->
     <!-- Product 1 -->
@@ -550,7 +560,7 @@
         <button class="add-to-cart" id="add-to-cart-12">Add to Cart</button>
       </div>
     </div>
-
+    <script src="script.js"></script>
     <script>
       const hamburger = document.querySelector(".hamburger");
       const navbarLinks = document.querySelector(".navbar-links");
@@ -573,98 +583,84 @@
   </body>
   <footer>
     <div class="footer-grid">
-      <!-- Company Section -->
-      <div class="footer-section">
-        <h3>Company</h3>
-        <ul>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">The Ordinaire DNA</a></li>
-          <li><a href="#">Join Us</a></li>
-        </ul>
-        <p>Manufacture information: DECIEM Eastside</p>
-      </div>
-
-      <!-- Customer Care Section -->
-      <div class="footer-section">
-        <h3>Customer Care</h3>
-        <ul>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Disposal Instructions</a></li>
-          <li><a href="#">Return Policy</a></li>
-          <li><a href="#">Promotion Terms & Conditions</a></li>
-        </ul>
-      </div>
-
-      <!-- Quick Links Section -->
-      <div class="footer-section">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="#">Contact Us</a></li>
-          <li><a href="#">Track Order</a></li>
-          <li><a href="#">Sign In</a></li>
-          <li><a href="#">Store Locator</a></li>
-        </ul>
-      </div>
-
-      <!-- Our Commitments Section -->
-      <div class="footer-section">
-        <h3>Our Commitments</h3>
-        <ul>
-          <li><a href="#">Accessibility</a></li>
-          <li><a href="#">Sustainability</a></li>
-          <li><a href="#">Change is the Journey</a></li>
-          <li><a href="#">Everything Is Chemicals</a></li>
-        </ul>
-      </div>
-
-      <!-- Newsletter Section -->
-      <div class="footer-section">
-        <h3>Be in the know.</h3>
-        <p>
-          Subscribe to receive science-backed tips, access to special offers,
-          and new innovations.
-        </p>
-        <div class="email-input">
-          <input type="email" placeholder="Email Address" />
-          <button>&rarr;</button>
+        <!-- Company Section -->
+        <div class="footer-section">
+            <h3>Company</h3>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">The Ordinaire DNA</a></li>
+                <li><a href="#">Join Us</a></li>
+            </ul>
+            <p>Manufacture information: DECIEM <br> Eastside</p>
         </div>
-        <p class="text-xs">
-          By providing your email address you are agreeing to receive email
-          communications from DECIEM Inc., its affiliates, brands (The
-          Ordinaire, NIOD, and LooPHA) and/or marketing partners. This can be
-          changed at any time. Please refer to our
-          <a href="#" class="underline">Privacy Policy</a> and
-          <a href="#" class="underline">Terms of Use</a> for more details or
-          <a href="#" class="underline">Contact Us</a>.
-        </p>
-        <div class="social-icons">
-          <a href="https://www.facebook.com/theordinaire/"
-            ><i class="fa-brands fa-facebook-f"></i
-          ></a>
-          <a href="https://www.instagram.com/theordinaire/"
-            ><i class="fa-brands fa-instagram"></i
-          ></a>
-          <a
-            href="https://www.youtube.com/playlist?list=PLo6ELSZywkj0CEJb2e7OoMqavti4-MYPK"
-            ><i class="fa-brands fa-youtube"></i
-          ></a>
-          <a href="https://www.tiktok.com/@theordinaire?lang=en"
-            ><i class="fa-brands fa-tiktok"></i
-          ></a>
+
+        <!-- Customer Care Section -->
+        <div class="footer-section">
+            <h3>Customer Care</h3>
+            <ul>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Disposal Instructions</a></li>
+                <li><a href="#">Return Policy</a></li>
+                <li><a href="#">Promotion Terms & Conditions</a></li>
+            </ul>
         </div>
-      </div>
+
+        <!-- Quick Links Section -->
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Track Order</a></li>
+                <li><a href="#">Sign In</a></li>
+                <li><a href="#">Store Locator</a></li>
+            </ul>
+        </div>
+
+        <!-- Our Commitments Section -->
+        <div class="footer-section">
+            <h3>Our Commitments</h3>
+            <ul>
+                <li><a href="#">Accessibility</a></li>
+                <li><a href="#">Sustainability</a></li>
+                <li><a href="#">Change is the Journey</a></li>
+                <li><a href="#">Everything Is Chemicals</a></li>
+            </ul>
+        </div>
     </div>
-
+<br>
+        <!-- Newsletter Section -->
+        <div class="footer-section">
+            <h3>Be in the know.</h3>
+            <p>Subscribe to receive science-backed tips, access to special offers, and new innovations.</p>
+            <div class="email-input">
+                <input type="email" placeholder="Email Address">
+                <button>&rarr;</button>
+            </div>
+            <p class="text-xs">By providing your email address you are agreeing to receive email communications from
+                DECIEM Inc., its affiliates, brands (The Ordinaire, NIOD, and LooPHA) and/or marketing partners. This can
+                be changed at any time. Please refer to our <a href="#" class="underline">Privacy Policy</a> and <a
+                    href="#" class="underline">Terms of Use</a> for more details or <a href="#"
+                    class="underline">Contact Us</a>.</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/theordinaire/"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/theordinaire/"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.youtube.com/playlist?list=PLo6ELSZywkj0CEJb2e7OoMqavti4-MYPK"><i
+                        class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.tiktok.com/@theordinaire?lang=en"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+    </div>
+<hr>
     <!-- Location Section -->
     <div class="footer-bottom">
-      <div class="footer-section">
-        <h3>Location</h3>
-        <div class="location">
-          <span><i class="fa-solid fa-location-dot"></i> KENYA</span>
-          <a href="#">Change</a>
+        <div class="footer-section">
+            <h3>Location</h3>
+            <div class="location">
+                <span><i class="fa-solid fa-location-dot"></i> KENYA</span>
+                <a href="#">Change</a>
+            </div>
+            <p class="language">Language <span>EN</span></p>
         </div>
-        <p class="language">Language <span>EN</span></p>
-      </div>
     </div>
-  </footer>
+</footer>
 </html>

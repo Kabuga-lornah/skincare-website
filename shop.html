@@ -86,7 +86,6 @@
         justify-content: center;
         margin-top: 15px;
     }
-
     .add-to-cart, .learn-more {
         padding: 10px 20px;
         border: none;
@@ -100,10 +99,7 @@
         color: black;
     }
 
-    .add-to-cart.added {
-        background-color: black;
-        color: white;
-    }
+   
 
     .learn-more {
         background-color: lightgray;
@@ -114,6 +110,113 @@
         background-color: whitesmoke;
     }
 
+   /* Cart Dropdown Styles */
+.cart-dropdown {
+    position: fixed;
+    top: 60px;
+    right: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 20px;
+    display: none;
+    z-index: 1000;
+}
+
+.cart-dropdown h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+}
+
+.cart-items {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+}
+
+.cart-item-details {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.cart-item-details h4 {
+    margin: 0;
+    font-size: 14px;
+}
+
+.cart-item-details p {
+    margin: 0;
+    font-size: 12px;
+    color: #666;
+}
+
+.remove-item {
+    color: #ff4d4d;
+    cursor: pointer;
+}
+
+.empty-cart-message {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+}
+
+.checkout-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.checkout-button:hover {
+    background-color: #555;
+}
+
+/* Notification Styles */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1000;
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
   
     @media (max-width: 1024px) {
         .box {
@@ -141,6 +244,7 @@
 </style>
     </style>
     <link rel="stylesheet" href="navbar.css" />
+    
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
@@ -150,31 +254,55 @@
 </head>
 
 <body>
-    <!-- navbar -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <div class="logo">
-                 <p>The <br><span style="font-family: raleway, serif; font-size: larger;"> <b>
-                 Ordinaire</b></span></p>
-            </div>
-            <ul class="navbar-links">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="routines&tips.html">Routines & Tips</a></li>
-                <li><a href="community&testimonials.html">Testimonials</a></li>
-                <li><a href="About.html">About Us</a></li>
-                <li><a href="ContactUs.html">Contact Us</a></li>
-            </ul>
-            <div class="icon">
-                <a href="shop.html"><i class="fa-solid fa-cart-shopping"></i></a>
-                <a href="register.html"><i class="fa-regular fa-user"></i></a>
-            </div>
-            <div class="hamburger">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-            </div>
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="logo">
+            <p>The <br><span style="font-family: raleway, serif; font-size: larger;"> <b>Ordinaire</b></span></p>
         </div>
-    </nav>
+
+        <ul class="navbar-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="routines&tips.html">Routines & Tips</a></li>
+            <li><a href="community&testimonials.html">Testimonials</a></li>
+            <li><a href="About.html">About Us</a></li>
+            <li><a href="ContactUs.html">Contact Us</a></li>
+            <!-- Search Bar -->
+            <li class="search-bar">
+                <input type="text" id="search-input" placeholder="Search products..." />
+                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+            </li>
+        </ul>
+
+        <div class="icon">
+            <!-- Shop Link -->
+            <a href="shop.html"><i class="fa-solid fa-store"></i></a>
+            <!-- Cart Icon with Badge -->
+            <div class="cart-icon" onclick="toggleCart()">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cart-badge" id="cart-badge">0</span>
+            </div>
+            <!-- User Icon -->
+            <a href="register.html"><i class="fa-regular fa-user"></i></a>
+        </div>
+
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </div>
+</nav>
+
+ <!-- Cart Dropdown -->
+ <div class="cart-dropdown" id="cart-dropdown">
+    <h3>Your Cart</h3>
+    <div class="cart-items" id="cart-items">
+        <!-- Cart items will be dynamically added here -->
+    </div>
+    <p class="empty-cart-message" id="empty-cart-message">Your cart is empty.</p>
+    <button class="checkout-button" onclick="checkout()">Checkout</button>
+</div>
     <hr>
     <!-- end of navbar -->
     <div class="container">
@@ -182,60 +310,70 @@
             <!-- Filters Section -->
             <div class="filters">
                 <div>
-                <h2>Filters</h2>
-                <h4>Concern</h4>
-                <input type="checkbox"> Signs Of Aging <br><br>
-                <input type="checkbox"> Uneven Skin Tone <br><br>
-                <input type="checkbox"> Signs Of Congestion <br><br>
-                <input type="checkbox"> Textural Irregularities <br><br>
-                <input type="checkbox"> Dryness <br><br>
-                <input type="checkbox"> Crow's Feet <br><br>
-                <input type="checkbox"> Dullness <br><br>
-                <input type="checkbox"> Cleansing <br><br>
-                <input type="checkbox"> Dark Circles <br><br>
-                <input type="checkbox"> Hair <br><br>
-                <input type="checkbox"> Look Of Redness <br><br>
+                    <h2>Filters</h2>
+    
+                    <!-- Price Range Filter -->
+                    <h4>Price Range</h4>
+        <input type="checkbox" id="under25"> Under $25 <br><br>
+        <input type="checkbox" id="25to50"> $25 - $50 <br><br>
+        <input type="checkbox" id="50to100"> $50 - $100 <br><br>
+        <input type="checkbox" id="over100"> Over $100 <br><br>
+    
+                    <!-- Skin Type Filter -->
+                    <h4>Skin Type</h4>
+                    <input type="checkbox"> Oily <br><br>
+                    <input type="checkbox"> Dry <br><br>
+                    <input type="checkbox"> Combination <br><br>
+                    <input type="checkbox"> Sensitive <br><br>
+                    <input type="checkbox"> Normal <br><br>
+    
+                    <!-- Existing Filters -->
+                    <h4>Concern</h4>
+                    <input type="checkbox"> Signs Of Aging <br><br>
+                    <input type="checkbox"> Uneven Skin Tone <br><br>
+                    <input type="checkbox"> Signs Of Congestion <br><br>
+                    <input type="checkbox"> Textural Irregularities <br><br>
+                    <input type="checkbox"> Dryness <br><br>
+                   
+                </div>
+                <div>
+                    <h4>Active ingredient</h4>
+                    <input type="checkbox"> Direct Acids <br><br>
+                    <input type="checkbox"> Oils <br><br>
+                </div>
+                <div>
+                    <h4>Product Type</h4>
+                    <input type="checkbox"> Serums <br><br>
+                    <input type="checkbox"> Face Oils <br><br>
+                    <input type="checkbox"> Sets & Collections <br><br>
+                    <input type="checkbox"> Foundation <br><br>
+                </div>
+                <div>
+                    <h4>Preferences</h4>
+                    <input type="checkbox"> Alcohol-Free <br><br>
+                    <input type="checkbox"> Cruelty-Free <br><br>
+                    <input type="checkbox"> Gluten-Free <br><br>
+                    <input type="checkbox"> Oil-Free <br><br>
+                </div>
+                <div>
+                    <h4>Time Of Use</h4>
+                    <input type="checkbox"> AM <br><br>
+                    <input type="checkbox"> PM <br><br>
+                </div>
+                <div>
+                    <h4>Regimen Step</h4>
+                    <input type="checkbox"> Prep <br><br>
+                    <input type="checkbox"> Treat <br><br>
+                    <input type="checkbox"> Seal <br><br>
+                </div>
             </div>
-            <div>
-                <h4>Active ingredient</h4>
-                <input type="checkbox"> Direct Acids <br><br>
-                <input type="checkbox"> Oils <br><br>
-            </div>
-            <div>
-                <h4>Product Type</h4>
-                <input type="checkbox"> Serums <br><br>
-                <input type="checkbox"> Face Oils <br><br>
-                <input type="checkbox"> Sets & Collections <br><br>
-                <input type="checkbox"> Foundation <br><br>
-            </div>
-            <div>
-                <h4>Preferences</h4>
-                <input type="checkbox"> Alcohol-Free <br><br>
-                <input type="checkbox"> Cruelty-Free <br><br>
-                <input type="checkbox"> Gluten-Free <br><br>
-                <input type="checkbox"> Oil-Free <br><br>
-                <input type="checkbox"> Silicone-Free <br><br>
-                <input type="checkbox"> Vegan <br><br>
-                <input type="checkbox"> Water-Free <br><br>
-            </div>
-            <div>
-                <h4>Time Of Use</h4>
-                <input type="checkbox"> AM <br><br>
-                <input type="checkbox"> PM <br><br>
-            </div>
-            <div>
-                <h4>Regimen Step</h4>
-                <input type="checkbox"> Prep <br><br>
-                <input type="checkbox"> Treat <br><br>
-                <input type="checkbox"> Seal <br><br>
-            </div>
-        </div>
+      
             <!-- Products Section -->
             <div class="two">
                 <!-- Product Cards -->
                 <div class="box">
                     <!-- Card 1 -->
-                    <div class="card">
+                    <div class="card" data-price="7.20">
                         <img src="images/rdn-niacinamide-10pct-zinc-1pct-30ml.webp" alt="znc" />
                         <h3>Niacinamide 10% + Zinc 1%</h3>
                         <p>Oil Control, Brightens, Smooths</p>
@@ -245,9 +383,9 @@
                             <a href="learn.html#product1"><button class="learn-more">Learn More</button></a>
                         </div>
                     </div>
-    
+                
                     <!-- Card 2 -->
-                    <div class="card">
+                    <div class="card" data-price="11.90">
                         <img src="images/ord-hyaluronic-acid-2pct-B5-30ml-Clr-Acu.webp" alt="hyaluronic" />
                         <h3>Hyaluronic Acid 2% + <br> B5 (with Ceramides)</h3>
                         <p>Plumps, Smooths</p>
@@ -255,12 +393,11 @@
                         <div class="button-group">
                             <button class="add-to-cart">Add To Cart</button>
                             <a href="learn.html#product2"><button class="learn-more">Learn More</button></a>
-
                         </div>
                     </div>
-    
+                
                     <!-- Card 3 -->
-                    <div class="card">
+                    <div class="card" data-price="13.00">
                         <img src="images/rdn-natural-moisturizing-factors-ha-30ml.webp" alt="phyto" />
                         <h3>Natural Moisturizing Factors <br> + PhytoCeramides</h3>
                         <p>Nourishes, Plumps</p>
@@ -270,9 +407,9 @@
                             <a href="learn.html#product3"><button class="learn-more">Learn More</button></a>
                         </div>
                     </div>
-    
+                
                     <!-- Card 4 -->
-                    <div class="card">
+                    <div class="card" data-price="10.40">
                         <img src="images/ord-glyc-acid-7pct-100ml-Aug-UPC.webp" alt="toner" />
                         <h3>Glycolic Acid 7% <br> Exfoliating Toner</h3>
                         <p>Evens Texture & Tone Radiance</p>
@@ -282,9 +419,9 @@
                             <a href="learn.html#product4"><button class="learn-more">Learn More</button></a>
                         </div>
                     </div>
-    
+                
                     <!-- Card 5 -->
-                    <div class="card">
+                    <div class="card" data-price="8.00">
                         <img src="images/10.webp" alt="znc" />
                         <h3>Natural Moisturizing Factors + HA</h3>
                         <p>Supports Skin Barrier</p>
@@ -294,9 +431,9 @@
                             <a href="learn.html#product5"><button class="learn-more">Learn More</button></a>
                         </div>
                     </div>
-    
+                
                     <!-- Card 6 -->
-                    <div class="card">
+                    <div class="card" data-price="25.20">
                         <img src="images/20.webp" alt="hyaluronic" />
                         <h3>Squalane Cleanser</h3>
                         <p>Removes Makeup, Softens Skin</p>
@@ -306,9 +443,9 @@
                             <a href="learn.html#product6"><button class="learn-more">Learn More</button></a>
                         </div>
                     </div>
-    
+                
                     <!-- Card 7 -->
-                    <div class="card">
+                    <div class="card" data-price="15.00">
                         <img src="images/21.webp" alt="phyto" />
                         <h3>Glycolipid Cream Cleanser</h3>
                         <p>Removes Impurities And Makeup</p>
@@ -318,9 +455,9 @@
                             <a href="learn.html#product7"><button class="learn-more">Learn More</button></a>
                         </div>
                     </div>
-    
+                
                     <!-- Card 8 -->
-                    <div class="card">
+                    <div class="card" data-price="30.00">
                         <img src="images/22.webp" alt="toner" />
                         <h3>Multi-Peptide Eye Serum</h3>
                         <p>Age Support, Dark Circles</p>
@@ -330,9 +467,9 @@
                             <a href="learn.html#product8"><button class="learn-more">Learn More</button></a>
                         </div>
                     </div>
-    
+                
                     <!-- Card 9 -->
-                    <div class="card">
+                    <div class="card" data-price="23.90">
                         <img src="images/23.webp" alt="znc" />
                         <h3>Multi-Peptide + HA Serum</h3>
                         <p>For Early Signs Of Aging</p>
@@ -342,21 +479,21 @@
                             <a href="learn.html#product9"><button class="learn-more">Learn More</button></a>
                         </div>
                     </div>
-    
+                
                     <!-- Card 10 -->
-                    <div class="card">
+                    <div class="card" data-price="138.40">
                         <img src="images/24.webp" alt="hyaluronic" />
                         <h3>Multi-Peptide + Copper <br> Peptides 1% Serum</h3>
                         <p>For Advanced Signs Of Aging</p>
-                        <p><b>38.40 USD</b></p>
+                        <p><b>138.40 USD</b></p>
                         <div class="button-group">
                             <button class="add-to-cart">Add To Cart</button>
                             <a href="learn.html#product10"><button class="learn-more">Learn More</button></a>
                         </div>
                     </div>
-    
+                
                     <!-- Card 11 -->
-                    <div class="card">
+                    <div class="card" data-price="17.90">
                         <img src="images/25.webp" alt="phyto" />
                         <h3>Retinal 0.2% Emulsion</h3>
                         <p>Firms, Reduces Look Of Dark Spots</p>
@@ -366,13 +503,13 @@
                             <a href="learn.html#product11"><button class="learn-more">Learn More</button></a>
                         </div>
                     </div>
-    
+                
                     <!-- Card 12 -->
-                    <div class="card">
+                    <div class="card" data-price="87.40">
                         <img src="images/26.webp" alt="toner" />
                         <h3>Multi-Peptide Serum <br> for Hair Density</h3>
                         <p>For Density And Thickness</p>
-                        <p><b>27.40 USD</b></p>
+                        <p><b>87.40 USD</b></p>
                         <div class="button-group">
                             <button class="add-to-cart">Add To Cart</button>
                             <a href="learn.html#product12"><button class="learn-more">Learn More</button></a>
@@ -381,28 +518,172 @@
                 </div>
             </div>
         </div>
-    </div>
-    <script>
         
-        const hamburger = document.querySelector(".hamburger");
-        const navbarLinks = document.querySelector(".navbar-links");
-        hamburger.addEventListener("click", () => {
-            navbarLinks.classList.toggle("active");
-        });
-       
-        const addToCartButtons = document.querySelectorAll('.add-to-cart');
-        addToCartButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                if (button.textContent === 'Add To Cart') {
-                    button.textContent = 'Added To Cart';
-                    button.classList.add('added');
-                } else {
-                    button.textContent = 'Add To Cart';
-                    button.classList.remove('added');
-                }
+        <script>
+    // Cart Data
+    let cart = [];
+
+    // Function to add item to cart
+    function addToCart(productName, productPrice, productImage) {
+        // Check if the product is already in the cart
+        const existingProduct = cart.find(item => item.name === productName);
+        if (existingProduct) {
+            existingProduct.quantity += 1; // Increase quantity if already in cart
+        } else {
+            // Add new product to cart
+            cart.push({
+                name: productName,
+                price: productPrice,
+                image: productImage,
+                quantity: 1
             });
+        }
+
+        // Update the cart UI
+        updateCartUI();
+
+        // Show notification
+        showNotification(`${productName} added to cart!`);
+    }
+
+    // Function to update the cart UI
+    function updateCartUI() {
+        const cartBadge = document.getElementById('cart-badge');
+        const cartItems = document.getElementById('cart-items');
+        const emptyCartMessage = document.getElementById('empty-cart-message');
+
+        // Update cart badge
+        const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+        cartBadge.textContent = totalItems;
+
+        // Update cart items in the dropdown
+        if (cart.length === 0) {
+            emptyCartMessage.style.display = 'block'; // Show empty cart message
+            cartItems.innerHTML = ''; // Clear the cart items
+        } else {
+            emptyCartMessage.style.display = 'none'; // Hide empty cart message
+            cartItems.innerHTML = cart.map((item, index) => `
+                <div class="cart-item">
+                    <img src="${item.image}" alt="${item.name}" />
+                    <div class="cart-item-details">
+                        <h4>${item.name}</h4>
+                        <p>${item.price} USD</p>
+                        <p>Quantity: ${item.quantity}</p>
+                    </div>
+                    <span class="remove-item" onclick="removeFromCart(${index})">&times;</span>
+                </div>
+            `).join('');
+        }
+    }
+
+    // Function to remove item from cart
+    function removeFromCart(index) {
+        cart.splice(index, 1); // Remove the item from the cart
+        updateCartUI(); // Update the UI
+        showNotification('Item removed from cart!'); // Show notification
+    }
+
+    // Function to temporarily change button text
+    function temporarilyChangeButton(button) {
+        button.textContent = 'Added to Cart'; // Change button text
+        button.disabled = true; // Disable the button to prevent multiple clicks
+
+        // Revert back to "Add to Cart" after 2 seconds
+        setTimeout(() => {
+            button.textContent = 'Add to Cart';
+            button.disabled = false; // Re-enable the button
+        }, 2000);
+    }
+
+    // Function to toggle cart visibility
+    function toggleCart() {
+        const cartDropdown = document.getElementById('cart-dropdown');
+        if (cartDropdown.style.display === 'block') {
+            cartDropdown.style.display = 'none'; // Hide the cart
+        } else {
+            cartDropdown.style.display = 'block'; // Show the cart
+        }
+    }
+
+    // Function to show notification
+    function showNotification(message) {
+        const notification = document.createElement('div');
+        notification.className = 'notification';
+        notification.textContent = message;
+        document.body.appendChild(notification);
+        setTimeout(() => {
+            notification.remove();
+        }, 2000);
+    }
+
+    // Attach event listeners to "Add to Cart" buttons
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', () => {
+            const productCard = button.closest('.card'); // Correctly target the product card
+            const productName = productCard.querySelector('h3').textContent;
+            const productPrice = productCard.querySelector('p b').textContent; // Ensure this matches the price element
+            const productImage = productCard.querySelector('img').getAttribute('src'); // Full image path
+
+            addToCart(productName, productPrice, productImage);
+            temporarilyChangeButton(button); // Call the function to temporarily change the button text
         });
-    </script>
+    });
+
+    // Price Filtering and Sorting Logic
+    const under25Checkbox = document.getElementById('under25');
+    const range25to50Checkbox = document.getElementById('25to50');
+    const range50to100Checkbox = document.getElementById('50to100');
+    const over100Checkbox = document.getElementById('over100');
+    const productsContainer = document.querySelector('.box'); // Container for all product cards
+
+    // Function to filter and sort products by price range
+    function filterAndSortProducts() {
+        const products = Array.from(document.querySelectorAll('.card')); // Get all product cards as an array
+
+        // Filter products based on selected price range
+        const filteredProducts = products.filter(product => {
+            const price = parseFloat(product.getAttribute('data-price')); // Get product price
+
+            const showUnder25 = under25Checkbox.checked && price < 25;
+            const show25to50 = range25to50Checkbox.checked && price >= 25 && price <= 50;
+            const show50to100 = range50to100Checkbox.checked && price > 50 && price <= 100;
+            const showOver100 = over100Checkbox.checked && price > 100;
+
+            return showUnder25 || show25to50 || show50to100 || showOver100;
+        });
+
+        // Sort filtered products by price (ascending order)
+        filteredProducts.sort((a, b) => {
+            const priceA = parseFloat(a.getAttribute('data-price'));
+            const priceB = parseFloat(b.getAttribute('data-price'));
+            return priceA - priceB;
+        });
+
+        // Clear the products container
+        productsContainer.innerHTML = '';
+
+        // Append sorted and filtered products to the container
+        filteredProducts.forEach(product => {
+            productsContainer.appendChild(product);
+        });
+
+        // Append remaining products (outside the selected price range)
+        products.forEach(product => {
+            if (!filteredProducts.includes(product)) {
+                productsContainer.appendChild(product);
+            }
+        });
+    }
+
+    // Add event listeners to filter checkboxes
+    if (under25Checkbox) under25Checkbox.addEventListener('change', filterAndSortProducts);
+    if (range25to50Checkbox) range25to50Checkbox.addEventListener('change', filterAndSortProducts);
+    if (range50to100Checkbox) range50to100Checkbox.addEventListener('change', filterAndSortProducts);
+    if (over100Checkbox) over100Checkbox.addEventListener('change', filterAndSortProducts);
+
+        </script>
+    </div>
+
 <!-- footer begins -->
 <footer>
     <div class="footer-grid">
@@ -414,7 +695,7 @@
                 <li><a href="#">The Ordinaire DNA</a></li>
                 <li><a href="#">Join Us</a></li>
             </ul>
-            <p>Manufacture information: DECIEM Eastside</p>
+            <p>Manufacture information: DECIEM <br> Eastside</p>
         </div>
 
         <!-- Customer Care Section -->
@@ -449,7 +730,8 @@
                 <li><a href="#">Everything Is Chemicals</a></li>
             </ul>
         </div>
-
+    </div>
+<br>
         <!-- Newsletter Section -->
         <div class="footer-section">
             <h3>Be in the know.</h3>
@@ -472,7 +754,7 @@
             </div>
         </div>
     </div>
-
+<hr>
     <!-- Location Section -->
     <div class="footer-bottom">
         <div class="footer-section">

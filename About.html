@@ -184,30 +184,45 @@
 
 <body>
      <!-- navbar -->
-     <nav class="navbar">
-        <div class="navbar-container">
-            <div class="logo">
-                 <p>The <br><span style="font-family: raleway, serif; font-size: larger;"> <b>
-                 Ordinaire</b></span></p>
-            </div>
-            <ul class="navbar-links">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="routines&tips.html">Routines & Tips</a></li>
-                <li><a href="community&testimonials.html">Testimonials</a></li>
-                <li><a href="About.html">About Us</a></li>
-                <li><a href="ContactUs.html">Contact Us</a></li>
-            </ul>
-            <div class="icon">
-                <a href="shop.html"><i class="fa-solid fa-cart-shopping"></i></a>
-                <a href="register.html"><i class="fa-regular fa-user"></i></a>
-            </div>
-            <div class="hamburger">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-            </div>
+     <!-- Navbar -->
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="logo">
+            <p>The <br><span style="font-family: raleway, serif; font-size: larger;"> <b>Ordinaire</b></span></p>
         </div>
-    </nav>
+
+        <ul class="navbar-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="routines&tips.html">Routines & Tips</a></li>
+            <li><a href="community&testimonials.html">Testimonials</a></li>
+            <li><a href="About.html">About Us</a></li>
+            <li><a href="ContactUs.html">Contact Us</a></li>
+            <!-- Search Bar -->
+            <li class="search-bar">
+                <input type="text" id="search-input" placeholder="Search products..." />
+                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+            </li>
+        </ul>
+
+        <div class="icon">
+            <!-- Shop Link -->
+            <a href="shop.html"><i class="fa-solid fa-store"></i></a>
+            <!-- Cart Icon with Badge -->
+            <div class="cart-icon" onclick="toggleCart()">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cart-badge" id="cart-badge">0</span>
+            </div>
+            <!-- User Icon -->
+            <a href="register.html"><i class="fa-regular fa-user"></i></a>
+        </div>
+
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </div>
+</nav>
     <hr>
     <!-- end of navbar -->
     <div class="container">
@@ -314,6 +329,7 @@
                 Welcome to The Ordinaire—where science is in our DNA.
             </p>
         </div>
+        <script src="script.js"></script>
         <script>
             const hamburger = document.querySelector(".hamburger");
             const navbarLinks = document.querySelector(".navbar-links");
@@ -337,7 +353,7 @@
                 <li><a href="#">The Ordinaire DNA</a></li>
                 <li><a href="#">Join Us</a></li>
             </ul>
-            <p>Manufacture information: DECIEM Eastside</p>
+            <p>Manufacture information: DECIEM <br> Eastside</p>
         </div>
 
         <!-- Customer Care Section -->
@@ -372,7 +388,8 @@
                 <li><a href="#">Everything Is Chemicals</a></li>
             </ul>
         </div>
-
+    </div>
+<br>
         <!-- Newsletter Section -->
         <div class="footer-section">
             <h3>Be in the know.</h3>
@@ -395,7 +412,7 @@
             </div>
         </div>
     </div>
-
+<hr>
     <!-- Location Section -->
     <div class="footer-bottom">
         <div class="footer-section">

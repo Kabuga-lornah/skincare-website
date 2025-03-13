@@ -362,30 +362,45 @@
 
 <body>
     <!-- navbar -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <div class="logo">
-                 <p>The <br><span style="font-family: raleway, serif; font-size: larger;"> <b>
-                 Ordinaire</b></span></p>
-            </div>
-            <ul class="navbar-links">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="routines&tips.html">Routines & Tips</a></li>
-                <li><a href="community&testimonials.html">Testimonials</a></li>
-                <li><a href="About.html">About Us</a></li>
-                <li><a href="ContactUs.html">Contact Us</a></li>
-            </ul>
-            <div class="icon">
-                <a href="shop.html"><i class="fa-solid fa-cart-shopping"></i></a>
-                <a href="register.html"><i class="fa-regular fa-user"></i></a>
-            </div>
-            <div class="hamburger">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-            </div>
+    <!-- Navbar -->
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="logo">
+            <p>The <br><span style="font-family: raleway, serif; font-size: larger;"> <b>Ordinaire</b></span></p>
         </div>
-    </nav>
+
+        <ul class="navbar-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="routines&tips.html">Routines & Tips</a></li>
+            <li><a href="community&testimonials.html">Testimonials</a></li>
+            <li><a href="About.html">About Us</a></li>
+            <li><a href="ContactUs.html">Contact Us</a></li>
+        </ul>
+
+        <div class="icon">
+             <!-- Search Bar -->
+             <li class="search-bar">
+                <input type="text" id="search-input" placeholder="Search products..." />
+                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+            </li>
+            <!-- Shop Link -->
+            <a href="shop.html"><i class="fa-solid fa-store"></i></a>
+            <!-- Cart Icon with Badge -->
+            <div class="cart-icon" onclick="toggleCart()">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cart-badge" id="cart-badge">0</span>
+            </div>
+            <!-- User Icon -->
+            <a href="register.html"><i class="fa-regular fa-user"></i></a>
+        </div>
+
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </div>
+</nav>
     <hr>
     <!-- end of navbar -->
     <div class="slide">
@@ -393,12 +408,13 @@
             <nav>
                 <h1>Advanced Age Support</h1>
                 <p>Multi-people + Copper Peptides 1% contains 6 peptide technologies to repair fine lines and wrinkles.</p>
-                <button>Shop Now</button>
+                <a href="shop.html"><button>Shop Now</button></a>
             </nav>
         </div>
         <img src="images/advanced age support.webp" alt="advanced" class="background-image">
     </div>
 <!-- bestsellers section -->
+<!-- Bestsellers Section -->
 <div class="best">
     <div class="bestsellersh1">
         <h1><span style="text-align: center; font-family: raleway, serif;">Bestsellers</span></h1>
@@ -410,9 +426,9 @@
             <img src="images/rdn-niacinamide-10pct-zinc-1pct-30ml.webp" alt="znc" />
             <h3>Niacinamide 10% + Zinc 1%</h3>
             <p>Oil Control, Brightens, Smooths</p>
-            <p>7.20 USD</p>
+            <p><b>7.20 USD</b></p>
             <div class="button-group">
-                <button class="add-to-cart">Add To Cart</button>
+                <button class="add-to-cart" data-name="Niacinamide 10% + Zinc 1%" data-price="7.20" data-image="rdn-niacinamide-10pct-zinc-1pct-30ml.webp">Add To Cart</button>
                 <a href="learn.html#product1"><button class="learn-more">Learn More</button></a>
             </div>
         </div>
@@ -422,9 +438,9 @@
             <img src="images/ord-hyaluronic-acid-2pct-B5-30ml-Clr-Acu.webp" alt="hyaluronic" />
             <h3>Hyaluronic Acid 2% + B5 (with Ceramides)</h3>
             <p>Plumps, Smooths</p>
-            <p>11.90 USD</p>
+            <p><b>11.90 USD</b></p>
             <div class="button-group">
-                <button class="add-to-cart">Add To Cart</button>
+                <button class="add-to-cart" data-name="Hyaluronic Acid 2% + B5 (with Ceramides)" data-price="11.90" data-image="ord-hyaluronic-acid-2pct-B5-30ml-Clr-Acu.webp">Add To Cart</button>
                 <a href="learn.html#product2"><button class="learn-more">Learn More</button></a>
             </div>
         </div>
@@ -434,9 +450,9 @@
             <img src="images/rdn-natural-moisturizing-factors-ha-30ml.webp" alt="phyto" />
             <h3>Natural Moisturizing Factors + PhytoCeramides</h3>
             <p>Nourishes, Plumps</p>
-            <p>13.00 USD</p>
+            <p><b>13.00 USD</b></p>
             <div class="button-group">
-                <button class="add-to-cart">Add To Cart</button>
+                <button class="add-to-cart" data-name="Natural Moisturizing Factors + PhytoCeramides" data-price="13.00" data-image="rdn-natural-moisturizing-factors-ha-30ml.webp">Add To Cart</button>
                 <a href="learn.html#product3"><button class="learn-more">Learn More</button></a>
             </div>
         </div>
@@ -446,9 +462,9 @@
             <img src="images/ord-glyc-acid-7pct-100ml-Aug-UPC.webp" alt="toner" />
             <h3>Glycolic Acid 7% Exfoliating Toner</h3>
             <p>Evens Texture & Tone Radiance</p>
-            <p>10.40 USD</p>
+            <p><b>10.40 USD</b></p>
             <div class="button-group">
-                <button class="add-to-cart">Add To Cart</button>
+                <button class="add-to-cart" data-name="Glycolic Acid 7% Exfoliating Toner" data-price="10.40" data-image="ord-glyc-acid-7pct-100ml-Aug-UPC.webp">Add To Cart</button>
                 <a href="learn.html#product4"><button class="learn-more">Learn More</button></a>
             </div>
         </div>
@@ -547,19 +563,94 @@
         });
     });
 
-            const addToCartButtons = document.querySelectorAll('.add-to-cart');
-            addToCartButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    if (button.textContent === 'Add To Cart') {
-                        button.textContent = 'Added To Cart';
-                        button.classList.add('added');
-                    } else {
-                        button.textContent = 'Add To Cart';
-                        button.classList.remove('added');
-                    }
-                });
-            });
+
+    // Cart Data
+let cart = [];
+
+// Function to add item to cart
+function addToCart(productName, productPrice, productImage) {
+    // Check if the product is already in the cart
+    const existingProduct = cart.find(item => item.name === productName);
+    if (existingProduct) {
+        existingProduct.quantity += 1; // Increase quantity if already in cart
+    } else {
+        // Add new product to cart
+        cart.push({
+            name: productName,
+            price: productPrice,
+            image: productImage,
+            quantity: 1
+        });
+    }
+
+    // Update the cart UI
+    updateCartUI();
+
+    // Show notification
+    showNotification(`${productName} added to cart!`);
+}
+
+// Function to update the cart UI
+function updateCartUI() {
+    const cartBadge = document.getElementById('cart-badge');
+    const cartItems = document.getElementById('cart-items');
+    const emptyCartMessage = document.getElementById('empty-cart-message');
+
+    // Update cart badge
+    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+    cartBadge.textContent = totalItems;
+
+    // Update cart items in the dropdown
+    if (cart.length === 0) {
+        emptyCartMessage.style.display = 'block';
+        cartItems.innerHTML = '';
+    } else {
+        emptyCartMessage.style.display = 'none';
+        cartItems.innerHTML = cart.map((item, index) => `
+            <div class="cart-item">
+                <img src="images/${item.image}" alt="${item.name}" />
+                <div class="cart-item-details">
+                    <h4>${item.name}</h4>
+                    <p>${item.price} USD</p>
+                    <p>Quantity: ${item.quantity}</p>
+                </div>
+                <span class="remove-item" onclick="removeFromCart(${index})">&times;</span>
+            </div>
+        `).join('');
+    }
+}
+
+// Function to remove item from cart
+function removeFromCart(index) {
+    cart.splice(index, 1); // Remove the item from the cart
+    updateCartUI(); // Update the UI
+}
+
+// Function to show notification
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    setTimeout(() => {
+        notification.remove();
+    }, 2000);
+}
+
+// Attach event listeners to "Add to Cart" buttons
+document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', () => {
+        const productCard = button.closest('.container');
+        const productName = productCard.querySelector('h3').textContent;
+        const productPrice = productCard.querySelector('p').textContent;
+        const productImage = productCard.querySelector('img').getAttribute('src').split('/').pop();
+        addToCart(productName, productPrice, productImage);
+    });
+});
         </script>
+        
+        
+       
 </body>
 <footer>
     <div class="footer-grid">
@@ -571,7 +662,7 @@
                 <li><a href="#">The Ordinaire DNA</a></li>
                 <li><a href="#">Join Us</a></li>
             </ul>
-            <p>Manufacture information: DECIEM Eastside</p>
+            <p>Manufacture information: DECIEM <br> Eastside</p>
         </div>
 
         <!-- Customer Care Section -->
@@ -606,7 +697,8 @@
                 <li><a href="#">Everything Is Chemicals</a></li>
             </ul>
         </div>
-
+    </div>
+<br>
         <!-- Newsletter Section -->
         <div class="footer-section">
             <h3>Be in the know.</h3>
@@ -629,7 +721,7 @@
             </div>
         </div>
     </div>
-
+<hr>
     <!-- Location Section -->
     <div class="footer-bottom">
         <div class="footer-section">
