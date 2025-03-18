@@ -30,36 +30,6 @@
             font-size: 18px;
             margin: 10px 0;
         }
-        .profile-picture {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-        }
-        .profile-form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .profile-form input {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        .profile-form button {
-            background-color: lightgray;
-            color: black;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .profile-form button:hover {
-            background-color: #d3d3d3;
-        }
         .logout-button {
             background-color: lightgray;
             color: black;
@@ -73,6 +43,7 @@
         .logout-button:hover {
             background-color: #d3d3d3;
         }
+        
     </style>
     <link rel="stylesheet" href="navbar.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -84,56 +55,24 @@
     <!-- Profile Content -->
     <div class="profile-container">
         <h1>Profile</h1>
-        <img src="default-profile.png" alt="Profile Picture" class="profile-picture" id="profilePicture">
-        <form class="profile-form" id="profileForm">
-            <input type="file" id="profilePicUpload" accept="image/*" style="display: none;">
-            <button type="button" onclick="document.getElementById('profilePicUpload').click()">Upload Profile Picture</button>
-            <input type="text" id="name" placeholder="Name" required>
-            <input type="email" id="email" placeholder="Email" required>
-            <input type="number" id="age" placeholder="Age" required>
-            <button type="submit">Save Profile</button>
-        </form>
+        <p id="profile-name">Name: </p>
+        <p id="profile-email">Email: </p>
+        <input id="age" type="number" placeholder="Age">
+        <br>
         <button class="logout-button" id="logoutButton">Logout</button>
+        
     </div>
 
     <script>
         // Display logged-in user's information
         const loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
         if (loggedInUser) {
-            document.getElementById('name').value = loggedInUser.name || '';
-            document.getElementById('email').value = loggedInUser.email || '';
-            document.getElementById('age').value = loggedInUser.age || '';
-            if (loggedInUser.profilePicture) {
-                document.getElementById('profilePicture').src = loggedInUser.profilePicture;
-            }
+            document.getElementById('profile-name').textContent = `Name: ${loggedInUser.name}`;
+            document.getElementById('profile-email').textContent = `Email: ${loggedInUser.email}`;
         } else {
             // Redirect to register page if no user is logged in
             window.location.href = 'register.html';
         }
-
-        // Handle profile picture upload
-        document.getElementById('profilePicUpload').addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('profilePicture').src = e.target.result;
-                    loggedInUser.profilePicture = e.target.result;
-                    sessionStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-
-        // Handle form submission
-        document.getElementById('profileForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            loggedInUser.name = document.getElementById('name').value;
-            loggedInUser.email = document.getElementById('email').value;
-            loggedInUser.age = document.getElementById('age').value;
-            sessionStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
-            alert('Profile updated successfully!');
-        });
 
         // Logout functionality
         const logoutButton = document.getElementById('logoutButton');
@@ -143,7 +82,8 @@
                 window.location.href = 'register.html'; // Redirect to register page
             });
         }
-    </script>
+   </script>
+    
     
 </body>
 </html>
