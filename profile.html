@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <style>
+        body {
+            font-family: 'Raleway', serif;
+            background-color: lightgray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .profile-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        .profile-container h1 {
+            margin-bottom: 20px;
+        }
+        .profile-container p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .logout-button {
+            background-color: lightgray;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .logout-button:hover {
+            background-color: #d3d3d3;
+        }
+        
+    </style>
+    <link rel="stylesheet" href="navbar.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+    <!-- Profile Content -->
+    <div class="profile-container">
+        <h1>Profile</h1>
+        <p id="profile-name">Name: </p>
+        <p id="profile-email">Email: </p>
+        <input id="age" type="number" placeholder="Age">
+        <br>
+        <button class="logout-button" id="logoutButton">Logout</button>
+        
+    </div>
+
+    <script>
+        // Display logged-in user's information
+        const loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
+        if (loggedInUser) {
+            document.getElementById('profile-name').textContent = `Name: ${loggedInUser.name}`;
+            document.getElementById('profile-email').textContent = `Email: ${loggedInUser.email}`;
+        } else {
+            // Redirect to register page if no user is logged in
+            window.location.href = 'register.html';
+        }
+
+        // Logout functionality
+        const logoutButton = document.getElementById('logoutButton');
+        if (logoutButton) {
+            logoutButton.addEventListener('click', function () {
+                sessionStorage.removeItem('loggedInUser'); // Clear logged-in user
+                window.location.href = 'register.html'; // Redirect to register page
+            });
+        }
+   </script>
+    
+    
+</body>
+</html>

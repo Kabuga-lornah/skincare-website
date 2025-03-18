@@ -1,54 +1,84 @@
+document.addEventListener('DOMContentLoaded', () => {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    console.log('Initial Cart:', cart);
 
-    // Cart Data
-    let cart = [];
-
-    // Toggle Cart Dropdown
-    function toggleCart() {
-        const cartDropdown = document.getElementById('cart-dropdown');
-        cartDropdown.style.display = cartDropdown.style.display === 'block' ? 'none' : 'block';
-        updateCartUI();
-    }
-
-    // Add Item to Cart
     function addToCart(productName, productPrice, productImage) {
-        const product = { name: productName, price: productPrice, image: productImage };
-        cart.push(product);
+        const price = parseFloat(productPrice);
+        if (isNaN(price)) {
+            console.error('Invalid price for product:', productName);
+            return;
+        }
+
+        const existingProduct = cart.find(item => item.name === productName);
+        if (existingProduct) {
+            existingProduct.quantity += 1;
+        } else {
+            cart.push({
+                name: productName,
+                price: price,
+                image: productImage,
+                quantity: 1
+            });
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
         updateCartUI();
         showNotification(`${productName} added to cart!`);
     }
 
-    // Remove Item from Cart
-    function removeFromCart(index) {
-        cart.splice(index, 1);
-        updateCartUI();
-    }
-
-    // Update Cart UI
     function updateCartUI() {
         const cartItems = document.getElementById('cart-items');
-        const cartBadge = document.getElementById('cart-badge');
         const emptyCartMessage = document.getElementById('empty-cart-message');
+        const cartBadge = document.getElementById('cart-badge');
 
-        // Update Cart Badge
-        cartBadge.textContent = cart.length;
+        if (!cartItems || !emptyCartMessage || !cartBadge) {
+            console.error('Cart elements not found!');
+            return;
+        }
 
-        // Update Cart Items
-        cartItems.innerHTML = cart.map((item, index) => `
-            <div class="cart-item">
-                <img src="images/${item.image}" alt="${item.name}" />
-                <div class="cart-item-details">
-                    <h4>${item.name}</h4>
-                    <p>${item.price} USD</p>
-                </div>
-                <span class="remove-item" onclick="removeFromCart(${index})">&times;</span>
-            </div>
-        `).join('');
+        cartItems.innerHTML = '';
+        let totalItems = cart.reduce((total, item) => total + item.quantity, 0);
 
-        // Show/Hide Empty Cart Message
-        emptyCartMessage.style.display = cart.length === 0 ? 'block' : 'none';
+        if (cart.length === 0) {
+            emptyCartMessage.style.display = 'block';
+        } else {
+            emptyCartMessage.style.display = 'none';
+            cart.forEach((item, index) => {
+                const price = parseFloat(item.price);
+                if (isNaN(price)) {
+                    console.error('Invalid price for item:', item);
+                    return;
+                }
+
+                const itemElement = document.createElement('div');
+                itemElement.className = 'cart-item';
+                itemElement.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" />
+                    <div class="cart-item-details">
+                        <h4>${item.name}</h4>
+                        <p>Price: $${price.toFixed(2)}</p>
+                        <p>Quantity: ${item.quantity}</p>
+                    </div>
+                    <span class="remove-item" onclick="removeFromCart(${index})">&times;</span>
+                `;
+                cartItems.appendChild(itemElement);
+            });
+        }
+
+        cartBadge.textContent = totalItems;
     }
 
-    // Show Notification
+    window.removeFromCart = function (index) {
+        if (index < 0 || index >= cart.length) {
+            console.error('Invalid index:', index);
+            return;
+        }
+        cart.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartUI();
+        showNotification('Item removed from cart!');
+    }
+
     function showNotification(message) {
         const notification = document.createElement('div');
         notification.className = 'notification';
@@ -59,52 +89,84 @@
         }, 2000);
     }
 
-    // Checkout
-    function checkout() {
-        alert('Checkout functionality will be implemented later!');
-    }
+    window.checkout = function () {
+        if (cart.length === 0) {
+            alert('Your cart is empty. Please add items before proceeding to checkout.');
+            return;
+        }
 
-    // Function to search products
-    function searchProducts() {
-        const searchQuery = document.getElementById('search-input').value.trim().toLowerCase();
-        if (!searchQuery) return; // Exit if the search query is empty
-
-        // Define product data (name and corresponding "Learn More" link)
-        const products = [
-            { name: "Niacinamide 10% + Zinc 1%", link: "learn.html#product1" },
-            { name: "Hyaluronic Acid 2% + B5 (with Ceramides)", link: "learn.html#product2" },
-            { name: "Natural Moisturizing Factors + PhytoCeramides", link: "learn.html#product3" },
-            { name: "Glycolic Acid 7% Exfoliating Toner", link: "learn.html#product4" },
-            { name: "Natural Moisturizing Factors + HA", link: "learn.html#product5" },
-            { name: "Squalane Cleanser", link: "learn.html#product6" },
-            { name: "Glycolipid Cream Cleanser", link: "learn.html#product7" },
-            { name: "Multi-Peptide Eye Serum", link: "learn.html#product8" },
-            { name: "Multi-Peptide + HA Serum", link: "learn.html#product9" },
-            { name: "Multi-Peptide + Copper Peptides 1% Serum", link: "learn.html#product10" },
-            { name: "Retinal 0.2% Emulsion", link: "learn.html#product11" },
-            { name: "Multi-Peptide Serum for Hair Density", link: "learn.html#product12" }
-        ];
-
-        // Find the product that matches the search query
-        const matchedProduct = products.find(product => 
-            product.name.toLowerCase().includes(searchQuery)
-        );
-
-        if (matchedProduct) {
-            // Redirect to the "Learn More" page for the matched product
-            window.location.href = matchedProduct.link;
+        const loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
+        if (!loggedInUser) {
+            localStorage.setItem('pendingCheckoutCart', JSON.stringify(cart));
+            alert('You must sign up to proceed to checkout.');
+            window.location.href = 'register.html';
         } else {
-            // Show a message if no product is found
-            alert("No matching product found.");
+            window.location.href = 'checkout.html';
         }
     }
 
-    // Add event listener to the search input for real-time search
-    document.getElementById('search-input').addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            searchProducts(); // Trigger search on Enter key press
+    window.toggleCart = function () {
+        const cartDropdown = document.getElementById('cart-dropdown');
+        if (!cartDropdown) {
+            console.error('Cart dropdown element not found!');
+            return;
         }
-    });
+        cartDropdown.style.display = cartDropdown.style.display === 'block' ? 'none' : 'block';
+    };
 
-    // Add event listener to the search button
-    document.querySelector('.search-bar button').addEventListener('click', searchProducts);
+    const cartIcon = document.querySelector('.cart-icon');
+    if (cartIcon) {
+        cartIcon.addEventListener('click', toggleCart);
+    } else {
+        console.error('Cart icon not found!');
+    }
+
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    if (addToCartButtons.length === 0) {
+        console.error('No "Add to Cart" buttons found!');
+    } else {
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const productCard = button.closest('.card');
+                if (!productCard) {
+                    console.error('Product card not found!');
+                    return;
+                }
+                const productName = productCard.querySelector('h3').textContent;
+                const productPrice = productCard.getAttribute('data-price');
+                const productImage = productCard.querySelector('img').getAttribute('src');
+                addToCart(productName, productPrice, productImage);
+            });
+        });
+    }
+
+    updateCartUI();
+});
+document.addEventListener("DOMContentLoaded", function() {
+    // Get all video elements
+    const videos = document.querySelectorAll('.video-wrapper video');
+
+    // Loop through each video
+    videos.forEach(video => {
+        // Play video on mouse enter
+        video.parentElement.addEventListener('mouseenter', () => {
+            video.play();
+        });
+
+        // Pause video on mouse leave
+        video.parentElement.addEventListener('mouseleave', () => {
+            video.pause();
+        });
+    });
+});
+document.addEventListener("DOMContentLoaded", function() {
+    const muteButtons = document.querySelectorAll('.mute-button');
+
+    muteButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const video = button.parentElement.querySelector('video');
+            video.muted = !video.muted;
+            button.textContent = video.muted ? '🔇' : '🔊';
+        });
+    });
+});

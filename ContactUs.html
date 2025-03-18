@@ -182,7 +182,15 @@
           <div class="cart-icon" onclick="toggleCart()">
               <i class="fa-solid fa-cart-shopping"></i>
               <span class="cart-badge" id="cart-badge">0</span>
+              <div class="cart-dropdown" id="cart-dropdown" style="display: none;">
+                <h3>Your Cart</h3>
+                <div class="cart-items" id="cart-items"></div>
+                <p class="empty-cart-message" id="empty-cart-message">Your cart is empty.</p>
+                <button class="checkout-button" onclick="checkout()">Checkout</button>
+            </div>
+            
           </div>
+
           <!-- User Icon -->
           <a href="register.html"><i class="fa-regular fa-user"></i></a>
       </div>
@@ -248,97 +256,105 @@
         </div>
       </div>
     </div>
+    <script src="checkout.js"></script>
+<!-- <script src="cart.js"></script> -->
+ 
+<footer class="site-footer">
+  <div class="footer-content">
+      <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+              <li><a href="About.html">About Us</a></li>
+              <li><a href="profile.html">Shop</a></li>
+              <li><a href="register.html">Login</a></li>
+              <li><a href="ContactUs.html">Contact Us</a></li>
+          </ul>
+      </div>
+      <div class="footer-section">
+          <h4>Follow Us</h4>
+          <div class="social-icons">
+              <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+              <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+              <a href="https://pinterest.com" target="_blank"><i class="fab fa-pinterest"></i></a>
+          </div>
+      </div>
+      <div class="footer-section">
+          <h4>Newsletter</h4>
+          <form class="newsletter-form" id="newsletterForm">
+              <input type="email" id="email" placeholder="Enter your email" required>
+              <button type="submit">Subscribe</button>
+          </form>
+          <div id="successMessage" class="success-message" style="display: none;">Thank you for subscribing!</div>
+      </div>
+  </div>
+</footer>
 
-    <!-- Footer -->
-    <footer>
-      <div class="footer-grid">
-          <!-- Company Section -->
-          <div class="footer-section">
-              <h3>Company</h3>
-              <ul>
-                  <li><a href="#">About Us</a></li>
-                  <li><a href="#">The Ordinaire DNA</a></li>
-                  <li><a href="#">Join Us</a></li>
-              </ul>
-              <p>Manufacture information: DECIEM <br> Eastside</p>
-          </div>
-  
-          <!-- Customer Care Section -->
-          <div class="footer-section">
-              <h3>Customer Care</h3>
-              <ul>
-                  <li><a href="#">FAQ</a></li>
-                  <li><a href="#">Disposal Instructions</a></li>
-                  <li><a href="#">Return Policy</a></li>
-                  <li><a href="#">Promotion Terms & Conditions</a></li>
-              </ul>
-          </div>
-  
-          <!-- Quick Links Section -->
-          <div class="footer-section">
-              <h3>Quick Links</h3>
-              <ul>
-                  <li><a href="#">Contact Us</a></li>
-                  <li><a href="#">Track Order</a></li>
-                  <li><a href="#">Sign In</a></li>
-                  <li><a href="#">Store Locator</a></li>
-              </ul>
-          </div>
-  
-          <!-- Our Commitments Section -->
-          <div class="footer-section">
-              <h3>Our Commitments</h3>
-              <ul>
-                  <li><a href="#">Accessibility</a></li>
-                  <li><a href="#">Sustainability</a></li>
-                  <li><a href="#">Change is the Journey</a></li>
-                  <li><a href="#">Everything Is Chemicals</a></li>
-              </ul>
-          </div>
-      </div>
-  <br>
-          <!-- Newsletter Section -->
-          <div class="footer-section">
-              <h3>Be in the know.</h3>
-              <p>Subscribe to receive science-backed tips, access to special offers, and new innovations.</p>
-              <div class="email-input">
-                  <input type="email" placeholder="Email Address">
-                  <button>&rarr;</button>
-              </div>
-              <p class="text-xs">By providing your email address you are agreeing to receive email communications from
-                  DECIEM Inc., its affiliates, brands (The Ordinaire, NIOD, and LooPHA) and/or marketing partners. This can
-                  be changed at any time. Please refer to our <a href="#" class="underline">Privacy Policy</a> and <a
-                      href="#" class="underline">Terms of Use</a> for more details or <a href="#"
-                      class="underline">Contact Us</a>.</p>
-              <div class="social-icons">
-                  <a href="https://www.facebook.com/theordinaire/"><i class="fa-brands fa-facebook-f"></i></a>
-                  <a href="https://www.instagram.com/theordinaire/"><i class="fa-brands fa-instagram"></i></a>
-                  <a href="https://www.youtube.com/playlist?list=PLo6ELSZywkj0CEJb2e7OoMqavti4-MYPK"><i
-                          class="fa-brands fa-youtube"></i></a>
-                  <a href="https://www.tiktok.com/@theordinaire?lang=en"><i class="fa-brands fa-tiktok"></i></a>
-              </div>
-          </div>
-      </div>
-  <hr>
-      <!-- Location Section -->
-      <div class="footer-bottom">
-          <div class="footer-section">
-              <h3>Location</h3>
-              <div class="location">
-                  <span><i class="fa-solid fa-location-dot"></i> KENYA</span>
-                  <a href="#">Change</a>
-              </div>
-              <p class="language">Language <span>EN</span></p>
-          </div>
-      </div>
-  </footer>
-  <script src="script.js"></script>
-    <script>
-      const hamburger = document.querySelector(".hamburger");
-      const navbarLinks = document.querySelector(".navbar-links");
-      hamburger.addEventListener("click", () => {
-        navbarLinks.classList.toggle("active");
+
+<script>
+  document.getElementById('newsletterForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent the form from submitting the traditional way
+
+      // Here you can add your logic to handle the subscription, e.g., sending the email to a server
+      const email = document.getElementById('email').value;
+      console.log('Subscribed email:', email);
+
+      // Show success message
+      document.getElementById('successMessage').style.display = 'block';
+
+      // Optionally, you can clear the input field
+      document.getElementById('email').value = '';
+  });
+
+  document.getElementById('newsletterForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent the form from submitting the traditional way
+
+      // Get the email value
+      const email = document.getElementById('email').value;
+
+      // Validate the email (optional)
+      if (email && email.includes('@')) {
+          // Log the email to the console (for testing)
+          console.log('Subscribed email:', email);
+
+          // Show the success message
+          const successMessage = document.getElementById('successMessage');
+          successMessage.style.display = 'block';
+
+          // Clear the input field
+          document.getElementById('email').value = '';
+
+          // Hide the success message after 2 seconds (2000 milliseconds)
+          setTimeout(function() {
+              successMessage.style.display = 'none';
+          }, 2000); // 2000 milliseconds = 2 seconds
+      } 
+  });
+</script>
+    
+  <div class="footer-bottom">
+      <p>LOCATION <br>
+          <i class="fa-solid fa-location-dot"></i> Nairobi <br>
+          language EN
+      </p>
+  </div>
+</footer>
+<script>// Check if user is logged in and handle user icon click
+  const userIcon = document.getElementById("user-icon");
+  if (userIcon) {
+      userIcon.addEventListener("click", function (e) {
+          e.preventDefault(); // Prevent default link behavior
+
+          const loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"));
+          if (loggedInUser) {
+              // Redirect to profile page if logged in
+              window.location.href = "profile.html";
+          } else {
+              // Redirect to registration page if not logged in
+              window.location.href = "register.html";
+          }
       });
-    </script>
+  }
+  </script>
   </body>
 </html>
