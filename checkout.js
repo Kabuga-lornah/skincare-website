@@ -1,84 +1,110 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize cart from localStorage
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    console.log('Cart on Checkout Page:', cart); // Debugging: Check cart state
+document.addEventListener('DOMContentLoaded', function () {
+    const checkoutButton = document.getElementById('checkout-button');
+    const confirmOrderButton = document.getElementById('confirm-order-button');
 
-    // Function to update the checkout UI
-    function updateCheckoutUI() {
-        const checkoutItems = document.getElementById('checkout-items');
-        const totalPriceElement = document.getElementById('total-price');
+    // Function to display cart items and total price in the review section
+    function displayReviewOrder() {
+        console.log('Displaying review order...'); // Debugging
+        const reviewItemsContainer = document.getElementById('review-items');
+        const reviewTotalPriceContainer = document.getElementById('review-total-price');
 
-        console.log('Updating Checkout UI. Current Cart:', cart); // Debugging: Check cart before updating UI
+        // Clear previous content
+        if (reviewItemsContainer) reviewItemsContainer.innerHTML = '';
+        if (reviewTotalPriceContainer) reviewTotalPriceContainer.innerHTML = '';
 
-        // Clear existing items
-        checkoutItems.innerHTML = '';
+        // Get cart items from localStorage
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        console.log('Cart data:', cart); // Debugging
 
-        // Calculate total price and display cart items
         let totalPrice = 0;
-        if (cart.length === 0) {
-            checkoutItems.innerHTML = '<p class="empty-cart-message">Your cart is empty.</p>';
-        } else {
-            cart.forEach((item, index) => {
-                const itemTotal = item.price * item.quantity;
-                totalPrice += itemTotal;
 
-                const itemElement = document.createElement('div');
-                itemElement.className = 'checkout-item';
-                itemElement.innerHTML = `
-                    <img src="${item.image}" alt="${item.name}" />
-                    <div class="checkout-item-details">
-                        <h4>${item.name}</h4>
-                        <p>Price: $${item.price.toFixed(2)}</p>
-                        <p>Quantity: ${item.quantity}</p>
-                        <p>Total: $${itemTotal.toFixed(2)}</p>
-                    </div>
-                    <span class="remove-item" onclick="removeFromCart(${index})">&times;</span>
-                `;
-                checkoutItems.appendChild(itemElement);
-            });
+        // Display each cart item
+        cart.forEach(item => {
+            const itemElement = document.createElement('div');
+            itemElement.className = 'checkout-item';
+            itemElement.innerHTML = `
+                <img src="${item.image}" alt="${item.name}">
+                <div class="checkout-item-details">
+                    <h4>${item.name}</h4>
+                    <p>Quantity: ${item.quantity}</p>
+                    <p>Price: $${(item.price * item.quantity).toFixed(2)}</p>
+                </div>
+            `;
+            if (reviewItemsContainer) reviewItemsContainer.appendChild(itemElement);
+            totalPrice += item.price * item.quantity;
+        });
+
+        // Display total price
+        if (reviewTotalPriceContainer) {
+            reviewTotalPriceContainer.innerHTML = `<p>Total: $${totalPrice.toFixed(2)}</p>`;
         }
-
-        // Update total price
-        totalPriceElement.textContent = `Total: $${totalPrice.toFixed(2)}`;
     }
 
-    // Function to remove item from cart
-    window.removeFromCart = function (index) {
-        console.log('Removing item at index:', index); // Debugging
-        cart.splice(index, 1); // Remove item from cart
-        localStorage.setItem('cart', JSON.stringify(cart)); // Update localStorage
-        updateCheckoutUI(); // Refresh checkout UI
-        showNotification('Item removed from cart!'); // Notify user
-    }
+    // Function to clear the cart
+    function clearCart() {
+        localStorage.removeItem('cart');
 
-    // Function to show notification
-    function showNotification(message) {
-        const notification = document.createElement('div');
-        notification.className = 'notification';
-        notification.textContent = message;
-        document.body.appendChild(notification);
-        setTimeout(() => {
-            notification.remove();
-        }, 2000); // Remove notification after 2 seconds
-    }
-
-    // Function to handle checkout
-    document.getElementById('checkout-button').addEventListener('click', () => {
-        if (cart.length === 0) {
-            alert('Your cart is empty. Please add items before proceeding to checkout.');
-            return;
+        // Update the UI to reflect the empty cart
+        const checkoutItemsContainer = document.getElementById('checkout-items');
+        if (checkoutItemsContainer) {
+            checkoutItemsContainer.innerHTML = '<div class="empty-cart-message">Your cart is empty.</div>';
         }
 
-        const loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
-        if (!loggedInUser) {
-            localStorage.setItem('pendingCheckoutCart', JSON.stringify(cart)); // Save cart for later
-            alert('You must sign up to proceed to checkout.');
-            window.location.href = 'register.html'; // Redirect to registration page
-        } else {
-            window.location.href = 'checkout.html'; // Redirect to checkout page
+        const totalPriceElement = document.getElementById('total-price');
+        if (totalPriceElement) {
+            totalPriceElement.textContent = 'Total: $0.00';
         }
-    });
 
-    // Update checkout UI on page load
-    updateCheckoutUI();
+        // Update the cart badge if it exists
+        const cartBadge = document.getElementById('cart-badge');
+        if (cartBadge) {
+            cartBadge.textContent = '0';
+        }
+
+        // Clear the review section
+        const reviewItemsContainer = document.getElementById('review-items');
+        const reviewTotalPriceContainer = document.getElementById('review-total-price');
+        if (reviewItemsContainer) reviewItemsContainer.innerHTML = '';
+        if (reviewTotalPriceContainer) reviewTotalPriceContainer.innerHTML = '';
+    }
+
+    // Event listener for the "Proceed to payment" button
+    if (checkoutButton) {
+        checkoutButton.addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+
+            // Display the review order section
+            const orderReviewDropdown = document.getElementById('order-review');
+            if (orderReviewDropdown) {
+                console.log('Displaying order review dropdown'); // Debugging
+                orderReviewDropdown.style.display = 'block';
+                displayReviewOrder();
+            } else {
+                console.error('orderReviewDropdown not found!');
+            }
+        });
+    } else {
+        console.error('checkoutButton not found!');
+    }
+
+    // Event listener for the "Confirm Order" button
+    if (confirmOrderButton) {
+        confirmOrderButton.addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+
+            // Display the thank you message
+            alert('Thank you for shopping with us! Your items will arrive in 3-4 business days.');
+
+            // Clear the cart
+            clearCart();
+        });
+    } else {
+        console.error('confirmOrderButton not found!');
+    }
+
+    // Function to toggle dropdowns
+    function toggleDropdown(id) {
+        const dropdown = document.getElementById(id);
+        dropdown.parentElement.classList.toggle('active');
+    }
 });

@@ -47,6 +47,40 @@
     border-bottom: 2px solid black; 
 }
 
+.user-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .user-dropdown:hover .user-menu {
+    display: block;
+  }
+  .user-icon {
+    text-decoration: none;
+    color: #333;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .user-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    min-width: 150px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  .user-menu a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+  }
+  .user-menu a:hover {
+    background-color: #F1F1F1;
+  }
+  
 .icon {
     display: flex;
     gap: 20px;
@@ -230,6 +264,7 @@
     flex: 1;
     min-width: 200px;
     margin: 10px 20px;
+    background-color: white;
   }
   
   .footer-section h4 {
@@ -249,7 +284,7 @@
   
   .footer-section ul li a {
     text-decoration: none;
-    color: #555;
+    color: black;
     transition: color 0.3s ease;
   }
   

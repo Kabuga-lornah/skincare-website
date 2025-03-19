@@ -7,7 +7,7 @@
     <title>Shop</title>
     <style>
         body {
-            background-color: lightgray;
+            background-color: white;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -15,7 +15,9 @@
             margin: 0;
             padding: 0;
         }
-
+        .drop{
+            background-color: lightgray;
+        }
         .container {
             display: flex;
             justify-content: center;
@@ -38,6 +40,7 @@
 
         .two {
             width: 80%;
+           
         }
 
         .box {
@@ -253,46 +256,57 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <div class="logo">
-                <p>The <br><span style="font-family: raleway, serif; font-size: larger;"> <b>Ordinaire</b></span></p>
-            </div>
-
-            <ul class="navbar-links">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="routines&tips.html">Routines & Tips</a></li>
-                <li><a href="community&testimonials.html">Testimonials</a></li>
-                <li><a href="About.html">About Us</a></li>
-                <li><a href="ContactUs.html">Contact Us</a></li>
-                <!-- Search Bar -->
-                <li class="search-bar">
-                    <input type="text" id="search-input" placeholder="Search products..." />
-                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
-                </li>
-            </ul>
-
-            <div class="icon">
-                <!-- Shop Link -->
-                <a href="shop.html"><i class="fa-solid fa-store"></i></a>
-                <!-- Cart Icon with Badge -->
-                <div class="cart-icon" onclick="toggleCart()">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span class="cart-badge" id="cart-badge">0</span>
-                </div>
-                <!-- User Icon -->
-                <a href="register.html"><i class="fa-regular fa-user"></i></a>
-            </div>
-
-            <div class="hamburger">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-            </div>
+<nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <p>The <br /><span style="font-family: raleway, serif; font-size: larger"> <b>Ordinaire</b></span></p>
+      </div>
+  
+      <ul class="navbar-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="routines&tips.html">Routines & Tips</a></li>
+        <li><a href="community&testimonials.html">Testimonials</a></li>
+        <li><a href="About.html">About Us</a></li>
+        <li><a href="ContactUs.html">Contact Us</a></li>
+        <!-- Search Bar -->
+        <li class="search-bar">
+          <input type="text" id="search-input" placeholder="Search products..." />
+          <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </li>
+      </ul>
+  
+      <div class="icon">
+        <!-- Shop Link -->
+        <a href="shop.html"><i class="fa-solid fa-store"></i></a>
+        <!-- Cart Icon with Badge -->
+        <div class="cart-icon" onclick="toggleCart()">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-badge" id="cart-badge">0</span>
         </div>
-    </nav>
-
-
+  
+        <!-- User Dropdown -->
+        <div class="user-dropdown">
+          <a href="#" class="user-icon" onclick="toggleUserMenu()">
+            <i class="fa-regular fa-user"></i>
+          </a>
+          <div class="user-menu" id="userMenu">
+            <a href="profile.html">Profile</a>
+            <a href="register.html">Login</a>
+           
+          </div>
+        </div>
+      </div>
+  
+      <!-- Hamburger Menu -->
+      <div class="hamburger" onclick="toggleMobileMenu()">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+  </nav>
+ 
+  <!-- End of Navbar -->
 
     <!-- Cart Dropdown -->
     <div class="cart-dropdown" id="cart-dropdown" style="display: none;">
@@ -303,8 +317,9 @@
         <p class="empty-cart-message" id="empty-cart-message">Your cart is empty.</p>
         <button class="checkout-button" onclick="checkout()">Checkout</button>
     </div>
-    <hr>
+   
     <!-- end of navbar -->
+    <div class="drop">
     <div class="container">
         <div class="shop">
             <!-- Filters Section -->
@@ -551,6 +566,7 @@
 
     <script src="cart.js"></script>
     <script src="script.js"></script>
+    <script src="checkout.js"></script>
     <script>
         // Function to filter products based on all filters
         function filterProducts() {
@@ -687,7 +703,7 @@
             checkbox.addEventListener('change', filterProducts);
         });
     </script>
-
+    </div>
     <footer class="site-footer">
         <div class="footer-content">
             <div class="footer-section">
@@ -717,10 +733,9 @@
                 <div id="successMessage" class="success-message" style="display: none;">Thank you for subscribing!</div>
             </div>
         </div>
+        
     </footer>
-
-
-    <script>
+     <script>
         document.getElementById('newsletterForm').addEventListener('submit', function (event) {
             event.preventDefault();
 
@@ -766,23 +781,79 @@
         </p>
     </div>
     </footer>
-    <script>// Check if user is logged in and handle user icon click
-        const userIcon = document.getElementById("user-icon");
-        if (userIcon) {
-            userIcon.addEventListener("click", function (e) {
-                e.preventDefault(); // Prevent default link behavior
+    <script>
+          // Store User Data in localStorage
+      const users = JSON.parse(localStorage.getItem("users")) || [];
 
-                const loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"));
-                if (loggedInUser) {
-                    // Redirect to profile page if logged in
-                    window.location.href = "profile.html";
-                } else {
-                    // Redirect to registration page if not logged in
-                    window.location.href = "register.html";
-                }
-            });
-        }
-    </script>
+// Sign Up Form Submission
+const signUpForm = document.getElementById("registerForm");
+signUpForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const confirmPassword = document.getElementById("confirmPassword").value;
+
+  // Check if passwords match
+  if (password !== confirmPassword) {
+    document.getElementById("passwordError").textContent =
+      "Passwords do not match!";
+    return;
+  }
+
+  // Check if user already exists
+  const userExists = users.some((user) => user.email === email);
+  if (userExists) {
+    document.getElementById("passwordError").textContent =
+      "User already exists!";
+    return;
+  }
+
+  // Create new user
+  const newUser = { name, email, password };
+  users.push(newUser);
+  localStorage.setItem("users", JSON.stringify(users));
+
+  // Show success message
+  document.getElementById("successMessage").textContent =
+    "Registration successful!";
+  signUpForm.reset();
+});
+
+// Login Form Submission
+const loginFormElement = document.getElementById("loginForm");
+loginFormElement.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const email = document.getElementById("loginEmail").value;
+  const password = document.getElementById("loginPassword").value;
+
+  // Find user in localStorage
+  const user = users.find(
+    (user) => user.email === email && user.password === password
+  );
+
+  if (user) {
+    // Store logged-in user in sessionStorage
+    sessionStorage.setItem("loggedInUser", JSON.stringify(user));
+    alert("Login successful! Redirecting to shop...");
+    window.location.href = "shop.html"; // Redirect to shop page
+  } else {
+    alert("Invalid email or password!");
+  }
+}); 
+// Logout functionality
+const logoutButton = document.getElementById('logoutButton');
+if (logoutButton) {
+logoutButton.addEventListener('click', function () {
+  sessionStorage.removeItem('loggedInUser'); // Clear logged-in user
+  window.location.href = 'register.html'; // Redirect to register page
+});
+}
+</script>
+  
+   
 </body>
 
 </html>

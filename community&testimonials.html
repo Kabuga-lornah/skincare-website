@@ -207,49 +207,71 @@
 </head>
 
 <body>
-    <!-- navbar -->
+   
     <!-- Navbar -->
 <nav class="navbar">
     <div class="navbar-container">
-        <div class="logo">
-            <p>The <br><span style="font-family: raleway, serif; font-size: larger;"> <b>Ordinaire</b></span></p>
+      <div class="logo">
+        <p>The <br /><span style="font-family: raleway, serif; font-size: larger"> <b>Ordinaire</b></span></p>
+      </div>
+  
+      <ul class="navbar-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="routines&tips.html">Routines & Tips</a></li>
+        <li><a href="community&testimonials.html">Testimonials</a></li>
+        <li><a href="About.html">About Us</a></li>
+        <li><a href="ContactUs.html">Contact Us</a></li>
+        <!-- Search Bar -->
+        <li class="search-bar">
+          <input type="text" id="search-input" placeholder="Search products..." />
+          <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </li>
+      </ul>
+  
+      <div class="icon">
+        <!-- Shop Link -->
+        <a href="shop.html"><i class="fa-solid fa-store"></i></a>
+        <!-- Cart Icon with Badge -->
+        <div class="cart-icon" onclick="toggleCart()">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-badge" id="cart-badge">0</span>
         </div>
-
-        <ul class="navbar-links">
-            <li><a href="home.html">Home</a></li>
-            <li><a href="routines&tips.html">Routines & Tips</a></li>
-            <li><a href="community&testimonials.html">Testimonials</a></li>
-            <li><a href="About.html">About Us</a></li>
-            <li><a href="ContactUs.html">Contact Us</a></li>
-            <!-- Search Bar -->
-            <li class="search-bar">
-                <input type="text" id="search-input" placeholder="Search products..." />
-                <button><i class="fa-solid fa-magnifying-glass"></i></button>
-            </li>
-        </ul>
-
-        <div class="icon">
-            <!-- Shop Link -->
-            <a href="shop.html"><i class="fa-solid fa-store"></i></a>
-            <!-- Cart Icon with Badge -->
-            <div class="cart-icon" onclick="toggleCart()">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span class="cart-badge" id="cart-badge">0</span>
-            </div>
-            <!-- User Icon -->
-            <a href="register.html"><i class="fa-regular fa-user"></i></a>
+  
+        <!-- User Dropdown -->
+        <div class="user-dropdown">
+          <a href="#" class="user-icon" onclick="toggleUserMenu()">
+            <i class="fa-regular fa-user"></i>
+          </a>
+          <div class="user-menu" id="userMenu">
+            <a href="profile.html">Profile</a>
+            <a href="register.html">Login</a>
+           
+          </div>
         </div>
-
-        <div class="hamburger">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-        </div>
+      </div>
+  
+      <!-- Hamburger Menu -->
+      <div class="hamburger" onclick="toggleMobileMenu()">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
     </div>
-</nav>
-    <hr>
-    <!-- end of navbar -->
+  </nav>
 
+  <!-- End of Navbar -->
+
+    <!-- Cart Dropdown -->
+    <div class="cart-dropdown" id="cart-dropdown" style="display: none;">
+        <h3>Your Cart</h3>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be dynamically added here -->
+        </div>
+        <p class="empty-cart-message" id="empty-cart-message">Your cart is empty.</p>
+        <button class="checkout-button" onclick="checkout()">Checkout</button>
+    </div>
+ 
+    <!-- end of navbar -->
    <!-- Testimonials Section -->
 <div class="testimonials-section">
     <h1>Testimonials</h1>
@@ -594,22 +616,48 @@
         </p>
     </div>
 </footer>
-<script>// Check if user is logged in and handle user icon click
-    const userIcon = document.getElementById("user-icon");
-    if (userIcon) {
-        userIcon.addEventListener("click", function (e) {
-            e.preventDefault(); // Prevent default link behavior
+<script src="cart.js"></script>
+<script src="checkout.js"></script>
+<script src="script.js"></script>
+<script>
+    document.getElementById('newsletterForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting the traditional way
 
-            const loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"));
-            if (loggedInUser) {
-                // Redirect to profile page if logged in
-                window.location.href = "profile.html";
-            } else {
-                // Redirect to registration page if not logged in
-                window.location.href = "register.html";
-            }
-        });
-    }
-    </script>
+        // Here you can add your logic to handle the subscription, e.g., sending the email to a server
+        const email = document.getElementById('email').value;
+        console.log('Subscribed email:', email);
+
+        // Show success message
+        document.getElementById('successMessage').style.display = 'block';
+
+        // Optionally, you can clear the input field
+        document.getElementById('email').value = '';
+    });
+
+    document.getElementById('newsletterForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting the traditional way
+
+        // Get the email value
+        const email = document.getElementById('email').value;
+
+        // Validate the email (optional)
+        if (email && email.includes('@')) {
+            // Log the email to the console (for testing)
+            console.log('Subscribed email:', email);
+
+            // Show the success message
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+
+            // Clear the input field
+            document.getElementById('email').value = '';
+
+            // Hide the success message after 2 seconds (2000 milliseconds)
+            setTimeout(function() {
+                successMessage.style.display = 'none';
+            }, 2000); // 2000 milliseconds = 2 seconds
+        } 
+    });
+</script>
 
 </html>

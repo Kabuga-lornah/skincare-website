@@ -4,227 +4,263 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
+    <link rel="stylesheet" href="navbar.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <style>
-       body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-}
-
-h1 {
-    text-align: center;
-}
-
-.checkout-container {
-    display: flex;
-    justify-content: space-between;
-    /* gap: 20px;  */
-    grid-template-columns: repeat 2(1fr);
-}
-
-.checkout-items {
-   flex: 0.8;
-}
-
-.checkout-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 10px;
-}
-
-.checkout-item img {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-    border-radius: 5px;
-}
-
-.checkout-item-details {
-    flex: 1;
-}
-
-.checkout-item-details h4 {
-    margin: 0;
-    font-size: 16px;
-}
-
-.checkout-item-details p {
-    margin: 5px 0;
-    font-size: 14px;
-    color: #555;
-}
-
-.empty-cart-message {
-    text-align: center;
-    color: #666;
-    font-size: 18px;
-}
-
-#total-price {
-    text-align: right;
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 20px;
-}
-
-#checkout-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 20px;
-}
-
-#checkout-button:hover {
-    background-color: #555;
-}
-
-.checkout-sidebar {
-    width: 300px;
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.dropdown {
-    margin-bottom: 15px;
-}
-
-.dropdown-header {
-    padding: 12px;
-    background-color: #333;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.dropdown-header:hover {
-    background-color: #555;
-}
-
-.dropdown-content {
-    display: none;
-    padding: 15px;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 0 0 5px 5px;
-    margin-top: 5px;
-}
-
-.dropdown.active .dropdown-content {
-    display: block;
-}
-
-.dropdown-content form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.dropdown-content label {
-    font-size: 14px;
-    font-weight: bold;
-    color: #333;
-}
-
-.dropdown-content input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-.dropdown-content button {
-    padding: 10px;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.dropdown-content button:hover {
-    background-color: #555;
-}
+        body {
+            font-family: 'Raleway', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .checkout-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .checkout-item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+        .checkout-item-details {
+            flex: 1;
+        }
+        .checkout-item-details h4 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+        .checkout-item-details p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #666;
+        }
+        .total-price {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: right;
+            margin-top: 20px;
+            color: #333;
+        }
+        .proceed-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+        .proceed-button:hover {
+            background-color: #555;
+        }
+        .thank-you-message {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+            padding: 15px;
+            background-color: #e0f7fa;
+            border-radius: 5px;
+            border: 1px solid #80deea;
+        }
     </style>
 </head>
 <body>
-    <h1>Checkout</h1>
-    <div class="checkout-container">
-        <div class="checkout-items">
-            <div id="checkout-items">
-                <!-- Cart items will be dynamically added here -->
-            </div>
-            <div id="total-price">
-                <!-- Total price will be displayed here -->
-            </div>
-            <button id="checkout-button">Proceed to payment</button>
+    <!-- Navbar -->
+<nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <p>The <br /><span style="font-family: raleway, serif; font-size: larger"> <b>Ordinaire</b></span></p>
+      </div>
+  
+      <ul class="navbar-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="routines&tips.html">Routines & Tips</a></li>
+        <li><a href="community&testimonials.html">Testimonials</a></li>
+        <li><a href="About.html">About Us</a></li>
+        <li><a href="ContactUs.html">Contact Us</a></li>
+        <!-- Search Bar -->
+        <li class="search-bar">
+          <input type="text" id="search-input" placeholder="Search products..." />
+          <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </li>
+      </ul>
+  
+      <div class="icon">
+        <!-- Shop Link -->
+        <a href="shop.html"><i class="fa-solid fa-store"></i></a>
+        <!-- Cart Icon with Badge -->
+        <div class="cart-icon" onclick="toggleCart()">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-badge" id="cart-badge">0</span>
         </div>
-        <div class="checkout-sidebar">
-            <div class="dropdown">
-                <div class="dropdown-header" onclick="toggleDropdown('shipping-details')">
-                    Shipping Details
-                </div>
-                <div id="shipping-details" class="dropdown-content">
-                    <form>
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" required>
-                        <label for="address">Address:</label>
-                        <input type="text" id="address" name="address" required>
-                        <label for="city">City:</label>
-                        <input type="text" id="city" name="city" required>
-                        <label for="zip">Zip Code:</label>
-                        <input type="text" id="zip" name="zip" required>
-                        <button type="submit">Save</button>
-                    </form>
-                </div>
-            </div>
-            <div class="dropdown">
-                <div class="dropdown-header" onclick="toggleDropdown('payment-methods')">
-                    Payment Methods
-                </div>
-                <div id="payment-methods" class="dropdown-content">
-                    <form>
-                        <label for="card-number">Card Number:</label>
-                        <input type="text" id="card-number" name="card-number" required>
-                        <label for="expiry">Expiry Date:</label>
-                        <input type="text" id="expiry" name="expiry" required>
-                        <label for="cvv">CVV:</label>
-                        <input type="text" id="cvv" name="cvv" required>
-                        <button type="submit">Save</button>
-                    </form>
-                </div>
-            </div>
-            <div class="dropdown">
-                <div class="dropdown-header" onclick="toggleDropdown('order-review')">
-                    Review Order
-                </div>
-                <div id="order-review" class="dropdown-content">
-            
-                </div>
-            </div>
+  
+        <!-- User Dropdown -->
+        <div class="user-dropdown">
+          <a href="#" class="user-icon" onclick="toggleUserMenu()">
+            <i class="fa-regular fa-user"></i>
+          </a>
+          <div class="user-menu" id="userMenu">
+            <a href="profile.html">Profile</a>
+            <a href="register.html">Login</a>
+           
+          </div>
+        </div>
+      </div>
+  
+      <!-- Hamburger Menu -->
+      <div class="hamburger" onclick="toggleMobileMenu()">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- End of Navbar -->
+
+    <!-- Cart Dropdown -->
+    <div class="cart-dropdown" id="cart-dropdown" style="display: none;">
+        <h3>Your Cart</h3>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be dynamically added here -->
+        </div>
+        <p class="empty-cart-message" id="empty-cart-message">Your cart is empty.</p>
+        <button class="checkout-button" onclick="checkout()">Checkout</button>
+    </div>
+  
+    <!-- end of navbar -->
+    <div class="container">
+        <h1>Checkout</h1>
+        <div id="checkout-items">
+            <!-- Cart items will be dynamically added here -->
+        </div>
+        <div class="total-price" id="total-price">
+            <!-- Total price will be dynamically added here -->
+        </div>
+        <button class="proceed-button" id="proceed-button">Proceed to Payment</button>
+        <div class="thank-you-message" id="thank-you-message">
+            Thank you for your purchase! Your items will arrive in 3-4 business days.
         </div>
     </div>
-
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="About.html">About Us</a></li>
+                    <li><a href="profile.html">Shop</a></li>
+                    <li><a href="register.html">Login</a></li>
+                    <li><a href="ContactUs.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://pinterest.com" target="_blank"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Newsletter</h4>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+                <div id="successMessage" class="success-message" style="display: none;">Thank you for subscribing!</div>
+            </div>
+        </div>
+    </footer>
+          
+        <div class="footer-bottom">
+            <p>LOCATION <br>
+                <i class="fa-solid fa-location-dot"></i> Nairobi <br>
+                language EN
+            </p>
+        </div>
+    </footer>
     <script>
-        function toggleDropdown(id) {
-            const dropdown = document.getElementById(id);
-            dropdown.parentElement.classList.toggle('active');
-        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const checkoutItemsContainer = document.getElementById('checkout-items');
+            const totalPriceContainer = document.getElementById('total-price');
+            const proceedButton = document.getElementById('proceed-button');
+            const thankYouMessage = document.getElementById('thank-you-message');
+
+            let totalPrice = 0;
+
+            // Display cart items
+            if (cart.length === 0) {
+                checkoutItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+                proceedButton.style.display = 'none'; // Hide the button if the cart is empty
+            } else {
+                cart.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'checkout-item';
+                    itemElement.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="checkout-item-details">
+                            <h4>${item.name}</h4>
+                            <p>Quantity: ${item.quantity}</p>
+                            <p>Price: $${(item.price * item.quantity).toFixed(2)}</p>
+                        </div>
+                    `;
+                    checkoutItemsContainer.appendChild(itemElement);
+                    totalPrice += item.price * item.quantity;
+                });
+
+                totalPriceContainer.textContent = `Total: $${totalPrice.toFixed(2)}`;
+            }
+
+            // Handle "Proceed to Payment" button click
+            proceedButton.addEventListener('click', () => {
+                // Show thank-you message
+                thankYouMessage.style.display = 'block';
+
+                // Clear the cart
+                localStorage.removeItem('cart');
+
+                // Disable the button to prevent multiple clicks
+                proceedButton.disabled = true;
+                proceedButton.textContent = 'Payment Completed';
+
+                // Clear the cart items and total price display
+                checkoutItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+                totalPriceContainer.textContent = 'Total: $0.00';
+            });
+        });
     </script>
-    <script src="checkout.js"></script>
-    <script src="cart.js"></script>
 </body>
 </html>

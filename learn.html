@@ -14,9 +14,9 @@
 
       .learn {
         background-image: url(images/learn\ more.jpeg);
-        background-size: cover; 
-        background-position: center; 
-        background-repeat: no-repeat; 
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         display: none;
         margin: 0 auto;
         max-width: 600px;
@@ -99,28 +99,27 @@
         }
       }
     </style>
+    <link rel="stylesheet" href="navbar.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <link rel="stylesheet" href="navbar.css" />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet"
-  />
   <body>
-    <!-- navbar -->
     <!-- Navbar -->
-<nav class="navbar">
-  <div class="navbar-container">
-      <div class="logo">
-          <p>The <br><span style="font-family: raleway, serif; font-size: larger;"> <b>Ordinaire</b></span></p>
-      </div>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <div class="logo">
+          <p>The <br /><span style="font-family: raleway, serif; font-size: larger"> <b>Ordinaire</b></span></p>
+        </div>
 
-      <ul class="navbar-links">
+        <ul class="navbar-links">
           <li><a href="home.html">Home</a></li>
           <li><a href="routines&tips.html">Routines & Tips</a></li>
           <li><a href="community&testimonials.html">Testimonials</a></li>
@@ -128,33 +127,53 @@
           <li><a href="ContactUs.html">Contact Us</a></li>
           <!-- Search Bar -->
           <li class="search-bar">
-              <input type="text" id="search-input" placeholder="Search products..." />
-              <button><i class="fa-solid fa-magnifying-glass"></i></button>
+            <input type="text" id="search-input" placeholder="Search products..." />
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
           </li>
-      </ul>
+        </ul>
 
-      <div class="icon">
+        <div class="icon">
           <!-- Shop Link -->
           <a href="shop.html"><i class="fa-solid fa-store"></i></a>
           <!-- Cart Icon with Badge -->
           <div class="cart-icon" onclick="toggleCart()">
-              <i class="fa-solid fa-cart-shopping"></i>
-              <span class="cart-badge" id="cart-badge">0</span>
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="cart-badge" id="cart-badge">0</span>
           </div>
-          <!-- User Icon -->
-          <a href="register.html"><i class="fa-regular fa-user"></i></a>
-      </div>
 
-      <div class="hamburger">
+          <!-- User Dropdown -->
+          <div class="user-dropdown">
+            <a href="#" class="user-icon" onclick="toggleUserMenu()">
+              <i class="fa-regular fa-user"></i>
+            </a>
+            <div class="user-menu" id="userMenu">
+              <a href="profile.html">Profile</a>
+              <a href="register.html">Login</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hamburger Menu -->
+        <div class="hamburger" onclick="toggleMobileMenu()">
           <div class="line"></div>
           <div class="line"></div>
           <div class="line"></div>
+        </div>
       </div>
-  </div>
-</nav>
-    <hr />
-    <!-- end of navbar -->
+    </nav>
+
+    <!-- Cart Dropdown -->
+    <div class="cart-dropdown" id="cart-dropdown" style="display: none;">
+      <h3>Your Cart</h3>
+      <div class="cart-items" id="cart-items">
+        <!-- Cart items will be dynamically added here -->
+      </div>
+      <p class="empty-cart-message" id="empty-cart-message">Your cart is empty.</p>
+      <button class="checkout-button" onclick="checkout()">Checkout</button>
+    </div>
+
     <!-- Product 1 -->
+     <br><br>
     <div id="product1" class="learn">
       <div>
         <img src="images/rdn-niacinamide-10pct-zinc-1pct-30ml.webp" alt="nia" />
@@ -183,17 +202,22 @@
           and instantly boosts skin radiance.
         </p>
 
-        <button class="add-to-cart" id="add-to-cart-1">Add to Cart</button>
+        <button
+          class="add-to-cart"
+          data-name="Niacinamide 10% + Zinc 1%"
+          data-price="7.20"
+          data-image="images/rdn-niacinamide-10pct-zinc-1pct-30ml.webp"
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
 
     <!-- Product 2 -->
+  
     <div id="product2" class="learn">
       <div>
-        <img
-          src="images/ord-hyaluronic-acid-2pct-B5-30ml-Clr-Acu.webp"
-          alt="hy"
-        />
+        <img src="images/ord-hyaluronic-acid-2pct-B5-30ml-Clr-Acu.webp" alt="hy" />
       </div>
       <div>
         <h1>Hyaluronic Acid 2% + B5 (with Ceramides)</h1>
@@ -215,17 +239,22 @@
           acid, pro-vitamin B5 and ceramides.
         </p>
 
-        <button class="add-to-cart" id="add-to-cart-2">Add to Cart</button>
+        <button
+          class="add-to-cart"
+          data-name="Hyaluronic Acid 2% + B5 (with Ceramides)"
+          data-price="11.90"
+          data-image="images/ord-hyaluronic-acid-2pct-B5-30ml-Clr-Acu.webp"
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
 
     <!-- Product 3 -->
+
     <div id="product3" class="learn">
       <div>
-        <img
-          src="images/rdn-natural-moisturizing-factors-ha-30ml.webp"
-          alt="na"
-        />
+        <img src="images/rdn-natural-moisturizing-factors-ha-30ml.webp" alt="na" />
       </div>
       <div>
         <h1>Natural Moisturizing Factors + PhytoCeramides</h1>
@@ -252,11 +281,19 @@
           *Clinical testing on 30 people after single application.
         </p>
 
-        <button class="add-to-cart" id="add-to-cart-3">Add to Cart</button>
+        <button
+          class="add-to-cart"
+          data-name="Natural Moisturizing Factors + PhytoCeramides"
+          data-price="13.00"
+          data-image="images/rdn-natural-moisturizing-factors-ha-30ml.webp"
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
 
     <!-- Product 4 -->
+   
     <div id="product4" class="learn">
       <div>
         <img src="images/ord-glyc-acid-7pct-100ml-Aug-UPC.webp" alt="gly" />
@@ -291,17 +328,22 @@
           acidity.
         </p>
 
-        <button class="add-to-cart" id="add-to-cart-4">Add to Cart</button>
+        <button
+          class="add-to-cart"
+          data-name="Glycolic Acid 7% Exfoliating Toner"
+          data-price="10.40"
+          data-image="images/ord-glyc-acid-7pct-100ml-Aug-UPC.webp"
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
 
     <!-- Product 5 -->
+ 
     <div id="product5" class="learn">
       <div>
-        <img
-          src="images/rdn-natural-moisturizing-factors-ha-30ml.webp"
-          alt="na"
-        />
+        <img src="images/rdn-natural-moisturizing-factors-ha-30ml.webp" alt="na" />
       </div>
       <div>
         <h1>Natural Moisturizing Factors + HA</h1>
@@ -336,11 +378,19 @@
           any skincare regimen for enhanced hydration.
         </p>
 
-        <button class="add-to-cart" id="add-to-cart-5">Add to Cart</button>
+        <button
+          class="add-to-cart"
+          data-name="Natural Moisturizing Factors + HA"
+          data-price="8.00"
+          data-image="images/rdn-natural-moisturizing-factors-ha-30ml.webp"
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
 
     <!-- Product 6 -->
+   
     <div id="product6" class="learn">
       <div>
         <img src="images/20.webp" alt="na" />
@@ -367,11 +417,19 @@
           other skincare products.
         </p>
 
-        <button class="add-to-cart" id="add-to-cart-6">Add to Cart</button>
+        <button
+          class="add-to-cart"
+          data-name="Squalane Cleanser"
+          data-price="25.20"
+          data-image="images/20.webp"
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
 
     <!-- Product 7 -->
+   
     <div id="product7" class="learn">
       <div>
         <img src="images/21.webp" alt="gly" />
@@ -394,11 +452,19 @@
           non-stripping to respect the skin's natural pH.
         </p>
 
-        <button class="add-to-cart" id="add-to-cart-7">Add to Cart</button>
+        <button
+          class="add-to-cart"
+          data-name="Glycolipid Cream Cleanser"
+          data-price="15.00"
+          data-image="images/21.webp"
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
 
     <!-- Product 8 -->
+   
     <div id="product8" class="learn">
       <div>
         <img src="images/22.webp" alt="multi" />
@@ -418,11 +484,19 @@
           Diaminobutyroyl Benzylamide Diacetate, Caffeine
         </p>
 
-        <button class="add-to-cart" id="add-to-cart-8">Add to Cart</button>
+        <button
+          class="add-to-cart"
+          data-name="Multi-Peptide Eye Serum"
+          data-price="30.00"
+          data-image="images/22.webp"
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
 
     <!-- Product 9 -->
+ 
     <div id="product9" class="learn">
       <div>
         <img src="images/23.webp" alt="23" />
@@ -453,11 +527,19 @@
           feet, improves skin elasticity and enhances firmness.
         </p>
 
-        <button class="add-to-cart" id="add-to-cart-9">Add to Cart</button>
+        <button
+          class="add-to-cart"
+          data-name="Multi-Peptide + HA Serum"
+          data-price="23.90"
+          data-image="images/23.webp"
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
 
     <!-- Product 10 -->
+
     <div id="product10" class="learn">
       <div>
         <img src="images/24.webp" alt="24" />
@@ -493,11 +575,19 @@
           healthier-looking skin.
         </p>
 
-        <button class="add-to-cart" id="add-to-cart-10">Add to Cart</button>
+        <button
+          class="add-to-cart"
+          data-name="Multi-Peptide + Copper Peptides 1% Serum"
+          data-price="138.40"
+          data-image="images/24.webp"
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
 
     <!-- Product 11 -->
+  
     <div id="product11" class="learn">
       <div>
         <img src="images/25.webp" alt="25" />
@@ -525,11 +615,19 @@
           and forehead wrinkles.
         </p>
 
-        <button class="add-to-cart" id="add-to-cart-11">Add to Cart</button>
+        <button
+          class="add-to-cart"
+          data-name="Retinal 0.2% Emulsion"
+          data-price="17.90"
+          data-image="images/25.webp"
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
 
     <!-- Product 12 -->
+   
     <div id="product12" class="learn">
       <div>
         <img src="images/26.webp" alt="26" />
@@ -557,108 +655,74 @@
           BAICAPIL™, AnaGain™, and High-Solubility Caffeine.
         </p>
 
-        <button class="add-to-cart" id="add-to-cart-12">Add to Cart</button>
+        <button
+          class="add-to-cart"
+          data-name="Multi-Peptide Serum for Hair Density"
+          data-price="87.40"
+          data-image="images/26.webp"
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
-   <script src="script.js"></script>
-   
+
+    <!-- Footer -->
     <footer class="site-footer">
       <div class="footer-content">
-          <div class="footer-section">
-              <h4>Quick Links</h4>
-              <ul>
-                  <li><a href="About.html">About Us</a></li>
-                  <li><a href="profile.html">Shop</a></li>
-                  <li><a href="register.html">Login</a></li>
-                  <li><a href="ContactUs.html">Contact Us</a></li>
-              </ul>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="About.html">About Us</a></li>
+            <li><a href="profile.html">Shop</a></li>
+            <li><a href="register.html">Login</a></li>
+            <li><a href="ContactUs.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Follow Us</h4>
+          <div class="social-icons">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://pinterest.com" target="_blank"><i class="fab fa-pinterest"></i></a>
           </div>
-          <div class="footer-section">
-              <h4>Follow Us</h4>
-              <div class="social-icons">
-                  <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                  <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-                  <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-                  <a href="https://pinterest.com" target="_blank"><i class="fab fa-pinterest"></i></a>
-              </div>
-          </div>
-          <div class="footer-section">
-              <h4>Newsletter</h4>
-              <form class="newsletter-form" id="newsletterForm">
-                  <input type="email" id="email" placeholder="Enter your email" required>
-                  <button type="submit">Subscribe</button>
-              </form>
-              <div id="successMessage" class="success-message" style="display: none;">Thank you for subscribing!</div>
-          </div>
+        </div>
+        <div class="footer-section">
+          <h4>Newsletter</h4>
+          <form class="newsletter-form" id="newsletterForm">
+            <input type="email" id="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+          </form>
+          <div id="successMessage" class="success-message" style="display: none;">Thank you for subscribing!</div>
+        </div>
       </div>
-  </footer>
-  
-  
-  <script>
-      document.getElementById('newsletterForm').addEventListener('submit', function(event) {
-          event.preventDefault(); // Prevent the form from submitting the traditional way
-  
-          // Here you can add your logic to handle the subscription, e.g., sending the email to a server
-          const email = document.getElementById('email').value;
-          console.log('Subscribed email:', email);
-  
-          // Show success message
-          document.getElementById('successMessage').style.display = 'block';
-  
-          // Optionally, you can clear the input field
-          document.getElementById('email').value = '';
-      });
-  
-      document.getElementById('newsletterForm').addEventListener('submit', function(event) {
-          event.preventDefault(); // Prevent the form from submitting the traditional way
-  
-          // Get the email value
-          const email = document.getElementById('email').value;
-  
-          // Validate the email (optional)
-          if (email && email.includes('@')) {
-              // Log the email to the console (for testing)
-              console.log('Subscribed email:', email);
-  
-              // Show the success message
-              const successMessage = document.getElementById('successMessage');
-              successMessage.style.display = 'block';
-  
-              // Clear the input field
-              document.getElementById('email').value = '';
-  
-              // Hide the success message after 2 seconds (2000 milliseconds)
-              setTimeout(function() {
-                  successMessage.style.display = 'none';
-              }, 2000); // 2000 milliseconds = 2 seconds
-          } 
-      });
-  </script>
-        
-      <div class="footer-bottom">
-          <p>LOCATION <br>
-              <i class="fa-solid fa-location-dot"></i> Nairobi <br>
-              language EN
-          </p>
-      </div>
-  </footer>
-  <script>// Check if user is logged in and handle user icon click
-      const userIcon = document.getElementById("user-icon");
-      if (userIcon) {
-          userIcon.addEventListener("click", function (e) {
-              e.preventDefault(); // Prevent default link behavior
-  
-              const loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"));
-              if (loggedInUser) {
-                  // Redirect to profile page if logged in
-                  window.location.href = "profile.html";
-              } else {
-                  // Redirect to registration page if not logged in
-                  window.location.href = "register.html";
-              }
+    </footer>
+
+   
+    <script src="cart.js"></script>
+
+    <!-- Add event listeners for "Add to Cart" buttons -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Get all "Add to Cart" buttons
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+        // Add event listeners to each button
+        addToCartButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            const productName = button.getAttribute('data-name');
+            const productPrice = button.getAttribute('data-price');
+            const productImage = button.getAttribute('data-image');
+
+            // Call the addToCart function from cart.js
+            addToCart(productName, productPrice, productImage);
+
+            // Optional: Change button text to "Added to Cart"
+            button.textContent = 'Added to Cart';
+            button.disabled = true;
           });
-      }
-      </script>
+        });
+      });
+    </script>
   </body>
- 
 </html>

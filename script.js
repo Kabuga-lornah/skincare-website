@@ -170,3 +170,259 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+document.addEventListener('DOMContentLoaded', function () {
+    const checkoutButton = document.getElementById('checkout-button');
+    const confirmOrderButton = document.getElementById('confirm-order-button');
+
+    // Function to display cart items and total price in the review section
+    function displayReviewOrder() {
+        const reviewItemsContainer = document.getElementById('review-items');
+        const reviewTotalPriceContainer = document.getElementById('review-total-price');
+
+        // Clear previous content
+        if (reviewItemsContainer) reviewItemsContainer.innerHTML = '';
+        if (reviewTotalPriceContainer) reviewTotalPriceContainer.innerHTML = '';
+
+        // Get cart items from localStorage or your cart management system
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let totalPrice = 0;
+
+        // Display each cart item
+        cart.forEach(item => {
+            const itemElement = document.createElement('div');
+            itemElement.className = 'checkout-item';
+            itemElement.innerHTML = `
+                <img src="${item.image}" alt="${item.name}">
+                <div class="checkout-item-details">
+                    <h4>${item.name}</h4>
+                    <p>Quantity: ${item.quantity}</p>
+                    <p>Price: $${(item.price * item.quantity).toFixed(2)}</p>
+                </div>
+            `;
+            if (reviewItemsContainer) reviewItemsContainer.appendChild(itemElement);
+            totalPrice += item.price * item.quantity;
+        });
+
+        // Display total price
+        if (reviewTotalPriceContainer) {
+            reviewTotalPriceContainer.innerHTML = `<p>Total: $${totalPrice.toFixed(2)}</p>`;
+        }
+    }
+
+    // Function to clear the cart
+    function clearCart() {
+        localStorage.removeItem('cart');
+
+        // Update the UI to reflect the empty cart
+        const checkoutItemsContainer = document.getElementById('checkout-items');
+        if (checkoutItemsContainer) {
+            checkoutItemsContainer.innerHTML = '<div class="empty-cart-message">Your cart is empty.</div>';
+        }
+
+        const totalPriceElement = document.getElementById('total-price');
+        if (totalPriceElement) {
+            totalPriceElement.textContent = 'Total: $0.00';
+        }
+
+        // Update the cart badge if it exists
+        const cartBadge = document.getElementById('cart-badge');
+        if (cartBadge) {
+            cartBadge.textContent = '0';
+        }
+
+        // Clear the review section
+        const reviewItemsContainer = document.getElementById('review-items');
+        const reviewTotalPriceContainer = document.getElementById('review-total-price');
+        if (reviewItemsContainer) reviewItemsContainer.innerHTML = '';
+        if (reviewTotalPriceContainer) reviewTotalPriceContainer.innerHTML = '';
+    }
+
+    // Event listener for the "Proceed to payment" button
+    if (checkoutButton) {
+        checkoutButton.addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+
+            // Display the review order section
+            const orderReviewDropdown = document.getElementById('order-review');
+            if (orderReviewDropdown) {
+                orderReviewDropdown.style.display = 'block';
+                displayReviewOrder();
+            }
+        });
+    }
+
+    // Event listener for the "Confirm Order" button
+    if (confirmOrderButton) {
+        confirmOrderButton.addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+
+            // Display the thank you message
+            alert('Thank you for shopping with us! Your items will arrive in 3-4 business days.');
+
+            // Clear the cart
+            clearCart();
+        });
+    }
+
+    // Function to toggle dropdowns
+    function toggleDropdown(id) {
+        const dropdown = document.getElementById(id);
+        dropdown.parentElement.classList.toggle('active');
+    }
+});
+// Function to toggle user menu visibility
+function toggleUserMenu() {
+    const userMenu = document.getElementById("userMenu");
+    userMenu.style.display = userMenu.style.display === "block" ? "none" : "block";
+  }
+  
+  // Function to handle logout
+  function logout() {
+    sessionStorage.removeItem("loggedInUser"); // Clear logged-in user
+    window.location.href = "register.html"; // Redirect to register page
+  }
+  
+  // Close user menu when clicking outside
+  document.addEventListener("click", function (event) {
+    const userMenu = document.getElementById("userMenu");
+    const userIcon = document.querySelector(".user-icon");
+    
+        // Check if the click is outside the user-icon and user-menu
+        if (!userIcon.contains(event.target) && !userMenu.contains(event.target)) {
+          userMenu.style.display = "none";
+        }
+      });
+ // Toggle between Sign Up and Login Forms
+ const toggleLink = document.getElementById("toggleLink");
+ const registerForm = document.getElementById("registerForm");
+ const loginForm = document.getElementById("loginForm");
+ const formTitle = document.getElementById("formTitle");
+ const toggleText = document.getElementById("toggleText");
+
+ // Set initial state of forms
+ registerForm.style.display = "block"; // Show register form by default
+ loginForm.style.display = "none"; // Hide login form by default
+ formTitle.textContent = "Sign Up"; // Set initial title
+ toggleText.textContent = "Already have an account?"; // Set initial toggle text
+ toggleLink.textContent = "Login"; // Set initial toggle link text
+
+ toggleLink.addEventListener("click", function (e) {
+     e.preventDefault();
+     if (registerForm.style.display === "none") {
+         registerForm.style.display = "block";
+         loginForm.style.display = "none";
+         formTitle.textContent = "Sign Up";
+         toggleText.textContent = "Already have an account?";
+         toggleLink.textContent = "Login";
+     } else {
+         registerForm.style.display = "none";
+         loginForm.style.display = "block";
+         formTitle.textContent = "Login";
+         toggleText.textContent = "Don't have an account?";
+         toggleLink.textContent = "Sign Up";
+     }
+ });
+
+ // Store User Data in localStorage
+ const users = JSON.parse(localStorage.getItem("users")) || [];
+
+ // Sign Up Form Submission
+ const signUpForm = document.getElementById("registerForm");
+ signUpForm.addEventListener("submit", function (e) {
+     e.preventDefault();
+
+     const name = document.getElementById("name").value;
+     const email = document.getElementById("email").value;
+     const password = document.getElementById("password").value;
+     const confirmPassword = document.getElementById("confirmPassword").value;
+
+     // Check if passwords match
+     if (password !== confirmPassword) {
+         document.getElementById("passwordError").textContent =
+             "Passwords do not match!";
+         return;
+     }
+
+     // Check if user already exists
+     const userExists = users.some((user) => user.email === email);
+     if (userExists) {
+         document.getElementById("passwordError").textContent =
+             "User already exists!";
+         return;
+     }
+
+     // Create new user
+     const newUser = { name, email, password };
+     users.push(newUser);
+     localStorage.setItem("users", JSON.stringify(users));
+
+     // Show success message
+     document.getElementById("successMessage").textContent =
+         "Registration successful!";
+     signUpForm.reset();
+ });
+
+ // Login Form Submission
+ const loginFormElement = document.getElementById("loginForm");
+ loginFormElement.addEventListener("submit", function (e) {
+     e.preventDefault();
+
+     const email = document.getElementById("loginEmail").value;
+     const password = document.getElementById("loginPassword").value;
+
+     // Find user in localStorage
+     const user = users.find(
+         (user) => user.email === email && user.password === password
+     );
+
+     if (user) {
+         // Store logged-in user in sessionStorage
+         sessionStorage.setItem("loggedInUser", JSON.stringify(user));
+         alert("Login successful! Redirecting to shop...");
+         window.location.href = "shop.html"; // Redirect to shop page
+     } else {
+         alert("Invalid email or password!");
+     }
+ });
+
+ // Check if the user is logged in
+ const loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"));
+ const isLoggedIn = loggedInUser !== null;
+
+ // Get the user icon element
+ const userIcon = document.getElementById("user-icon");
+
+ // Function to handle user icon click
+ userIcon.addEventListener("click", function (event) {
+     event.preventDefault(); // Prevent the default link behavior
+
+     if (isLoggedIn) {
+         // If the user is logged in, show a dropdown or modal with options to view profile or log out
+         const dropdown = document.createElement("div");
+         dropdown.innerHTML = `
+             <div class="user-dropdown">
+                 <a href="profile.html">View Profile</a>
+                 <a href="#" id="logout-link">Log Out</a>
+             </div>
+         `;
+         dropdown.style.position = "absolute";
+         dropdown.style.top = "50px"; // Adjust as needed
+         dropdown.style.right = "20px"; // Adjust as needed
+         dropdown.style.backgroundColor = "white";
+         dropdown.style.border = "1px solid #ccc";
+         dropdown.style.padding = "10px";
+         dropdown.style.zIndex = "1000";
+         document.body.appendChild(dropdown);
+
+         // Handle logout link click
+         const logoutLink = document.getElementById("logout-link");
+         logoutLink.addEventListener("click", function (event) {
+             event.preventDefault();
+             sessionStorage.removeItem("loggedInUser"); // Clear logged-in user
+             window.location.href = "register.html"; // Redirect to register page
+         });
+     } else {
+         // If the user is not logged in, redirect to the register page
+         window.location.href = "register.html";
+     }
+ });

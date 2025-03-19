@@ -86,20 +86,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 2000); // Remove notification after 2 seconds
     }
 
-    // Function to handle checkout
     window.checkout = function () {
         if (cart.length === 0) {
             alert('Your cart is empty. Please add items before proceeding to checkout.');
             return;
         }
-
+    
         const loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
         if (!loggedInUser) {
-            localStorage.setItem('pendingCheckoutCart', JSON.stringify(cart)); // Save cart for later
+            localStorage.setItem('pendingCheckoutCart', JSON.stringify(cart));
             alert('You must sign up to proceed to checkout.');
-            window.location.href = 'register.html'; // Redirect to registration page
+            window.location.href = 'register.html';
         } else {
-            window.location.href = 'checkout.html'; // Redirect to checkout page
+            // Save the cart to localStorage before redirecting
+            localStorage.setItem('cart', JSON.stringify(cart));
+            window.location.href = 'checkout.html';
         }
     }
 
@@ -215,8 +216,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoutButton = document.getElementById('logoutButton');
     if (logoutButton) {
         logoutButton.addEventListener('click', function () {
-            sessionStorage.removeItem('loggedInUser'); // Clear logged-in user
-            window.location.href = 'register.html'; // Redirect to register page
+            sessionStorage.removeItem('loggedInUser'); 
+            window.location.href = 'register.html'; 
         });
     }
 });
+
+    
