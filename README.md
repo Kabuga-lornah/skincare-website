@@ -69,14 +69,6 @@ To view and run this project locally, follow these simple steps:
 
 -----
 
-##  Contact
-
-For any inquiries or feedback, please reach out via:
-
-  * **Email**: ordinaire@gmail.com
-  * **Phone**: +254 712 345 678
-  * **Location**: Nairobi, Kenya
-
 
 
 -----
